@@ -1,0 +1,46 @@
+@font-face {
+  font-family: 'MiSansVF';
+  src: url('../font/MiSans/MiSans VF.ttf') format('truetype');
+  font-weight: 100 900; /* 定义支持的字体权重范围 */
+  font-stretch: 75% 125%; /* 定义支持的宽度范围 */
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  font-family: 'MiSansVF', sans-serif;
+  :deep(.el-button) {
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+@mixin full-screen {
+  font-size: 16px;
+}
+@mixin middle-screen {
+  font-size: 14px;
+}
+@mixin small-screen {
+  font-size: 12px;
+}
+
+@media screen and (max-width: 480px) {
+  html {
+    @include small-screen;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  html {
+    @include middle-screen;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  html {
+    @include full-screen;
+  }
+}

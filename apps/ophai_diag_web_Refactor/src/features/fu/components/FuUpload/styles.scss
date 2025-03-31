@@ -1,0 +1,60 @@
+@use "sass:map";
+@use "sass:math";
+@use "@/shared/assets/styles/vars.scss" as vars;
+@use "../../styles/mixins" as mixins;
+
+.fu-upload-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  flex-shrink: 0;
+  height: 100%;
+  width: 35%;
+  gap: 1rem;
+  margin-left: 1rem;
+}
+
+.picture-upload-container {
+  @include mixins.block;
+  &__title {
+    @include mixins.base-title;
+    .bulkSwitch {
+      margin-left: 1rem;
+    }
+  }
+  &__upload {
+    width: 100%;
+    height: auto;
+    .upload--text {
+      font-size: map.get(vars.$font-size, m);
+      font-weight: map.get(vars.$font-weight, normal);
+      &:active {
+        color: map.get(vars.$colors, primary);
+      }
+    }
+    .upload--tip {
+      display: flex;
+      justify-content: start;
+      padding-left: 0.5rem;
+      font-size: map.get(vars.$font-size, s);
+      font-weight: map.get(vars.$font-weight, light);
+      color: map.get(vars.$colors, neutral-5);
+    }
+  }
+}
+.patient-info-container {
+  @include mixins.block;
+  &__title {
+    @include mixins.base-title;
+  }
+  &__form {
+    width: 100%;
+    height: 100%;
+    :deep(label) {
+      width: 100%;
+      font-weight: map.get(vars.$font-weight, normal);
+    }
+  }
+}

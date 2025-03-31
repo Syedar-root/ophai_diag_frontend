@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ab15a859-3186-4e5d-8082-944206f4d07a" name="更改" comment="进行了docker和nginx的相关配置，调试了大部分api接口">
+      <change afterPath="$PROJECT_DIR$/src/features/cm/components/CmSearch/CmSearch.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/cm/components/CmSearch/styles.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/cm/components/CmTable/CmTable.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/cm/components/CmTable/styles.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/cm/hooks/useCaseListSearch.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/cm/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/cm/router.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/cm/store/caseListStore.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/cm/store/searchQueryStore.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/cm/types/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/dd/api/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/dd/components/DdAiDiagInfo/DdAiDiagInfo.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/dd/components/DdAiDiagInfo/styles.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/dd/components/DdImageInfo/DdImageInfo.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/dd/components/DdImageInfo/styles.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/dd/components/DdImageView/DdImageView.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/dd/components/DdImageView/styles.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/dd/components/DdPatientInfo/DdPatientInfo.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/dd/components/DdPatientInfo/styles.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/dd/components/DdReportInfo/DdReportInfo.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/dd/components/DdReportInfo/styles.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/dd/hooks/useAiDiagInfo.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/dd/hooks/useImageInfo.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/dd/hooks/usePatientInfo.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/dd/hooks/useReportInfo.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/dd/hooks/useUpdateCase.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/dd/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/dd/router.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/dd/store/currentEye.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/dd/store/viewCaseStore.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/dd/styles/_mixins.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/dd/styles/_vars.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/fu/components/FuBulkPreview/FuBulkPreview.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/fu/components/FuBulkPreview/styles.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/fu/components/FuBulkPreview/types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/fu/components/FuFooter/FuFooter.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/fu/components/FuFooter/styles.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/fu/hooks/useBulkPreview.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/fu/hooks/useCaseSubmitter.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/fu/hooks/useFileValidator.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/fu/hooks/useUploadMode.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/fu/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/fu/router.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/fu/styles.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/libs/router/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/libs/utils/formatDate.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/cm/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/cm/api/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/dd/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/fu/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/fu/api/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/login/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/libs/api/login/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/font/MiSans/MiSans VF.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/assets/font/MiSans/MiSans VF.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/font/msyh_font/msyh.ttc" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/assets/font/msyh_font/msyh.ttc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/font/msyh_font/msyhbd.ttc" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/assets/font/msyh_font/msyhbd.ttc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/font/msyh_font/msyhl.ttc" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/assets/font/msyh_font/msyhl.ttc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/font/微软雅黑.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/assets/font/微软雅黑.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/icons/github.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/assets/icons/github.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/logo/logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/assets/logo/logo.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/logo/logo1.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/assets/logo/logo1.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/styles/element-vars.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/assets/styles/element-vars.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/styles/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/assets/styles/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/styles/reset.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/assets/styles/reset.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/styles/resetElement.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/assets/styles/resetElement.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/styles/vars.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/assets/styles/vars.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/testimg/0_man_left.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/testimg/0_man_right.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/vue.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/assets/vue.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/business/login/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/components/business/login/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/business/login/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/components/business/login/styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/business/login/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/components/business/login/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/business/nav/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/components/business/nav/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/business/nav/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/components/business/nav/styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/barChart/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/components/common/barChart/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/barChart/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/components/common/barChart/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/radarChart/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/components/common/radarChart/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/radarChart/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/components/common/radarChart/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/svgIcon/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/components/common/svgIcon/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/svgIcon/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/components/common/svgIcon/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/fu/components/FuSinglePreview/FuSinglePreview.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/fu/components/FuSinglePreview/FuSinglePreview.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/fu/components/FuSinglePreview/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/fu/components/FuSinglePreview/styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/fu/components/FuUpload/FuUpload.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/fu/components/FuUpload/FuUpload.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/fu/components/FuUpload/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/fu/components/FuUpload/styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layout/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/layout/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/token/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/libs/store/token/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/user/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/libs/store/user/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/viewingCase/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/custom_directive/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/libs/utils/custom_directive/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/performance.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/libs/utils/performance.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/request/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/libs/utils/request/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/validate/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/libs/utils/validate/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/validate/schemas/image.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/libs/utils/validate/schemas/image.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/validate/schemas/login.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/libs/utils/validate/schemas/login.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/validate/schemas/register.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/libs/utils/validate/schemas/register.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/validate/validate.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/libs/utils/validate/validate.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/cm/index.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/cm/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/cm/styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/cm/types.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/dd/index.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/dd/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/dd/styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/dd/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/dd/types/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/fu/index.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/fu/styles.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/fu/types.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.tsbuildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.tsbuildinfo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vite.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/vite.config.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Sass File" />
+        <option value="Dockerfile" />
+        <option value="Vue Composition API Component" />
+        <option value="SCSS File" />
+        <option value="HTTP Request" />
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Syedar-root&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Syedar-root/Ophai-Diag-Web.git&quot;,
+    &quot;accountId&quot;: &quot;b1b5dcbe-9c7c-4106-a1e0-70b533232b11&quot;
+  }
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/node_modules/element-plus/theme-chalk/src/base.scss" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2tZ8od3bYEOcEldi3ern5QOz9PH" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "D:/Program/projects/front_ends/ophai_diag_frontend/ophai_diag_web_Refactor/src/features/dd",
+    "list.type.of.created.stylesheet": "SCSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "node",
+    "nodejs_package_manager_path": "npm",
+    "npm.npm dev.executor": "Run",
+    "prettier.import.notification.dismissed": "true",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "ts.external.directory.path": "D:\\Program\\projects\\front_ends\\ophai_diag_frontend\\ophai_diag_web_Refactor\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "vue.recent.templates": [
+      "Vue Composition API Component"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Program\projects\front_ends\ophai_diag_frontend\ophai_diag_web_Refactor\src\features\dd" />
+      <recent name="D:\Program\projects\front_ends\ophai_diag_frontend\ophai_diag_web_Refactor\src\features\cm\api" />
+      <recent name="D:\Program\projects\front_ends\ophai_diag_frontend\ophai_diag_web_Refactor\src\features\fu" />
+      <recent name="D:\Program\projects\front_ends\ophai_diag_frontend\ophai_diag_web_Refactor\src\features\fu\api" />
+      <recent name="D:\Program\projects\front_ends\ophai_diag_frontend\ophai_diag_web\src\features" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Program\projects\front_ends\ophai_diag_frontend\ophai_diag_web_Refactor\src\libs" />
+      <recent name="D:\Program\projects\front_ends\ophai_diag_frontend\ophai_diag_web_Refactor\src\shared" />
+      <recent name="D:\Program\projects\front_ends\ophai_diag_frontend\ophai_diag_web_Refactor\src\features\dd" />
+      <recent name="D:\Program\projects\front_ends\ophai_diag_frontend\ophai_diag_web_Refactor\src\features\dd\components\DdAiDiagInfo" />
+      <recent name="D:\Program\projects\front_ends\ophai_diag_frontend\ophai_diag_web_Refactor\src\features\dd\types" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="npm dev" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-76f8388c3a79-JavaScript-WS-243.24978.60" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="ab15a859-3186-4e5d-8082-944206f4d07a" name="更改" comment="" />
+      <created>1740548411310</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1740548411310</updated>
+      <workItem from="1740548412366" duration="5174000" />
+      <workItem from="1740569306273" duration="856000" />
+      <workItem from="1740570176029" duration="4306000" />
+      <workItem from="1740629603226" duration="821000" />
+      <workItem from="1740747608169" duration="1753000" />
+      <workItem from="1740756641183" duration="8486000" />
+      <workItem from="1740802734620" duration="1000" />
+      <workItem from="1740802739468" duration="27551000" />
+      <workItem from="1740899909063" duration="7635000" />
+      <workItem from="1741005839083" duration="3086000" />
+      <workItem from="1741013385077" duration="1077000" />
+      <workItem from="1741014978852" duration="261000" />
+      <workItem from="1741087988537" duration="5604000" />
+      <workItem from="1741167881993" duration="3540000" />
+      <workItem from="1741184679476" duration="164000" />
+      <workItem from="1741233979435" duration="2259000" />
+      <workItem from="1741242280250" duration="10757000" />
+      <workItem from="1741256586462" duration="2615000" />
+      <workItem from="1741320523919" duration="1494000" />
+      <workItem from="1741343171291" duration="1394000" />
+      <workItem from="1741348501406" duration="114000" />
+      <workItem from="1741520111319" duration="140000" />
+      <workItem from="1741654713229" duration="654000" />
+      <workItem from="1741688463153" duration="32000" />
+      <workItem from="1741748544450" duration="1391000" />
+      <workItem from="1741775924320" duration="14333000" />
+      <workItem from="1741853060253" duration="338000" />
+      <workItem from="1741955824053" duration="1554000" />
+      <workItem from="1742017953572" duration="14000" />
+      <workItem from="1742023101257" duration="68000" />
+      <workItem from="1742297481676" duration="118000" />
+      <workItem from="1742300239183" duration="21661000" />
+      <workItem from="1742353586788" duration="8227000" />
+      <workItem from="1742378842180" duration="11748000" />
+      <workItem from="1742476481311" duration="2668000" />
+      <workItem from="1742479949565" duration="5907000" />
+      <workItem from="1742485988691" duration="1071000" />
+      <workItem from="1742551133509" duration="8924000" />
+      <workItem from="1742616054748" duration="14402000" />
+      <workItem from="1742634327971" duration="3346000" />
+      <workItem from="1742646243851" duration="6150000" />
+      <workItem from="1742702868777" duration="584000" />
+      <workItem from="1742706138662" duration="19731000" />
+      <workItem from="1742787373875" duration="2113000" />
+      <workItem from="1742876826405" duration="799000" />
+      <workItem from="1742879890817" duration="3000" />
+      <workItem from="1742882066241" duration="100000" />
+      <workItem from="1742889807459" duration="852000" />
+      <workItem from="1742891184030" duration="984000" />
+      <workItem from="1742893044660" duration="1172000" />
+      <workItem from="1742900226156" duration="1265000" />
+      <workItem from="1742901869301" duration="285000" />
+      <workItem from="1742910623879" duration="4459000" />
+      <workItem from="1742963894052" duration="1721000" />
+      <workItem from="1742965655162" duration="3523000" />
+      <workItem from="1742969425215" duration="6752000" />
+      <workItem from="1742982226768" duration="3455000" />
+      <workItem from="1743048871729" duration="3467000" />
+      <workItem from="1743052380232" duration="277000" />
+      <workItem from="1743052660469" duration="41000" />
+      <workItem from="1743052702345" duration="1282000" />
+      <workItem from="1743088806922" duration="73000" />
+      <workItem from="1743156178522" duration="19134000" />
+      <workItem from="1743219767402" duration="3350000" />
+    </task>
+    <task id="LOCAL-00001" summary="首次提交">
+      <option name="closed" value="true" />
+      <created>1740569547076</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1740569547076</updated>
+    </task>
+    <task id="LOCAL-00002" summary="初步编写了dto类（doc/dto.ts）">
+      <option name="closed" value="true" />
+      <created>1740572689108</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1740572689108</updated>
+    </task>
+    <task id="LOCAL-00003" summary="安装了vue-router">
+      <option name="closed" value="true" />
+      <created>1740575768376</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1740575768376</updated>
+    </task>
+    <task id="LOCAL-00004" summary="初步设计了Nav导航栏组件，并简单创建v-route自定义指令">
+      <option name="closed" value="true" />
+      <created>1740802829617</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1740802829618</updated>
+    </task>
+    <task id="LOCAL-00005" summary="初步实现了快速导入界面">
+      <option name="closed" value="true" />
+      <created>1740832885125</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1740832885125</updated>
+    </task>
+    <task id="LOCAL-00006" summary="初步实现了登录组件">
+      <option name="closed" value="true" />
+      <created>1741006027957</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1741006027957</updated>
+    </task>
+    <task id="LOCAL-00007" summary="引入了pinia状态管理，登录注册组件可以监听user状态进行显示">
+      <option name="closed" value="true" />
+      <created>1741184748787</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1741184748787</updated>
+    </task>
+    <task id="LOCAL-00008" summary="引入了pinia状态管理，登录注册组件可以监听user状态进行显示">
+      <option name="closed" value="true" />
+      <created>1741654771803</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1741654771803</updated>
+    </task>
+    <task id="LOCAL-00009" summary="进一步完善了参数验证的模块">
+      <option name="closed" value="true" />
+      <created>1741790860517</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1741790860517</updated>
+    </task>
+    <task id="LOCAL-00010" summary="更新了logo显示">
+      <option name="closed" value="true" />
+      <created>1742023153169</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1742023153169</updated>
+    </task>
+    <task id="LOCAL-00011" summary="调整了快速导入的上传逻辑，优化了诊断页面的布局样式">
+      <option name="closed" value="true" />
+      <created>1742390225707</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1742390225707</updated>
+    </task>
+    <task id="LOCAL-00012" summary="进行了docker和nginx的相关配置，调试了大部分api接口">
+      <option name="closed" value="true" />
+      <created>1742876894312</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1742876894312</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.conf" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="首次提交" />
+    <MESSAGE value="初步编写了dto类（doc/dto.ts）" />
+    <MESSAGE value="安装了vue-router" />
+    <MESSAGE value="初步设计了Nav导航栏组件，并简单创建v-route自定义指令" />
+    <MESSAGE value="初步实现了快速导入界面" />
+    <MESSAGE value="初步实现了登录组件" />
+    <MESSAGE value="引入了pinia状态管理，登录注册组件可以监听user状态进行显示" />
+    <MESSAGE value="进一步完善了参数验证的模块" />
+    <MESSAGE value="更新了logo显示" />
+    <MESSAGE value="调整了快速导入的上传逻辑，优化了诊断页面的布局样式" />
+    <MESSAGE value="进行了docker和nginx的相关配置，调试了大部分api接口" />
+    <option name="LAST_COMMIT_MESSAGE" value="进行了docker和nginx的相关配置，调试了大部分api接口" />
+  </component>
+</project>

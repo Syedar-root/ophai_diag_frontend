@@ -1,0 +1,187 @@
+ophai_diag_web_Refactor
+├── Dockerfile
+├── README.md
+├── auto-imports.d.ts
+├── components.d.ts
+├── content.md
+├── content.txt
+├── eslint.config.js
+├── index.html
+├── nginx
+│   └── default.conf
+├── package-lock.json
+├── package.json
+├── public
+│   └── vite.svg
+├── src
+│   ├── App.vue
+│   ├── auto-import.d.ts
+│   ├── features
+│   │   ├── cm
+│   │   │   ├── api
+│   │   │   │   └── index.ts
+│   │   │   ├── components
+│   │   │   │   ├── CmSearch
+│   │   │   │   │   ├── CmSearch.vue
+│   │   │   │   │   └── styles.scss
+│   │   │   │   └── CmTable
+│   │   │   │       ├── CmTable.vue
+│   │   │   │       └── styles.scss
+│   │   │   ├── hooks
+│   │   │   │   └── useCaseListSearch.ts
+│   │   │   ├── index.vue
+│   │   │   ├── router.ts
+│   │   │   ├── store
+│   │   │   │   ├── caseListStore.ts
+│   │   │   │   └── searchQueryStore.ts
+│   │   │   ├── styles.scss
+│   │   │   └── types
+│   │   │       └── index.ts
+│   │   ├── dd
+│   │   │   ├── api
+│   │   │   │   └── index.ts
+│   │   │   ├── components
+│   │   │   │   ├── DdAiDiagInfo
+│   │   │   │   │   ├── DdAiDiagInfo.vue
+│   │   │   │   │   └── styles.scss
+│   │   │   │   ├── DdImageInfo
+│   │   │   │   │   ├── DdImageInfo.vue
+│   │   │   │   │   └── styles.scss
+│   │   │   │   ├── DdImageView
+│   │   │   │   │   ├── DdImageView.vue
+│   │   │   │   │   └── styles.scss
+│   │   │   │   ├── DdPatientInfo
+│   │   │   │   │   ├── DdPatientInfo.vue
+│   │   │   │   │   └── styles.scss
+│   │   │   │   └── DdReportInfo
+│   │   │   │       ├── DdReportInfo.vue
+│   │   │   │       └── styles.scss
+│   │   │   ├── hooks
+│   │   │   │   ├── useAiDiagInfo.ts
+│   │   │   │   ├── useImageInfo.ts
+│   │   │   │   ├── usePatientInfo.ts
+│   │   │   │   ├── useReportInfo.ts
+│   │   │   │   └── useUpdateCase.ts
+│   │   │   ├── index.vue
+│   │   │   ├── router.ts
+│   │   │   ├── store
+│   │   │   │   ├── currentEye.ts
+│   │   │   │   └── viewCaseStore.ts
+│   │   │   ├── styles
+│   │   │   │   ├── _mixins.scss
+│   │   │   │   └── _vars.scss
+│   │   │   ├── styles.scss
+│   │   │   └── types
+│   │   │       └── index.ts
+│   │   └── fu
+│   │       ├── api
+│   │       │   └── index.ts
+│   │       ├── components
+│   │       │   ├── FuBulkPreview
+│   │       │   │   ├── FuBulkPreview.vue
+│   │       │   │   ├── styles.scss
+│   │       │   │   └── types.ts
+│   │       │   ├── FuFooter
+│   │       │   │   ├── FuFooter.vue
+│   │       │   │   └── styles.scss
+│   │       │   ├── FuSinglePreview
+│   │       │   │   ├── FuSinglePreview.vue
+│   │       │   │   └── styles.scss
+│   │       │   └── FuUpload
+│   │       │       ├── FuUpload.vue
+│   │       │       ├── styles.scss
+│   │       │       └── types.ts
+│   │       ├── hooks
+│   │       │   ├── useBulkPreview.ts
+│   │       │   ├── useCaseSubmitter.ts
+│   │       │   ├── useFileValidator.ts
+│   │       │   └── useUploadMode.ts
+│   │       ├── index.vue
+│   │       ├── router.ts
+│   │       ├── store
+│   │       │   └── FileStore.ts
+│   │       ├── styles
+│   │       │   └── _mixins.scss
+│   │       └── styles.scss
+│   ├── libs
+│   │   ├── api
+│   │   │   └── login
+│   │   │       └── index.ts
+│   │   ├── router
+│   │   │   └── index.ts
+│   │   ├── store
+│   │   │   ├── token
+│   │   │   │   └── index.ts
+│   │   │   └── user
+│   │   │       └── index.ts
+│   │   └── utils
+│   │       ├── custom_directive
+│   │       │   └── index.ts
+│   │       ├── formatDate.ts
+│   │       ├── performance.ts
+│   │       ├── request
+│   │       │   └── index.ts
+│   │       └── validate
+│   │           ├── index.ts
+│   │           ├── schemas
+│   │           │   ├── image.ts
+│   │           │   ├── login.ts
+│   │           │   └── register.ts
+│   │           └── validate.ts
+│   ├── main.ts
+│   ├── shared
+│   │   ├── assets
+│   │   │   ├── font
+│   │   │   │   ├── MiSans
+│   │   │   │   │   └── MiSans VF.ttf
+│   │   │   │   └── msyh_font
+│   │   │   │       ├── msyh.ttc
+│   │   │   │       ├── msyhbd.ttc
+│   │   │   │       └── msyhl.ttc
+│   │   │   ├── icons
+│   │   │   │   └── github.svg
+│   │   │   ├── logo
+│   │   │   │   ├── logo.svg
+│   │   │   │   └── logo1.svg
+│   │   │   ├── styles
+│   │   │   │   ├── element-vars.scss
+│   │   │   │   ├── index.css
+│   │   │   │   ├── reset.scss
+│   │   │   │   ├── resetElement.scss
+│   │   │   │   └── vars.scss
+│   │   │   ├── testimg
+│   │   │   │   ├── PA_00321956133278_周云熙_left.jpg
+│   │   │   │   └── PA_00321956133278_周云熙_right.jpg
+│   │   │   └── vue.svg
+│   │   ├── components
+│   │   │   ├── business
+│   │   │   │   ├── login
+│   │   │   │   │   ├── index.vue
+│   │   │   │   │   ├── styles.scss
+│   │   │   │   │   └── types.ts
+│   │   │   │   └── nav
+│   │   │   │       ├── index.vue
+│   │   │   │       └── styles.scss
+│   │   │   └── common
+│   │   │       ├── Loading
+│   │   │       │   └── Loading.vue
+│   │   │       ├── barChart
+│   │   │       │   ├── index.vue
+│   │   │       │   └── types.ts
+│   │   │       ├── radarChart
+│   │   │       │   ├── index.vue
+│   │   │       │   └── types.ts
+│   │   │       └── svgIcon
+│   │   │           ├── index.vue
+│   │   │           └── types.ts
+│   │   └── layout
+│   │       └── index.vue
+│   ├── style.css
+│   └── vite-env.d.ts
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+├── tsconfig.tsbuildinfo
+├── vite.config.js
+├── vite.config.ts
+└── web-types.json

@@ -1,0 +1,45 @@
+@use "sass:map";
+@use "@/shared/assets/styles/vars.scss" as vars;
+@use "../../styles/mixins" as mixins;
+
+.single-upload-container {
+  @include mixins.block;
+  max-width: 100%;
+  min-height: 50%;
+  max-height: 90%;
+  justify-content: center;
+  align-items: center;
+  &__content {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding: 1rem;
+  }
+  &__title {
+    @include mixins.base-title;
+  }
+  .image-item {
+    width: clamp(10rem, 60%, 20rem);
+    height: clamp(5rem, 10%, 20rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5%;
+    span {
+      font-size: map.get(vars.$font-size, m);
+      font-weight: map.get(vars.$font-weight, bold);
+      align-self: center;
+      margin-bottom: 0.1rem;
+    }
+    &__image {
+      @include mixins.base-image;
+    }
+    &__error {
+      @include mixins.base-image--error;
+    }
+  }
+}

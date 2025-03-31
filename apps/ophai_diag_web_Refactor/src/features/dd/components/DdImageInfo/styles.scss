@@ -1,0 +1,77 @@
+@use "sass:map";
+@use "@/shared/assets/styles/vars.scss" as vars;
+@use "../../styles/_mixins.scss" as _mixins;
+
+.image-info-area {
+  @include _mixins.left-area;
+
+  &__content {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    @include _mixins.card;
+    gap: map.get(vars.$space, m);
+
+    .images {
+      width: 100%;
+      height: auto;
+      display: flex;
+      justify-content: space-around;
+      &__item {
+        position: relative;
+        width: 40%;
+        aspect-ratio: 1/1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0.5rem;
+        transition: all 0.3s;
+        &--is-active {
+          box-shadow: 0 0 10px 5px rgba(map.get(vars.$colors, primary-light-5), 0.8);
+          transform: scale(0.85);
+        }
+        .img {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          border-radius: 0.5rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          &__error {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: map.get(vars.$space, xs);
+          }
+        }
+      }
+    }
+    .image-info {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: start;
+      gap: map.get(vars.$space, s);
+      &__item {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        font-size: map.get(vars.$font-size, m);
+        label {
+          font-weight: map.get(vars.$font-weight, bold);
+        }
+        span {
+          font-weight: map.get(vars.$font-weight, normal);
+        }
+      }
+    }
+  }
+}

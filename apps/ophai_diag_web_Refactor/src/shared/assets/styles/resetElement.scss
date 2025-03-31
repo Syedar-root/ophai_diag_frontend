@@ -1,0 +1,24 @@
+@use 'sass:map';
+@use 'vars' as vars;
+
+@mixin resetButton($type: primary) {
+  outline: none;
+  &:hover {
+    background-color: map.get(vars.$colors, #{$type}-dark-1);
+    border-color: map.get(vars.$colors, #{$type}-dark-1);
+  }
+}
+
+@mixin resetSelect() {
+  border-radius: 0.5rem;
+}
+
+$types: (primary, success, warning, info, danger);
+
+body {
+  @each $type in $types {
+    .el-button--#{$type} {
+      @include resetButton($type);
+    }
+  }
+}

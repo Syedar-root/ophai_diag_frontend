@@ -1,0 +1,18 @@
+{
+  "extends": "../../core/configs/ts/tsconfig.base.json",
+  "compilerOptions": {
+    "types": ["vite/client"]
+  },
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" }, // 移除prepend
+    { "path": "./tsconfig.node.json" }
+  ]
+//  "compilerOptions": {
+//    "declaration": true,          // 生成 .d.ts 文件
+//    "emitDeclarationOnly": true,  // 仅生成声明文件（可选）
+//    "declarationDir": "./dist",   // 指定 .d.ts 输出目录（可选）
+//    "outDir": "./dist"            // 输出目录
+//  },
+//  "include": ["src",],
+}

@@ -1,0 +1,3 @@
+@use "sass:map";
+@use "@/shared/assets/styles/vars.scss" as vars;
+$border-color: map.get(vars.$colors, neutral-14);

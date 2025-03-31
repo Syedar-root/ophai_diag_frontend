@@ -1,0 +1,71 @@
+@use "sass:map";
+@use "@/shared/assets/styles/vars.scss" as vars;
+@use "../../styles/_mixins.scss" as _mixins;
+
+.image-view {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: map.get(vars.$space, xxxl);
+
+  &__opt {
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: map.get(vars.$space, xs);
+    transition: all 0.3s ease;
+    .opt-item {
+      width: 100%;
+      aspect-ratio: 1/1;
+      background-color: map.get(vars.$colors, _white);
+      padding: map.get(vars.$space, xs);
+      border-radius: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+      cursor: pointer;
+      &__inner {
+        font-size: map.get(vars.$font-size, s);
+      }
+      &:hover {
+        box-shadow: 0 0 0 1px map.get(vars.$colors, neutral-14) inset;
+      }
+      &.active {
+        background-color: map.get(vars.$colors, primary-light-3);
+        color: #fff;
+        box-shadow: 0 0 0 1px map.get(vars.$colors, primary-light-3) inset;
+      }
+    }
+  }
+  &__content {
+    position: relative;
+    width: 50%;
+    max-width: 50%;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: map.get(vars.$colors, neutral-14);
+  }
+  &__error {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: map.get(vars.$space, s);
+  }
+}
