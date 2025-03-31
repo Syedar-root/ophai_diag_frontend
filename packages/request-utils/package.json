@@ -1,0 +1,14 @@
+{
+  "name": "@ophai/request-utils",
+  "version": "0.0.1",
+  "description": "Axios-based request utility package for Ophai projects",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}

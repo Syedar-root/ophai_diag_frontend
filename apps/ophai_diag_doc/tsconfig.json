@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "include": [     // 需要包含实际代码目录
+    "docs/**/*.md"     // 如果文档需要类型检查则添加
+    // 其他需要类型检查的目录...
+  ]
+}

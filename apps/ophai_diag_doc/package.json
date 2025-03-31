@@ -1,0 +1,27 @@
+{
+  "name": "ophai_diag_doc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vitepress dev docs",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "vitepress build docs",
+    "serve": "vitepress serve docs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "rollup": "^4.37.0",
+    "vitepress": "^1.6.3",
+    "vue": "^3.5.13"
+  },
+  "dependencies": {
+    "element-plus": "^2.9.5",
+    "mermaid": "^11.6.0",
+    "vitepress-plugin-mermaid": "^2.0.17",
+    "vue-router": "^4.5.0"
+  }
+}

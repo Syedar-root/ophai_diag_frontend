@@ -1,0 +1,18 @@
+// tsconfig.base.json
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",  // 关键：基于根目录解析路径
+    "paths": {
+      "@core/*": ["/core/*"],  // 定义共享配置的路径别名
+      "apps/*": ["/apps/*"]
+    }
+  },
+  "exclude": ["**/node_modules"]
+}
