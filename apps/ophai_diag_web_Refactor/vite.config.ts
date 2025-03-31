@@ -6,7 +6,8 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import Inspect from 'vite-plugin-inspect'
 import baseConfig from "../../core/configs/vite/vite.base.config"
-
+import viteCompression from 'vite-plugin-compression';
+import { visualizer } from 'rollup-plugin-visualizer';
 
 const pathSrc = path.resolve(__dirname, 'src')
 
@@ -18,7 +19,18 @@ export default mergeConfig(baseConfig,{
     }
   },
   plugins: [
-    // Vue(),
+    viteCompression({
+      algorithm: 'gzip', // 压缩算法，可选 'gzip' 或 'brotli'
+      ext: '.gz', // 生成的压缩文件后缀
+      threshold: 10240, // 仅对大于 10KB 的文件进行压缩
+      deleteOriginFile: false // 是否删除原始文件（建议保留）
+    }),
+    visualizer({
+      open: false, // 构建后自动打开报告
+      filename: 'stats.html', // 分析文件名
+      gzipSize: true, // 显示 Gzip 压缩后大小
+      brotliSize: true // 显示 Brotli 压缩后大小
+    }),
     svgLoader({
       svgoConfig: {
         plugins: [
@@ -52,6 +64,18 @@ export default mergeConfig(baseConfig,{
                           @use "@/shared/assets/styles/vars.scss" as *;`
       }
     }
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        // 入口文件命名规则（如 main.js）
+        entryFileNames: '[name]-[hash].js',
+        // 代码分割的 chunk 文件命名规则（如 chunk-123.js）
+        chunkFileNames: 'chunks/[name]-[hash].js',
+        // 静态资源（图片、字体等）命名规则
+        assetFileNames: 'assets/[name]-[hash][extname]',
+      },
+    },
   },
 
 })

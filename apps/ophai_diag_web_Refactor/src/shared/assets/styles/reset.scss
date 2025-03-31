@@ -3,6 +3,7 @@
   src: url('../font/MiSans/MiSans VF.ttf') format('truetype');
   font-weight: 100 900; /* 定义支持的字体权重范围 */
   font-stretch: 75% 125%; /* 定义支持的宽度范围 */
+  font-display: swap;
 }
 
 *,

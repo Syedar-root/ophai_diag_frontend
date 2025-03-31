@@ -1,4 +1,12 @@
 # 性能优化方案
+我们引入`lighthouse`进行性能测试，这里先看实验室结论：
+
+**优化前：**
+![优化前图片](./images/BeforeO.png)
+
+**优化后：**
+![优化后图片](./images/AfterO.png)
+我们可以对比看出，FCP缩短了**约80%**，LCP缩短了**约97%**，性能提升明显。不过这些数据只是实验室数据，实际应用中还需要考虑更多的因素。
 
 ## 性能监控体系
 监控`首次绘制时间(FP)`、`首次内容绘制时间(FCP)`等核心指标
@@ -30,8 +38,27 @@ export const initPerformanceMonitor = () => {
     }
   };
 };
-
 ```
+## 代码构建优化
+- 使用`Vite`的`rollupOptions`配置，将`Element Plus`、`Vue`、`Vue Router`、`Pinia`等框架进行**按需加载**，减少首屏加载体积。
+- 开启`gzip`压缩，减少传输体积。
+```typescript
+// vite.config.ts
+export default defineConfig({
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          "element-plus": ["element-plus"],
+          "vue-bundle": ["vue", "vue-router", "pinia"],
+          "echarts": ["echarts","vue-echarts"],
+        }
+      }
+    }
+  }
+})
+```
+
 ## 路由优化
 使用`Vue Router`的`懒加载`特性，同时基于基于`Vite`的动态import实现代码分割，**按需加载**路由组件，首屏体积减少**约40%**。
 ```typescript
@@ -112,21 +139,4 @@ $MaxStep: 9;
     $colors: map.merge($colors, (#{$key}-dark-#{$i}: $dark));
   }
 }
-```
-## 代码分割优化
-```typescript
-// vite.config.ts
-export default defineConfig({
-  build: {
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          "element-plus": ["element-plus"],
-          "vue-bundle": ["vue", "vue-router", "pinia"],
-          "echarts": ["echarts","vue-echarts"],
-        }
-      }
-    }
-  }
-})
 ```

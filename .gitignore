@@ -1,2 +1,4 @@
 # 在文件末尾添加
 node_modules/
+dist
+apps/*/dist

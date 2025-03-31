@@ -9,7 +9,7 @@ export const fuRoutes:RouteRecordRaw[] = [
   {
     path: 'fu',
     name: 'FastUpload',
-    component: () => import('./index.vue')
+    component: () => import('./index.vue'),
   },
 ]
 

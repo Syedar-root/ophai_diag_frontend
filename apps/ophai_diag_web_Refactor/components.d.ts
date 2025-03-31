@@ -47,6 +47,7 @@ declare module 'vue' {
     FuUpload: typeof import('./src/features/fu/components/FuUpload/FuUpload.vue')['default']
     Layout: typeof import('./src/shared/layout/index.vue')['default']
     Loading: typeof import('./src/shared/components/common/Loading/Loading.vue')['default']
+    LoadingLayout: typeof import('./src/features/fu/components/LoadingLayout/LoadingLayout.vue')['default']
     Login: typeof import('./src/shared/components/business/login/index.vue')['default']
     Nav: typeof import('./src/shared/components/business/nav/index.vue')['default']
     RadarChart: typeof import('./src/shared/components/common/radarChart/index.vue')['default']
