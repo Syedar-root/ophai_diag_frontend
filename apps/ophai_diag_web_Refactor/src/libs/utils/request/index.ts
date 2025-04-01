@@ -26,11 +26,11 @@ export interface CustomAxiosRequestConfig extends AxiosRequestConfig {
   noToken?: boolean
   headers?: AxiosHeaders | Record<string, string | number | boolean>
 }
-const tokenStore = useTokenStore();
 // 请求拦截器
 request.interceptors.request.use(
   (config: CustomAxiosRequestConfig) => {
     // 在这里可以添加请求头、认证信息等
+    const tokenStore = useTokenStore();
     config.headers = config.headers || {}
     if (!config.noToken) {
       const token: string = tokenStore.token;
