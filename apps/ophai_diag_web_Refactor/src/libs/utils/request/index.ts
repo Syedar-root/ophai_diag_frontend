@@ -7,6 +7,7 @@ import axios, {
   type AxiosHeaders
 } from 'axios'
 import { ElMessage } from 'element-plus'
+import {useTokenStore} from "@/libs/store/token";
 
 // 定义基础响应类型
 export interface ResponseData<T = any> {
@@ -25,14 +26,14 @@ export interface CustomAxiosRequestConfig extends AxiosRequestConfig {
   noToken?: boolean
   headers?: AxiosHeaders | Record<string, string | number | boolean>
 }
-
+const tokenStore = useTokenStore();
 // 请求拦截器
 request.interceptors.request.use(
   (config: CustomAxiosRequestConfig) => {
     // 在这里可以添加请求头、认证信息等
     config.headers = config.headers || {}
     if (!config.noToken) {
-      const token: string = 'asdfggh1234567890'
+      const token: string = tokenStore.token;
       if (token) {
         config.headers.Authorization = `Bearer ${token}`
       }

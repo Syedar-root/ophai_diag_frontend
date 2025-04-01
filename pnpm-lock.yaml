@@ -160,8 +160,6 @@ importers:
 
   packages/date-utils: {}
 
-  packages/http-request: {}
-
   packages/request-utils: {}
 
 packages:

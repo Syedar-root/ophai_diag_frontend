@@ -5,6 +5,7 @@ import {useTokenStore} from '@/libs/store/token';
 const tokenStore = useTokenStore();
 
 onMounted(() => {
+  console.log(tokenStore.token);
   performance.mark('vue-app-mounted');
   let app = document.getElementById('app')
   if (!app) return
@@ -21,7 +22,7 @@ onMounted(() => {
 watch(
     () => tokenStore.token,
     (newVal:string) => {
-      if (!newVal) {
+      if (newVal === null || newVal === '' || newVal === undefined) {
         tokenStore.toggleLogin(true)
       }
     }
