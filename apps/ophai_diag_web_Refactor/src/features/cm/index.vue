@@ -4,7 +4,7 @@
     <CmTable></CmTable>
     <div class="cm-footer">
       <el-pagination
-        v-model:current-page="searchQuery.pageNum"
+        v-model:current-page="searchQueryStore.searchQuery.pageNum"
         background
         layout="total,prev,pager,next"
         :total="total"
@@ -22,7 +22,7 @@
   import { useCaseListSearch } from '@/features/cm/hooks/useCaseListSearch.ts'
 
   const total = useCaseListStore().caseList.total
-  const searchQuery = useSearchQueryStore().searchQuery
+  const searchQueryStore = useSearchQueryStore()
   const { handleSearch } = useCaseListSearch()
 
   onMounted(() => {

@@ -3,7 +3,7 @@ import type { CustomAxiosRequestConfig } from '@/libs/utils/request'
 // import axios from 'axios'
 export const loginService = (query: any) => {
   return request({
-    url: 'api/user/login',
+    url: '/user/login',
     method: 'post',
     data: query,
     noToken: true
@@ -16,7 +16,7 @@ export const loginService = (query: any) => {
 
 export const registerService = (query: any):Promise<any> => {
   return request({
-    url: 'api/user/register',
+    url: '/user/register',
     method: 'post',
     data: query,
     noToken: true

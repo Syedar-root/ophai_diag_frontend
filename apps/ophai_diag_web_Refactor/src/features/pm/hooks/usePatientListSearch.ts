@@ -1,22 +1,22 @@
 import {ref} from 'vue';
+import {useSearchPatientQueryStore} from "@/features/pm/store/searchPatientQueryStore.ts";
 
 export const usePatientListSearch = () => {
-    const searchQuery = ref({
-        id:'',
-        name:'',
-        diseaseName:'',
-        pageNum: 1,
-        pageSize: 10,
-    });
+    const searchQueryStore = useSearchPatientQueryStore();
+    const diseaseNameList = ref([])
     function handleSearch(isPage: boolean = false) {
-        if (isPage) {
-            searchQuery.value = {
-                ...searchQuery.value,
+        if (!isPage) {
+            searchQueryStore.setSearchPatientQuery({
+                ...searchQueryStore.searchPatientQuery,
                 pageNum: 1
-            }
+            })
         }
-        console.log(searchQuery.value)
+        searchQueryStore.searchPatientQuery.diseaseName = diseaseNameList.value.join(',')
+        if (searchQueryStore.searchPatientQuery.diseaseName.includes("全部")) {
+            searchQueryStore.searchPatientQuery.diseaseName = '全部'
+        }
+        console.log(searchQueryStore.searchPatientQuery)
     }
 
-    return { searchQuery,handleSearch }
+    return { diseaseNameList,handleSearch }
 }

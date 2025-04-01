@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import PmSearch from "@/features/pm/component/PmSearch/PmSearch.vue";
+import PmTable from "@/features/pm/component/PmTable/PmTable.vue";
+import PmPagination from "./component/PmPagination/PmPagination.vue";
 </script>
 
 <template>
@@ -7,8 +9,12 @@ import PmSearch from "@/features/pm/component/PmSearch/PmSearch.vue";
   <div class="pm-container__header">
     <PmSearch/>
   </div>
-  <div class="pm-container__main"></div>
-  <div class="pm-container__footer"></div>
+  <div class="pm-container__main">
+    <PmTable/>
+  </div>
+  <div class="pm-container__footer">
+    <PmPagination/>
+  </div>
 </div>
 </template>
 

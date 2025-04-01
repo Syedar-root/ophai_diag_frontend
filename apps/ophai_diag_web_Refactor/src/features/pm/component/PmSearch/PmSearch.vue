@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import {Search} from "@element-plus/icons-vue";
 import {usePatientListSearch} from "@/features/pm/hooks/usePatientListSearch.ts";
-
-const {searchQuery, handleSearch} = usePatientListSearch()
+import {diseaseType} from "@/features/pm/types";
+import {useSearchPatientQueryStore} from "@/features/pm/store/searchPatientQueryStore.ts";
+const searchPatientQueryStore = useSearchPatientQueryStore();
+const {diseaseNameList, handleSearch} = usePatientListSearch()
 </script>
 
 <template>
@@ -10,17 +12,33 @@ const {searchQuery, handleSearch} = usePatientListSearch()
   <div class="pm-search__input">
     <el-input
         :prefix-icon="Search"
-        v-model="searchQuery.name"
+        v-model="searchPatientQueryStore.searchPatientQuery.name"
         placeholder="请输入患者姓名"
+        @keyup.enter.native="handleSearch()"
         clearable>
       <template #append>
-        <button @click="handleSearch()">搜索</button>
+        <el-button @click="handleSearch()">搜索</el-button>
       </template>
     </el-input>
   </div>
   <div class="pm-search__select">
-    <el-select></el-select>
-    <el-button type="primary"></el-button>
+    <label>疾病分类</label>
+    <el-select
+        v-model="diseaseNameList"
+        multiple
+        filterable
+        allow-create
+        default-first-option
+        :reserve-keyword="false"
+        placeholder="请选择要查询的内容"
+        clearable
+        @blur="handleSearch">
+      <el-option
+          v-for="item in diseaseType"
+          :key="item.value"
+          :label="item.label"
+          :value="item.label"></el-option>
+    </el-select>
   </div>
 </div>
 </template>

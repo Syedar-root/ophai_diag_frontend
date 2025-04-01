@@ -45,7 +45,7 @@ export const registerSchema = Joi.object({
     }),
   phone: Joi.string()
     .trim()
-    .pattern(/^1[3-9]\\d{9}$/, '请输入有效的手机号')
+    .pattern(/^1[3-9]\d{9}$/, '请输入有效的手机号')
     .label('手机号')
     .messages({
       'string.pattern.base': '请输入有效的手机号'

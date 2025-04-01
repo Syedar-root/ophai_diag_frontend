@@ -5,6 +5,7 @@ import {useTokenStore} from '@/libs/store/token';
 const tokenStore = useTokenStore();
 
 onMounted(() => {
+  tokenStore.setToken("".trim());
   console.log(tokenStore.token);
   performance.mark('vue-app-mounted');
   let app = document.getElementById('app')
@@ -25,13 +26,13 @@ watch(
       if (newVal === null || newVal === '' || newVal === undefined) {
         tokenStore.toggleLogin(true)
       }
-    }
+    },{immediate:true}
 )
 </script>
 
 <template>
   <router-view></router-view>
-  <Login v-if="tokenStore.showLogin"></Login>
+  <Login v-if="false"></Login>
 </template>
 
 <style scoped></style>

@@ -7,19 +7,47 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: start;
   align-content: center;
   flex-wrap: wrap;
+  gap: map.get(vars.$space,m);
 }
 
 .pm-search{
   &__input{
     position: relative;
     width: 100%;
+    min-height: 50px;
+    display: flex;
+    justify-content: space-between;
+    gap: map.get(vars.$space,m);
+    :deep(.el-input-group__append){
+      padding: 0;
+      width: 80px;
+      button{
+        width: 100%;
+        height: 100%;
+        background-color: map.get(vars.$colors,primary);
+        color: map.get(vars.$colors,_white);
+        &:hover{
+          background-color: map.get(vars.$colors,primary-dark-1);
+          color: map.get(vars.$colors,_white);
+        }
+      }
+    }
+
+
   }
   &__select{
     position: relative;
     align-items: start;
-    width:20%;
+    width:30%;
+    display: flex;
+    flex-direction: column;
+    align-content: start;
+    label{
+      font-size: map.get(vars.$font-size, s);
+      font-weight: map.get(vars.$font-weight, light);
+    }
   }
 }

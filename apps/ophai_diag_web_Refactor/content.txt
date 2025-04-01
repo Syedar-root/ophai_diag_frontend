@@ -33,7 +33,7 @@ ophai_diag_web_Refactor
 │   │   │   ├── router.ts
 │   │   │   ├── store
 │   │   │   │   ├── caseListStore.ts
-│   │   │   │   └── searchQueryStore.ts
+│   │   │   │   └── searchPatientQueryStore.ts
 │   │   │   ├── styles.scss
 │   │   │   └── types
 │   │   │       └── index.ts
