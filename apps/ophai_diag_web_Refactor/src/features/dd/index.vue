@@ -40,7 +40,7 @@
     if (route.params.id) {
       getCaseService(route.params.id).then(res => {
         console.log(res)
-        viewCaseStore.setViewCase(res)
+        viewCaseStore.setViewCase(res.data)
       })
     }
   })
@@ -50,7 +50,7 @@
       if (newVal) {
         getCaseService(newVal).then(res => {
           console.log(res)
-          viewCaseStore.setViewCase(res)
+          viewCaseStore.setViewCase(res.data)
         })
       }
       console.log(viewCaseStore.viewCase)

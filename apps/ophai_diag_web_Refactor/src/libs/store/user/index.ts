@@ -5,8 +5,11 @@ export const useUserStore = defineStore(
   'user',
   () => {
     const user = ref({
-      id: null,
-      userName: null
+      userId:'' ,
+      userName: "",
+      hospital:"",
+      gender:null,
+      age:null,
     })
 
     // 测试
@@ -18,7 +21,17 @@ export const useUserStore = defineStore(
     function setUser(newUser: any) {
       user.value = newUser
     }
-    return { user, setUser, getUser }
+
+    function removeUser() {
+      user.value = {
+        userId:'' ,
+        userName: "",
+        hospital:"",
+        gender:null,
+        age:null,
+      }
+    }
+    return { user, setUser, getUser , removeUser}
   },
   {
     persist: true

@@ -64,13 +64,13 @@ request.interceptors.response.use(
       })
       return Promise.reject(response.data)
     } else {
-      // 在这里可以对响应数据进行处理
-      ElMessage({
-        message: response.data.message,
-        type: 'success',
-        duration: 2000
-      })
-      return response.data.data
+      // // 在这里可以对响应数据进行处理
+      // ElMessage({
+      //   message: response.data.message,
+      //   type: 'success',
+      //   duration: 2000
+      // })
+      return response.data
     }
   },
   (error: AxiosError<ResponseData>) => {

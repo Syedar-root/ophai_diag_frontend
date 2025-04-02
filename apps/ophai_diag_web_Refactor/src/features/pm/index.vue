@@ -29,7 +29,7 @@ import PmPagination from "./component/PmPagination/PmPagination.vue";
   flex-direction: column;
   align-items: center;
   justify-content: start;
-  padding: map.get(vars.$space, l);
+  padding: map.get(vars.$space, xxxxl);
 
   &__header{
     position: relative;

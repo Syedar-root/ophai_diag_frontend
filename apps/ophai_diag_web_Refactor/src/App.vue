@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import { onMounted,watch } from 'vue'
+import { onMounted } from 'vue'
 import Login from '@/shared/components/business/login/index.vue'
 import {useTokenStore} from '@/libs/store/token';
 const tokenStore = useTokenStore();
 
 onMounted(() => {
-  tokenStore.setToken("".trim());
-  console.log(tokenStore.token);
   performance.mark('vue-app-mounted');
   let app = document.getElementById('app')
   if (!app) return
@@ -25,6 +23,8 @@ watch(
     (newVal:string) => {
       if (newVal === null || newVal === '' || newVal === undefined) {
         tokenStore.toggleLogin(true)
+      }else {
+        tokenStore.toggleLogin(false)
       }
     },{immediate:true}
 )
@@ -32,7 +32,7 @@ watch(
 
 <template>
   <router-view></router-view>
-  <Login v-if="false"></Login>
+  <Login v-if="tokenStore.showLogin"></Login>
 </template>
 
 <style scoped></style>

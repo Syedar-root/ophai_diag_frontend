@@ -6,8 +6,10 @@
   import { loginService, registerService } from '@/libs/api/login'
   import { validate, loginSchema, registerSchema } from '@/libs/utils/validate'
   import { useTokenStore } from '@/libs/store/token'
+  import {useUserStore} from "@/libs/store/user";
 
   const tokenStore = useTokenStore()
+  const userStore = useUserStore()
 
   const query = ref<userDto>({
     userId: '',
@@ -39,8 +41,15 @@
     }
     try {
       //   登录
-      await loginService(query.value).then((data: any) => {
-        tokenStore.setToken(data)
+      await loginService(query.value).then((res: any) => {
+        tokenStore.setToken(res.data.token)
+        userStore.setUser({
+          userId: res.data.userId,
+          userName: res.data.userName,
+          hospital: res.data.hospital,
+          gender: res.data.gender,
+          age: res.data.age,
+        })
         loginShow.value = false
         handleClose()
       })
@@ -59,7 +68,8 @@
       await registerService(registerQuery.value).then((res) => {
         registerShow.value = false
         loginShow.value = true
-        query.value.userId = res.userId;
+        query.value.userId = res.data.userId;
+        alert('注册成功,请记住您的账号：' + res.data.userId);
       })
     } catch (error) {
       console.error(error)

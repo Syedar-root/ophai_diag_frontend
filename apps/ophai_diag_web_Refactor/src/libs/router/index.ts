@@ -1,7 +1,15 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
-import {fuRoutes} from '@/features/fu/router.ts'
-import {cmRoutes} from '@/features/cm/router.ts'
-import {ddRoutes} from '@/features/dd/router.ts'
+
+
+const moduleRoutes = import.meta.glob('@/features/**/router.ts',{eager: true, import: 'default'})
+const childRoutes = Object.entries(moduleRoutes).map(([_, value]) => {
+  return value as RouteRecordRaw[];
+}).flat().sort((a , b)=>{
+  let aOrder = a.meta?.navOrder as number;
+  let bOrder = b.meta?.navOrder as number;
+  return aOrder > bOrder ? 1 : -1;
+}) as RouteRecordRaw[];
+
 
 // 极简预加载逻辑
 const preloadComponents = (to: any) => {
@@ -22,16 +30,15 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     component: () => import('@/shared/layout/index.vue'),
+    redirect: childRoutes[0].path,
     children: [
-      ...fuRoutes,
-      ...cmRoutes,
-      ...ddRoutes,
+      ...childRoutes,
     ],
   },
   {
     path: '/test',
     name: 'Test',
-    component: () => import('@/features/pm/index.vue')
+    component: () => import('@/shared/Introduction/index.vue')
   }
 ]
 

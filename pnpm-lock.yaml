@@ -45,6 +45,9 @@ importers:
       '@element-plus/icons-vue':
         specifier: ^2.3.1
         version: 2.3.1(vue@3.5.13(typescript@5.7.3))
+      '@lottiefiles/dotlottie-vue':
+        specifier: ^0.6.1
+        version: 0.6.1(vue@3.5.13(typescript@5.7.3))
       '@typescript-eslint/parser':
         specifier: ^8.26.1
         version: 8.28.0(eslint@9.23.0(jiti@2.4.2))(typescript@5.7.3)
@@ -687,6 +690,14 @@ packages:
 
   '@jridgewell/sourcemap-codec@1.5.0':
     resolution: {integrity: sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ==}
+
+  '@lottiefiles/dotlottie-vue@0.6.1':
+    resolution: {integrity: sha512-cmKpDYVbHQUzMEmMcoMXCgkKQDNX4DY+KgKXMlMf7pVzS03VjvFAmOb/GEN+fB5qWK60sdy38zHyHlif0tIYlw==}
+    peerDependencies:
+      vue: ^3.3.4
+
+  '@lottiefiles/dotlottie-web@0.42.0':
+    resolution: {integrity: sha512-Zr2LCaOAoPCsdAQgeLyCSiQ1+xrAJtRCyuEYDj0qR5heUwpc+Pxbb88JyTVumcXFfKOBMOMmrlsTScLz2mrvQQ==}
 
   '@mermaid-js/mermaid-mindmap@9.3.0':
     resolution: {integrity: sha512-IhtYSVBBRYviH1Ehu8gk69pMDF8DSRqXBRDMWrEfHoaMruHeaP2DXA3PBnuwsMaCdPQhlUUcy/7DBLAEIXvCAw==}
@@ -3468,6 +3479,13 @@ snapshots:
       - supports-color
 
   '@jridgewell/sourcemap-codec@1.5.0': {}
+
+  '@lottiefiles/dotlottie-vue@0.6.1(vue@3.5.13(typescript@5.7.3))':
+    dependencies:
+      '@lottiefiles/dotlottie-web': 0.42.0
+      vue: 3.5.13(typescript@5.7.3)
+
+  '@lottiefiles/dotlottie-web@0.42.0': {}
 
   '@mermaid-js/mermaid-mindmap@9.3.0':
     dependencies:

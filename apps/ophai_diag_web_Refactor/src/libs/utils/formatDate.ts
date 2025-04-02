@@ -1,4 +1,5 @@
 export const formatDate = (dateArray: string, dateTime:boolean = false) => {
+  console.log(dateArray)
   if (!dateArray || dateArray.length < 5) return '无效日期'
   const [year, month, day, hour, time] = dateArray
   // 使用 padStart 补零

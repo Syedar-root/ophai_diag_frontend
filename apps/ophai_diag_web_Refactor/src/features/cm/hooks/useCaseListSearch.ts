@@ -37,7 +37,7 @@ export const useCaseListSearch = () => {
     getCaseListService(searchQueryStore.searchQuery).then(res => {
       console.log(res)
       // 映射数据
-      caseListStore.setCaseList(getCaseListViewObj(res));
+      caseListStore.setCaseList(getCaseListViewObj(res.data));
     })
   }
 

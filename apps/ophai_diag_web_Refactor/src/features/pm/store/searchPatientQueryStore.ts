@@ -3,9 +3,7 @@ import {ref} from 'vue';
 
 export const useSearchPatientQueryStore = defineStore('patientQuery',()=>{
     const searchPatientQuery = ref({
-        id:'',
-        name:'',
-        diseaseName:'全部',
+        target:"",
         pageNum: 1,
         pageSize: 10,
     })

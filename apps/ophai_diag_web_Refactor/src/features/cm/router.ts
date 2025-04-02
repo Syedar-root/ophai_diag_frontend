@@ -1,10 +1,14 @@
 import {type RouteRecordRaw} from 'vue-router'
 
-export const cmRoutes: RouteRecordRaw[] = [
+export default [
   {
-    path: 'cm',
+    path: '/cm',
     name: 'CaseManagement',
-    component: () => import('./index.vue')
+    component: () => import('./index.vue'),
+    meta: {
+      title: '病例库',
+      navOrder: 4
+    }
   },
-]
+] as RouteRecordRaw[]
 

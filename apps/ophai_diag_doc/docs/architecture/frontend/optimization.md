@@ -68,7 +68,7 @@ export const ddRoutes: RouteRecordRaw[] = [
   {
     path: '/dd/:id?',
     name: 'DiseaseDiagnosis',
-    component: () => import('./index.vue'),
+    component: () => import('./scrollbar.vue'),
     props: true,
   }
 ]
@@ -83,7 +83,7 @@ import {ddRoutes} from '@/features/dd/router.ts'
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
-    component: () => import('@/shared/layout/index.vue'),
+    component: () => import('@/shared/layout/scrollbar.vue'),
     children: [
       ...fuRoutes,
       ...cmRoutes,

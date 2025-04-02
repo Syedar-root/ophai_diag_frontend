@@ -54,7 +54,7 @@
             <el-icon @click="handleViewCase(caseListStore.caseList.items[scope.$index]?.caseId)">
               <View></View>
             </el-icon>
-            <el-icon><Delete></Delete></el-icon>
+<!--            <el-icon><Delete></Delete></el-icon>-->
           </div>
         </template>
       </el-table-column>

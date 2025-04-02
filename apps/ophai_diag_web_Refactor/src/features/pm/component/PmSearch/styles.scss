@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
   justify-content: start;
-  align-content: center;
+  align-content: start;
   flex-wrap: wrap;
   gap: map.get(vars.$space,m);
 }
@@ -21,19 +21,10 @@
     display: flex;
     justify-content: space-between;
     gap: map.get(vars.$space,m);
-    :deep(.el-input-group__append){
-      padding: 0;
-      width: 80px;
-      button{
-        width: 100%;
-        height: 100%;
-        background-color: map.get(vars.$colors,primary);
-        color: map.get(vars.$colors,_white);
-        &:hover{
-          background-color: map.get(vars.$colors,primary-dark-1);
-          color: map.get(vars.$colors,_white);
-        }
-      }
+
+    .el-button{
+      width: clamp(70px,5rem,80px);
+      height: 100%;
     }
 
 
