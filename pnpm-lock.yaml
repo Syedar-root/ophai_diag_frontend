@@ -51,6 +51,9 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^8.26.1
         version: 8.28.0(eslint@9.23.0(jiti@2.4.2))(typescript@5.7.3)
+      animate.css:
+        specifier: ^4.1.1
+        version: 4.1.1
       axios:
         specifier: ^1.8.3
         version: 1.8.4
@@ -1306,6 +1309,9 @@ packages:
 
   alien-signals@1.0.10:
     resolution: {integrity: sha512-pBrgovDvA/c55/aA+ar5pxNCvjQB5IlODtpOQXmUyrpclWIsHmUMsfIuCWsSU/l1iLU2O3ZhICdPaYTsuvGu8Q==}
+
+  animate.css@4.1.1:
+    resolution: {integrity: sha512-+mRmCTv6SbCmtYJCN4faJMNFVNN5EuCTTprDTAo7YzIGji2KADmakjVA3+8mVDkZ2Bf09vayB35lSQIex2+QaQ==}
 
   ansi-regex@5.0.1:
     resolution: {integrity: sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==}
@@ -4161,6 +4167,8 @@ snapshots:
       '@algolia/requester-node-http': 5.23.0
 
   alien-signals@1.0.10: {}
+
+  animate.css@4.1.1: {}
 
   ansi-regex@5.0.1: {}
 

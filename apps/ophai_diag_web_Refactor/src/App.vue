@@ -32,7 +32,7 @@ watch(
 
 <template>
   <router-view></router-view>
-  <Login v-if="tokenStore.showLogin"></Login>
+  <Login v-if="false"></Login>
 </template>
 
 <style scoped></style>
