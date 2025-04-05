@@ -1,0 +1,5 @@
+@use "mixin" as *;
+
+.topic4-scene{
+  @include base-scene($origin:bottom left);
+}

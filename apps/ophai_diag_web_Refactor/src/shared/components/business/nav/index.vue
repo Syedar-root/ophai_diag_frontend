@@ -39,7 +39,7 @@
 
 <template>
   <div class="nav-container">
-    <div class="nav__logo-area">
+    <div class="nav__logo-area" @click="router.push('/introduction')">
       <img class="nav-logo" src="../../../assets/logo/logo1.svg?url" alt="logo" />
     </div>
     <div class="nav__tab-area">

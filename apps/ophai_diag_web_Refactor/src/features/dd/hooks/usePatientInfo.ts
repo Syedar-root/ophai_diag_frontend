@@ -6,7 +6,6 @@ export const usePatientInfo = () => {
   const viewCaseStore = useViewCaseStore()
 
   const patientInfo = computed(()=>{
-    console.log(viewCaseStore.viewCase)
     const obj : PatientInfoViewObj = {
       id: viewCaseStore.viewCase.patientInfo.patientId.toUpperCase(),
       name: viewCaseStore.viewCase.patientInfo.name,
@@ -17,7 +16,7 @@ export const usePatientInfo = () => {
           caseId: item.caseId,
           createDate: item.createDate,
           updateDate: item.updateDate,
-          diseaseTypes: item.diseaseTypes,
+          diseaseTypes: item.diseaseType,
           diagStatus: item.diagStatus
         }
       })

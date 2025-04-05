@@ -11,9 +11,24 @@
       </router-view>
     </div>
   </div>
+  <Login v-if="tokenStore.showLogin"></Login>
 </template>
 <script setup lang="ts">
   import Nav from '@/shared/components/business/nav/index.vue'
+  import Login from "@/shared/components/business/login/index.vue";
+  import {useTokenStore} from '@/libs/store/token';
+  const tokenStore = useTokenStore();
+
+  watch(
+      () => tokenStore.token,
+      (newVal:string) => {
+        if (newVal === null || newVal === '' || newVal === undefined) {
+          tokenStore.toggleLogin(true)
+        }else {
+          tokenStore.toggleLogin(false)
+        }
+      },{immediate:true}
+  )
 </script>
 
 <style scoped lang="scss">

@@ -24,6 +24,10 @@ const {updateCaseQuery , handleUpdate} = useUpdateCase()
           <label>检查医师</label>
           <span>{{ reportInfo.responsibleDoctor || '不详' }}</span>
         </div>
+        <div class="report-item__line">
+          <label>建议复诊时间</label>
+          <span>{{ reportInfo.revisitTime || '不详' }}</span>
+        </div>
       </div>
     </div>
     <div class="report-item history-diag">

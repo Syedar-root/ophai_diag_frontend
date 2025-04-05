@@ -6,9 +6,18 @@ import { useLineChart } from "./hooks/useLineChart.ts";
 import count from "./component/count.vue"
 import {ref} from 'vue';
 import {Delete} from "@element-plus/icons-vue";
+import {useMapChartData} from "@/features/dashboard/hooks/useMapChartData.ts";
 
-const pieChartOptions = usePieChart();
-const lineChartOptions = useLineChart();
+const genderPieChartOptions = computed(()=>{
+  return usePieChart(genderPieChartData.value.get(diseaseType1.value),`${diseaseType1.value}性别分布`);
+});
+const agePieChartOptions = computed(()=>{
+  console.log(usePieChart(agePieChartData.value.get(diseaseType2.value),`${diseaseType2.value}年龄分布`))
+  return usePieChart(agePieChartData.value.get(diseaseType2.value),`${diseaseType2.value}年龄分布`);
+})
+let lineChartOptions = computed(()=>{
+  return useLineChart(lineChartData.value);
+});
 const input = ref<string>('');
 const list = ref<string[]>([]);
 function handleAddList(){
@@ -19,6 +28,15 @@ function handleAddList(){
 function handleRemoveList(index: number){
   list.value.splice(index,1);
 }
+const diseaseType1 = ref("AMD");
+const diseaseType2 = ref("AMD");
+
+
+const { lineChartData,agePieChartData,genderPieChartData,initMapChartData,todayReadyPatientData,todayFinishedPatientData,totalPatientData } = useMapChartData();
+
+onMounted(async ()=>{
+  await initMapChartData();
+})
 
 </script>
 
@@ -26,15 +44,15 @@ function handleRemoveList(index: number){
   <div class="board-container">
     <div class="board-container__left left-content" ref="leftContentRef">
       <div class="left-content__header">
-        <count></count>
+        <count :patients-per-day="totalPatientData" :undiagnosed="todayReadyPatientData" :diagnosed="todayFinishedPatientData"></count>
       </div>
       <div class="left-content__main">
         <div class=" left-content__main-left">
           <v-chart :option="lineChartOptions" autoresize></v-chart>
         </div>
         <div class=" left-content__main-right">
-          <v-chart :option="pieChartOptions" autoresize></v-chart>
-          <v-chart :option="pieChartOptions" autoresize></v-chart>
+          <v-chart :option="genderPieChartOptions" autoresize></v-chart>
+          <v-chart :option="agePieChartOptions" autoresize></v-chart>
         </div>
       </div>
     </div>

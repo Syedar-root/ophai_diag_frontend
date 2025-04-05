@@ -82,6 +82,7 @@
       height: auto;
       display: flex;
       align-items: center;
+      padding: map.get(vars.$space, xxs) 0;
       &::before {
         content: '';
         position: absolute;
@@ -121,6 +122,8 @@
           font-weight: map.get(vars.$font-weight, light);
           color: map.get(vars.$colors, neutral-3);
           margin-top: map.get(vars.$space, xxxs);
+          display: flex;
+          gap: map.get(vars.$space, xxs);
         }
       }
       .el-icon {

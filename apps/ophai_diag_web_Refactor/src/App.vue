@@ -1,8 +1,5 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import Login from '@/shared/components/business/login/index.vue'
-import {useTokenStore} from '@/libs/store/token';
-const tokenStore = useTokenStore();
 
 onMounted(() => {
   performance.mark('vue-app-mounted');
@@ -17,22 +14,10 @@ onMounted(() => {
   app.style.overflow = 'hidden'
   app.style.position = 'absolute'
 })
-
-watch(
-    () => tokenStore.token,
-    (newVal:string) => {
-      if (newVal === null || newVal === '' || newVal === undefined) {
-        tokenStore.toggleLogin(true)
-      }else {
-        tokenStore.toggleLogin(false)
-      }
-    },{immediate:true}
-)
 </script>
 
 <template>
   <router-view></router-view>
-  <Login v-if="false"></Login>
 </template>
 
 <style scoped></style>

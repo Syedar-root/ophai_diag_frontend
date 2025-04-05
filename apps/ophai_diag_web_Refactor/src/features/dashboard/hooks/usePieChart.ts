@@ -1,7 +1,7 @@
 import {ref} from "vue"
 import {generateColors} from "@/libs/utils/colors.ts";
 
-export const usePieChart = () => {
+export const usePieChart = ( data :any , title:string) => {
   const pieChartData = ref([
 	{ value: 1048, name: 'Search Engine' },
 	{ value: 735, name: 'Direct' },
@@ -17,7 +17,7 @@ export const usePieChart = () => {
 	  trigger: 'item'
 	},
 	title:{
-	  text: 'Search Engine',
+	  text: title ||'Search Engine',
 	  left: 'center',
 	},
 	grid:{
@@ -29,7 +29,7 @@ export const usePieChart = () => {
 	},
 	series: [
 	  {
-		name: 'Access From',
+		name: title ||'example',
 		type: 'pie',
 		radius: ['40%', '70%'],
 		avoidLabelOverlap: false,
@@ -51,7 +51,7 @@ export const usePieChart = () => {
 		labelLine: {
 		  show: false
 		},
-		data: pieChartData.value
+		data: data || pieChartData.value
 	  }
 	],
 	color:generateColors('#3ea2e4',10),

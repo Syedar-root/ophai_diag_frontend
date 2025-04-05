@@ -70,10 +70,12 @@
     background-color: map.get(vars.$colors, neutral-14);
     border-radius: 0.5rem;
     transform: scaleX(0);
+    opacity: 0;
     transition: all 0.3s;
   }
   &:hover{
     &::before{
+      opacity: 1;
       transform: scaleX(1.1);
     }
   }

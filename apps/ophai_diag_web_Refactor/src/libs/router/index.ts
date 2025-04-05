@@ -36,6 +36,11 @@ const routes: RouteRecordRaw[] = [
     ],
   },
   {
+    path: '/introduction',
+    name: 'Introduction',
+    component: () => import('@/shared/Introduction/index.vue')
+  },
+  {
     path: '/test',
     name: 'Test',
     component: () => import('@/shared/Introduction/index.vue')

@@ -4,6 +4,7 @@ import {formatDate} from '@/libs/utils/formatDate.ts';
 import {usePatientInfo} from '@/features/dd/hooks/usePatientInfo.ts'
 
 const { patientInfo } = usePatientInfo()
+
 </script>
 
 <template>
@@ -51,7 +52,9 @@ const { patientInfo } = usePatientInfo()
             <div class="point"></div>
             <div class="info">
               <span class="date">{{ formatDate(item.createDate) }}</span>
-              <span class="description">{{ item.diagStatus }}</span>
+              <span class="description">
+                <el-tag type="primary" v-for="diseaseType in item.diseaseTypes ">{{diseaseType || '不详'}}</el-tag>
+              </span>
             </div>
             <el-icon>
               <ArrowRight></ArrowRight>

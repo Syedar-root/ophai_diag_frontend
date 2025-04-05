@@ -15,7 +15,7 @@ const { imageInfo } = useImageInfo()
           class="images__item"
           @click="currentEye='left' "
           :class="{ 'images__item--is-active': currentEye === 'left' }">
-          <el-image class="img" :src="imageInfo.images.get(`left_origin_url`)" fit="contain" hide-on-click-modal>
+          <el-image class="img" :src="imageInfo.originImages.get(`left`)" fit="contain" hide-on-click-modal>
             <template #error>
               <div class="img__error">
                 <el-icon size="1.5rem"><Picture /></el-icon>
@@ -28,7 +28,7 @@ const { imageInfo } = useImageInfo()
           class="images__item"
           @click=" currentEye='right' "
           :class="{ 'images__item--is-active': currentEye === 'right' }">
-          <el-image class="img" :src="imageInfo.images.get(`right_origin_url`)" fit="contain" hide-on-click-modal>
+          <el-image class="img" :src="imageInfo.originImages.get(`right`)" fit="contain" hide-on-click-modal>
             <template #error>
               <div class="img__error">
                 <el-icon size="1.5rem"><Picture /></el-icon>

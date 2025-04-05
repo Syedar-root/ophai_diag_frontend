@@ -1,3 +1,4 @@
+
 export default {
   title: '诊断文档',
   description: 'OpenHarmony诊断文档集',
@@ -34,9 +35,8 @@ export default {
           {
             text: '模型服务',
             items: [
-              { text: '模型热升级方案', link: '/architecture/model/upgrade' },
-              { text: 'GPU资源调度', link: '/architecture/model/gpu' },
-              { text: '推理性能对比', link: '/architecture/model/benchmark' }
+              { text: '多模态眼底图像智能分析系统', link: '/architecture/model/MFIIAS.md' },
+              { text: '疾病分类模型（SE-Xception）', link: '/architecture/model/SE-Xception.md' },
             ]
           }
         ]

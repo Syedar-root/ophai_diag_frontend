@@ -9,6 +9,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     App: typeof import('./src/App.vue')['default']
+    Background: typeof import('./src/shared/Introduction/scenes/background.vue')['default']
     BarChart: typeof import('./src/shared/components/common/barChart/index.vue')['default']
     Cm: typeof import('./src/features/cm/index.vue')['default']
     CmSearch: typeof import('./src/features/cm/components/CmSearch/CmSearch.vue')['default']
@@ -20,6 +21,7 @@ declare module 'vue' {
     DdImageView: typeof import('./src/features/dd/components/DdImageView/DdImageView.vue')['default']
     DdPatientInfo: typeof import('./src/features/dd/components/DdPatientInfo/DdPatientInfo.vue')['default']
     DdReportInfo: typeof import('./src/features/dd/components/DdReportInfo/DdReportInfo.vue')['default']
+    ElBadge: typeof import('element-plus/es')['ElBadge']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCalendar: typeof import('element-plus/es')['ElCalendar']
     ElCheckbox: typeof import('element-plus/es')['ElCheckbox']
@@ -39,6 +41,7 @@ declare module 'vue' {
     ElRadio: typeof import('element-plus/es')['ElRadio']
     ElRadioGroup: typeof import('element-plus/es')['ElRadioGroup']
     ElRow: typeof import('element-plus/es')['ElRow']
+    ElSegmented: typeof import('element-plus/es')['ElSegmented']
     ElSelect: typeof import('element-plus/es')['ElSelect']
     ElStatistic: typeof import('element-plus/es')['ElStatistic']
     ElSwitch: typeof import('element-plus/es')['ElSwitch']
@@ -67,6 +70,10 @@ declare module 'vue' {
     RouterView: typeof import('vue-router')['RouterView']
     SvgIcon: typeof import('./src/shared/components/common/svgIcon/index.vue')['default']
     Test: typeof import('./src/shared/test.vue')['default']
+    Topic1: typeof import('./src/shared/Introduction/scenes/topic1/index.vue')['default']
+    Topic2: typeof import('./src/shared/Introduction/scenes/topic2/index.vue')['default']
+    Topic3: typeof import('./src/shared/Introduction/scenes/topic3/index.vue')['default']
+    Topic4: typeof import('./src/shared/Introduction/scenes/topic4/index.vue')['default']
     View: typeof import('./src/features/dashboard/view.vue')['default']
   }
   export interface ComponentCustomProperties {

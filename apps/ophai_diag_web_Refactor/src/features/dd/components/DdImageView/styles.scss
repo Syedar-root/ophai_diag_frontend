@@ -16,6 +16,7 @@
 
   &__opt {
     position: absolute;
+    width: 20px;
     z-index: 10;
     top: 0;
     right: 0;
@@ -23,12 +24,26 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: map.get(vars.$space, xs);
     transition: all 0.3s ease;
-    .opt-item {
+    border-radius: 20px;
+    background-color: map.get(vars.$colors, _white);
+    .opt-tab{
+      position: absolute;
       width: 100%;
-      aspect-ratio: 1/1;
-      background-color: map.get(vars.$colors, _white);
+      height: 55px;
+      top:0;
+      border-radius: 20px;
+      background-color: map.get(vars.$colors, primary-light-3);
+      transition: all 0.3s ease;
+    }
+    .el-dropdown{
+      outline: none;
+    }
+    .opt-item {
+      outline: none;
+      position: relative;
+      width: 100%;
+      //background-color: map.get(vars.$colors, _white);
       padding: map.get(vars.$space, xs);
       border-radius: 0.5rem;
       display: flex;
@@ -40,13 +55,13 @@
       &__inner {
         font-size: map.get(vars.$font-size, s);
       }
-      &:hover {
-        box-shadow: 0 0 0 1px map.get(vars.$colors, neutral-14) inset;
-      }
+      //&:hover {
+      //  box-shadow: 0 0 0 1px map.get(vars.$colors, neutral-14) inset;
+      //}
       &.active {
-        background-color: map.get(vars.$colors, primary-light-3);
+        //background-color: map.get(vars.$colors, primary-light-3);
         color: #fff;
-        box-shadow: 0 0 0 1px map.get(vars.$colors, primary-light-3) inset;
+        //box-shadow: 0 0 0 1px map.get(vars.$colors, primary-light-3) inset;
       }
     }
   }

@@ -1,11 +1,27 @@
+<script setup lang="ts">
+import DefaultTheme from 'vitepress/theme'
+
+const { Layout } = DefaultTheme
+</script>
+
 <template>
   <Layout>
-    <template #nav-bar-content-after>
-      <div class="theme-switch" style="display: none">222</div>
+
+    <!-- 插槽1 -->
+    <template #aside-outline-before>
+      <div class="title">aside-outline-before</div>
     </template>
+
+    <!-- 插槽2 -->
+    <template #doc-before>
+      <div class="title">doc-before</div>
+    </template>
+
   </Layout>
 </template>
 
-<script setup>
-import Layout from 'vitepress/theme/Layout.vue'
-</script>
+<style>
+.title {
+  color: red;
+}
+</style>

@@ -1,0 +1,48 @@
+@keyframes scaleBigOut {
+  0% {
+    transform: scale(0);
+    color: transparent;
+  }
+  100% {
+    transform: scale(1);
+    color: transparent;
+  }
+}
+
+@mixin base-scene ($origin: top left){
+  position: absolute;
+  background-color: #fafafa;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  transform-origin: $origin;
+  animation: scaleBigOut 0.2s linear both;
+  animation-delay: 0.2s;
+
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+
+  .header{
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 2rem;
+
+    #back,#next{
+      position: relative;
+      z-index: 9999;
+      color: #1c1e21;
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+    }
+  }
+}

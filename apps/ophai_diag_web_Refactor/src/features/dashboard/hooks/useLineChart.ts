@@ -1,6 +1,6 @@
 import {ref} from 'vue';
 
-export const useLineChart = () => {
+export const useLineChart = ( data:any ) => {
   const lineChartData = ref([
 	  { label:'Mon', value:'150' },
 	  { label:'Tue', value:'230' },
@@ -21,7 +21,7 @@ export const useLineChart = () => {
 	},
 	xAxis: {
 	  type: 'category',
-	  data: lineChartData.value.map((item) => {
+	  data: (data || lineChartData.value).map((item :any) => {
 		return item.label;
 	  })
 	},
@@ -30,7 +30,7 @@ export const useLineChart = () => {
 	},
 	series: [
 	  {
-		data: lineChartData.value.map((item) => {
+		data: (data || lineChartData.value).map((item :any) => {
 		  return item.value;
 		}),
 		type: 'line',

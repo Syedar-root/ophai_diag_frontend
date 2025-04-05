@@ -1,5 +1,5 @@
 <template>
-  <div class="dd-container">
+  <div class="dd-container" v-loading="loading">
     <div v-if="!isEmpty" class="dd-container__left">
       <DdPatientInfo></DdPatientInfo>
       <DdImageInfo></DdImageInfo>
@@ -29,7 +29,7 @@
   import DdAiDiagInfo from '@/features/dd/components/DdAiDiagInfo/DdAiDiagInfo.vue'
   import DdReportInfo from '@/features/dd/components/DdReportInfo/DdReportInfo.vue'
 
-
+  const loading = ref<boolean>(false);
   const emptyText = ref('请前往病例管理页面选择病例查看')
   const viewCaseStore = useViewCaseStore();
   const route = useRoute()
@@ -48,8 +48,10 @@
     () => route.params.id,
     (newVal) => {
       if (newVal) {
+        loading.value = true;
         getCaseService(newVal).then(res => {
           console.log(res)
+          loading.value = false;
           viewCaseStore.setViewCase(res.data)
         })
       }

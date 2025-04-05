@@ -1,19 +1,36 @@
 <script setup lang="ts">
 import { useTransition } from "@vueuse/core"
-import { ref } from 'vue';
 import SvgIcon from '@/shared/components/common/svgIcon/index.vue'
 import PatientIcon from '@/shared/assets/icons/patient.svg';
 import UndiagnosedIcon from '@/shared/assets/icons/undiagnosed.svg';
 import DiagnosedIcon from '@/shared/assets/icons/diagnosed.svg';
-const patientsPerDay = ref(0);
-const undiagnosed = ref(0);
-const diagnosed = ref(0);
+const patientsPerDay = computed(()=>{
+  return props.patientsPerDay || 0;
+});
+const undiagnosed = computed(()=>{
+  return props.undiagnosed || 0;
+});
+const diagnosed = computed(()=>{
+  return props.diagnosed || 0;
+});
+
+const props = defineProps({
+  patientsPerDay:{
+    type: Number,
+    default: 20434
+  },
+  undiagnosed:{
+    type: Number,
+    default: 2948
+  },
+  diagnosed:{
+    type: Number,
+    default: 948
+  }
+})
 const statisticPatientsPerDay = useTransition(patientsPerDay,{duration: 1500});
 const statisticUndiagnosed = useTransition(undiagnosed,{duration: 1500});
 const statisticDiagnosed = useTransition(diagnosed,{duration: 1500});
-patientsPerDay.value = 20434;
-undiagnosed.value = 2948;
-diagnosed.value = 948;
 </script>
 
 <template>
