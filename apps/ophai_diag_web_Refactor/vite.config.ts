@@ -1,5 +1,5 @@
 import path from 'path'
-import {mergeConfig } from 'vite'
+import {mergeConfig} from 'vite'
 import svgLoader from 'vite-svg-loader'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import AutoImport from 'unplugin-auto-import/vite'
@@ -8,6 +8,7 @@ import Inspect from 'vite-plugin-inspect'
 import baseConfig from "../../core/configs/vite/vite.base.config"
 import viteCompression from 'vite-plugin-compression';
 import { visualizer } from 'rollup-plugin-visualizer';
+import ElementPlus from "unplugin-element-plus/vite";
 
 const pathSrc = path.resolve(__dirname, 'src')
 
@@ -53,8 +54,14 @@ export default mergeConfig(baseConfig,{
     Components({
       dts: true,
       dirs: ['src/**'],
-      resolvers: [ElementPlusResolver({importStyle: 'sass'})],
+      resolvers: [
+          ElementPlusResolver({importStyle: 'sass'}),
+      ],
     }),
+    ElementPlus({
+      useSource: true,
+    }),
+
     Inspect(),
   ],
   css: {

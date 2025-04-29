@@ -1,16 +1,18 @@
 import {defineStore} from "pinia";
 import { ref } from 'vue';
 
+interface PatientList {
+    items:[{
+        patientInfoId: string,
+        patientName: string,
+        age: string,
+        gender: string,
+    }],
+    total: number,
+}
+
 export const usePatientListStore = defineStore('patientList', ()=>{
-    const patientList = ref({
-        items: [{
-            patientInfoId: '',
-            patientName: '',
-            age: '',
-            gender: '',
-        }],
-        total: 1,
-    });
+    const patientList = ref<PatientList>();
 
     function setPatientList(newList:any){
         patientList.value = newList;

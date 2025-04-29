@@ -3,13 +3,13 @@ import {generateColors} from "@/libs/utils/colors.ts";
 
 export const usePieChart = ( data :any , title:string) => {
   const pieChartData = ref([
-	{ value: 1048, name: 'Search Engine' },
-	{ value: 735, name: 'Direct' },
-	{ value: 580, name: 'Email' },
-	{ value: 484, name: 'Union Ads' },
-	{ value: 300, name: 'Video Ads' },
-	{value: 1004, name: 'Video Ad' },
-	{value: 200, name: 'Video A' },
+	{ value: 1048, name: 'A' },
+	{ value: 735, name: 'B' },
+	{ value: 580, name: 'C' },
+	{ value: 484, name: 'D' },
+	{ value: 300, name: 'E' },
+	{ value: 1004, name: 'F' },
+	{ value: 200, name: 'G' },
   ])
 
   return {

@@ -28,6 +28,9 @@ const baseOptions = (data: any) => {
     },
     tooltip: {
       trigger: 'axis', // 改回item触发模式
+      position: function (point:number[]) {
+        return [point[0]-300, "10%"] // 调整位置，防止超出
+      },
       formatter: function () {
         // 获取全部数据并排序
         const allData = Array.from<[string, number]>(data.value.entries()).sort((a, b) => b[1] - a[1])

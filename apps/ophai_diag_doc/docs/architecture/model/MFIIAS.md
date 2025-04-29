@@ -1,16 +1,15 @@
-# 多模态眼底图像智能分析系统
+# 多模态眼底深度处理管线
 
 ## 血管增强算法
-
 
 本系统采用基于深度学习的双阶段血管增强技术，实现精准的血管网络可视化：
 <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
     <div style="width: 45%; margin: 1%;">
-        <img src="./images/11_left.jpg" style="width:100%;" alt="1">
+        <img src="./images/11_left.jpg" style="width:100%;">
         <div style="text-align: center; color: #666; margin: 5px 0;">左眼原图</div>
     </div>
     <div style="width: 45%; margin: 1%;">
-        <img src="./images/11_right.jpg" style="width:100%;" alt="1">
+        <img src="./images/11_right.jpg" style="width:100%;">
         <div style="text-align: center; color: #666; margin: 5px 0;">右眼原图</div>
     </div>
 </div>
@@ -36,14 +35,14 @@ class VesselProcessor:
 | CLAHE增强 | 分块8×8 / 对比度限制3.0        | 增强微小血管对比度     |
 | 高斯融合权重  | 核尺寸自适应（原图尺寸5%）          | 实现自然过渡的血管增强效果 |
 
-2. **深度分割模型**
+3. **深度分割模型**
 
-- 使用U-Net架构的预训练模型（vessel_model.pth）
+- 基于U-Net++架构的预训练模型
 - 输入512×512标准化眼底图像
 - 输出二值化血管掩膜
 - 后处理采用形态学闭操作（7×7椭圆核）消除细小噪点
 
-3. **自适应增强技术**
+4. **自适应增强技术**
 
 - **LAB色彩空间增强**：分离亮度通道进行CLAHE对比度限制直方图均衡化（clipLimit=3.0）
 - **多尺度融合**：结合原始图像与增强图像，通过动态权重矩阵（高斯核尺寸自适应）实现平滑过渡
@@ -60,9 +59,8 @@ class VesselProcessor:
     </div>
 </div>
 
----
 
-### 视盘检测算法
+## 视盘检测算法
 
 采用多模态视觉算法实现视盘的精确定位与增强：
 
@@ -118,7 +116,6 @@ class OpticDiscProcessor:
 
 本算法在ODIR-5K数据集测试中达到血管检测Dice系数0.89，视盘定位IOU 0.93，可有效处理低对比度、病灶遮挡等复杂临床场景。
 
----
 
 ## 多模态模型设计
 
@@ -141,7 +138,35 @@ class OpticDiscProcessor:
   ```
 - 实现影像特征与病理指标的跨模态注意力融合
 
----
+
+## 患者QR码报告生成
+
+### 生成流程和模型架构
+
+![二维码流程图](images/qr_stream.jpg)
+
+### 核心功能特性
+
+1. **安全二维码生成**
+
+- **动态内容加密**：QR内容信令采用HMAC-MD5签名机制
+- **抗干扰设计**：ERROR_CORRECT_L纠错级别支持40%码图损坏识别
+
+2. **企业级功能支持**
+
+- **草料API深度集成**：
+
+| 参数名   | 值示例                 | 功能说明   |
+|-------|---------------------|--------|
+| cliF1 | 眼底检查单               | 报告类型标识 |
+| cliF2 | 张XX                 | 患者姓名   |
+| cliF3 | 45                  | 患者年龄   |
+| cliF4 | 男                   | 患者性别   |
+| cliF5 | 2025-12-31 14:30:00 | 报告时间   |
+
+### 输出样例
+
+![二维码样例](images/qr_code.jpg)
 
 ## 代码可用性
 

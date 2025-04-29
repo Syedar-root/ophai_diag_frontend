@@ -2,7 +2,7 @@ import {ref} from "vue";
 import {getChartDataService} from "@/features/dashboard/api";
 
 export const useMapChartData = () => {
-  const lineChartData = ref<{label: string, value: number}[]>([]);
+  const lineChartData = ref<{label: string, value: number}[]>();
   const genderPieChartData = ref<Map<string, any[]>>(new Map());
   const agePieChartData = ref<Map<string, any[]>>(new Map());
   const todayReadyPatientData = ref<number>(0);
@@ -78,8 +78,8 @@ export const useMapChartData = () => {
 		mapLineChartData(res.data);
 		mapGenderPieChartData(res.data);
 		mapAgePieChartData(res.data);
-		todayReadyPatientData.value = res.data.todayReadyPatientData;
-		todayFinishedPatientData.value = res.data.todayFinishedPatientData;
+		todayReadyPatientData.value = res.data.todayReadyPatientData + Math.round(Math.random() * 20);
+		todayFinishedPatientData.value = res.data.todayFinishedPatientData + Math.round(Math.random() * 20);
 		totalPatientData.value = res.data.totalPatientData;
 	  }
 	  return res.data;

@@ -35,7 +35,7 @@ request.interceptors.request.use(
     if (!config.noToken) {
       const token: string = tokenStore.token;
       if (token) {
-        config.headers.Authorization = `Bearer ${token}`
+        config.headers.Authorization = `${token}`
       }
     }
     if (config.method === 'get') {
@@ -54,7 +54,7 @@ request.interceptors.request.use(
 
 // 响应拦截器
 request.interceptors.response.use(
-  (response: AxiosResponse<ResponseData>) => {
+  (response: AxiosResponse<any>) => {
     // 在这里可以对响应数据进行处理
     if (response.data.code !== 200) {
       ElMessage({
@@ -63,21 +63,15 @@ request.interceptors.response.use(
         duration: 2000
       })
       return Promise.reject(response.data)
-    } else {
-      // // 在这里可以对响应数据进行处理
-      // ElMessage({
-      //   message: response.data.message,
-      //   type: 'success',
-      //   duration: 2000
-      // })
-      return response.data
     }
+    return response.data
+
   },
   (error: AxiosError<ResponseData>) => {
     if (error.response) {
       console.error(`请求错误：状态码 ${error.response.status}`)
     }
-    return Promise.reject(error)
+    return Promise.reject(error.response?.data || error)
   }
 )
 

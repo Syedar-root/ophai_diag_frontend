@@ -6,9 +6,11 @@ export const useImageInfo = () => {
   const viewCaseStore = useViewCaseStore()
 
   const imageInfo = computed(()=>{
-
+    if(!viewCaseStore.viewCase.aiCaseInfoJson){
+      return null;
+    }
     let images = viewCaseStore.viewCase.aiCaseInfoJson.message.images;
-    console.log(images)
+    console.log(images);
     const obj : ImageInfoViewObj = {
       originImages: new Map([
         ['left',images.original.left],

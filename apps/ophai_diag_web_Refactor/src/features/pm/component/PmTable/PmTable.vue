@@ -3,20 +3,29 @@
   import PmHistoryCase from '@/features/pm/component/PmHistoryCase/PmHistoryCase.vue'
   const patientListStore = usePatientListStore()
   const pmHistoryCaseShow = ref(false)
-  const handleShowHistoryCase = (id :number) => {
+  const handleShowHistoryCase = (id :string) => {
     pmHistoryId.value = id;
     pmHistoryCaseShow.value = true;
   }
-  const pmHistoryId = ref(0)
+  const pmHistoryId = ref<string>("")
 </script>
 
 <template>
   <div class="pm-table">
-    <el-table :data="patientListStore.patientList.items">
+    <el-table :data="patientListStore.patientList?.items">
       <el-table-column prop="patientId" label="患者ID"></el-table-column>
       <el-table-column prop="name" label="姓名"></el-table-column>
-      <el-table-column prop="gender" label="性别"></el-table-column>
-      <el-table-column prop="age" label="年龄"></el-table-column>
+      <el-table-column prop="gender" label="性别">
+        <template #default="{ row }">
+          <span v-if="row.gender === 0">男</span>
+          <span v-else>女</span>
+        </template>
+      </el-table-column>
+      <el-table-column prop="age" label="年龄">
+        <template #default="{ row }">
+          <span>{{ row.age }}岁</span>
+        </template>
+      </el-table-column>
       <el-table-column label="操作">
         <template #default="{ row }">
           <el-link @click="handleShowHistoryCase(row.patientId)">查看历史病例</el-link>

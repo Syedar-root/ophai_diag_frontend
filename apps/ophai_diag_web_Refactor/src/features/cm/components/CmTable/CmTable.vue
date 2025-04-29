@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { Delete, View } from '@element-plus/icons-vue'
+import { Download, Printer, View} from '@element-plus/icons-vue'
   import {useCaseListStore} from '@/features/cm/store/caseListStore.ts'
   import {diagStatus,gender} from '@/features/cm/types'
   import {formatDate} from '@/libs/utils/formatDate.ts'
@@ -8,9 +8,25 @@
   const caseListStore = useCaseListStore()
   const router = useRouter()
 
-  function handleViewCase(index: number | string) {
-    router.push(`/dd/${index}`)
+  function handleViewCase(index: number) {
+    if (caseListStore.caseList.items[index].diagStatus === 0) {
+      ElMessage.warning("AI正在诊断中，请耐心等待")
+      return;
+    }
+    router.push(`/dd/${caseListStore.caseList.items[index]?.caseId}`)
   }
+  function handleDownload(index: number) {
+    if (caseListStore.caseList.items[index].diagStatus === 0) {
+      ElMessage.warning("AI正在诊断中，请耐心等待")
+      return;
+    }
+    window.open(`https://firstgogogo.oss-cn-beijing.aliyuncs.com/${caseListStore.caseList.items[index]?.caseId}/qr_code.jpg`,"_blank")
+  }
+
+  onMounted(() => {
+    console.log(caseListStore.caseList.items)
+  })
+
 </script>
 
 <template>
@@ -21,8 +37,8 @@
       <el-table-column prop="patientName" label="患者姓名" width="auto"></el-table-column>
       <el-table-column prop="age" label="年龄" width="auto"></el-table-column>
       <el-table-column prop="gender" label="性别" width="auto">
-        <template #default="scope">
-          {{ gender.find(item => item.value === scope.row.gender)?.label || '未知状态' }}
+        <template #default="{row}">
+          {{ gender.find(item => item.value === row.gender)?.label || '未知状态' }}
         </template>
       </el-table-column>
       <el-table-column prop="diseaseType" label="疾病类型" width="auto">
@@ -51,10 +67,15 @@
       <el-table-column label="操作" width="auto">
         <template #default="scope">
           <div class="table-opt">
-            <el-icon @click="handleViewCase(caseListStore.caseList.items[scope.$index]?.caseId)">
+            <el-icon @click="handleViewCase(scope.$index)">
               <View></View>
             </el-icon>
-<!--            <el-icon><Delete></Delete></el-icon>-->
+            <el-icon>
+              <Printer />
+            </el-icon>
+            <el-icon @click="handleDownload(scope.$index)">
+              <Download />
+            </el-icon>
           </div>
         </template>
       </el-table-column>

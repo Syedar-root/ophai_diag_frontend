@@ -43,6 +43,19 @@ const tableData = [
       'Vuex 在模块注册时存在冗余复杂的问题。',
       '增加了开发者的学习成本和代码的维护难度。'
     ]
+  },
+  {
+    tech: 'ESLint',
+    advantage: [
+      'ESLint 提供强大的静态代码分析能力。',
+      '支持高度自定义规则配置，可自动修复常见代码问题。',
+      '与主流编辑器深度集成，支持实时错误检测。'
+    ],
+    compared: [
+      '相较于 JSHint，ESLint 的插件体系更为完善。',
+      'TSLint 已停止维护，ESLint 已成为 TypeScript 官方推荐方案。',
+      'Stylelint 专注于样式规范，ESLint 专注于 JavaScript/TypeScript 质量管控。'
+    ]
   }
 ];
 </script>

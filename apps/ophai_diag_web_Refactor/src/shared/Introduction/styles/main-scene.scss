@@ -15,11 +15,43 @@
   align-items: center;
 }
 
+.header{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: clamp(3rem,5vw,5rem);
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 2rem;
+  padding-left: clamp(1rem,2vw,2rem);
+}
+
+.toIndex{
+  position: relative;
+  top: 0;
+  left: 0;
+  font-size: clamp(1rem,2vw,2rem);
+  color: #fffefb;
+  display: flex;
+  align-items: center;
+}
+.toDoc{
+  position: relative;
+  top: 0;
+  left: 0;
+  font-size: clamp(1rem,2vw,2rem);
+  color: #fffefb;
+  display: flex;
+  align-items: center;
+}
+
 #title {
   position: absolute;
-  top: 1%;
+  top: clamp(1rem,1vw,2rem);
   color: #fffefb;
-  font-size: 4rem;
+  font-size: clamp(1.5rem, 4.5vw, 4rem);
   letter-spacing: 0.5rem;
   text-shadow: 1px -1px 0 #fff, -1px 1px 5px #99999999;
   transition: transform 0.3s ease-in-out;
@@ -33,7 +65,7 @@
 #eyeball {
   --animate-duration: 0.8s;
   position: relative;
-  width: 18vw;
+  width: 40vh;
   aspect-ratio: 1/1;
   border-radius: 50%;
   background-color: #fffefb;
@@ -53,7 +85,7 @@
 
 #light {
   --animate-duration: 0.5s;
-  $width: 25vw;
+  $width: 50vh;
   $colors: #{rgba(233,233,233,0.8)};
   $color2: #{rgba(233,233,233,0.4)};
   position: absolute;
@@ -87,7 +119,9 @@
   left: $left;
   width: $size;
   height: $size;
-  font-size: calc($size * 0.15);
+  min-width: 100px;
+  aspect-ratio: 1/1;
+  font-size: clamp(1rem,calc($size * 0.15), 3rem);
   font-weight: map.get(vars.$font-weight, 'bolder');
   color: #313d44;
   text-wrap: balance;
@@ -95,6 +129,7 @@
   justify-content: center;
   align-items: center;
   pointer-events: visible;
+  transform-origin: 50% 50%;
   z-index: 9;
 
   .ball-container{
@@ -105,6 +140,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 1rem;
 
     .text{
       position: relative;
@@ -149,14 +185,14 @@
 }
 
 #topic1{
-  @include topic(12vw, #fffefb, 15%, 5%);
+  @include topic(25vh, #fffefb, 15%, 5%);
 }
 #topic2{
-  @include topic(23vw, #fffefb, 5%, 75%);
+  @include topic(40vh, #fffefb, 5%, 75%);
 }
 #topic3{
-  @include topic(13vw, #fffefb, 60%, 70%);
+  @include topic(30vh, #fffefb, 60%, 70%);
 }
 #topic4{
-  @include topic(18vw, #fffefb, 50%, 15%);
+  @include topic(35vh, #fffefb, 50%, 15%);
 }

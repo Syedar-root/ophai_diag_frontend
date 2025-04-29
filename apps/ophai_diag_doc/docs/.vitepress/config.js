@@ -1,7 +1,7 @@
 
 export default {
-  title: '诊断文档',
-  description: 'OpenHarmony诊断文档集',
+  title: 'RetiSan Pro文档',
+  description: 'RetiSan Pro文档集',
   base: '/doc',
   server: {
     port: 5174
@@ -27,9 +27,10 @@ export default {
           {
             text: '后端架构',
             items: [
-              { text: '微服务设计', link: '/architecture/backend/microservices' },
-              { text: '数据安全机制', link: '/architecture/backend/security' },
-              { text: '高并发处理', link: '/architecture/backend/concurrency' }
+              // { text: '微服务设计', link: '/architecture/backend/microservices' },
+              // { text: '数据安全机制', link: '/architecture/backend/security' },
+              // { text: '高并发处理', link: '/architecture/backend/concurrency' }
+              { text: '后端设计概要', link: '/architecture/backend/README.md' },
             ]
           },
           {
@@ -41,29 +42,31 @@ export default {
           }
         ]
       },
-      {
-        text: '部署运维',
-        items: [
-          { text: '通信协议', link: '/deploy/protocols/' },
-          { text: '云原生部署', link: '/deploy/cloud/' },
-          { text: '监控告警', link: '/deploy/monitoring/' }
-        ]
-      },
-      {
-        text: '扩展设计',
-        link: '/extend/multimodal.md'
-      },
-      {
-        text: '附录',
-        link: '/appendix/appendix.md'
-      }
+      // {
+      //   text: '部署运维',
+      //   items: [
+      //     { text: '通信协议', link: '/deploy/protocols/' },
+      //     { text: '云原生部署', link: '/deploy/cloud/' },
+      //     { text: '监控告警', link: '/deploy/monitoring/' }
+      //   ]
+      // },
+      // {
+      //   text: '扩展设计',
+      //   link: '/extend/multimodal.md'
+      // },
+      // {
+      //   text: '附录',
+      //   link: '/appendix/appendix.md'
+      // }
     ],
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/openharmony' }
-    ],
+    // socialLinks: [
+    //   { icon: 'github', link: 'https://github.com/openharmony',},
+    //   { icon: 'github', link: 'https://github.com/openharmony' },
+    //   { icon: 'github', link: 'https://github.com/openharmony' }
+    // ],
     footer: {
-      message: 'OpenHarmony诊断文档集',
-      copyright: 'Copyright © 2024 OpenHarmony'
+      message: 'RetiSan Pro文档集',
+      copyright: 'Copyright © 2025 RetiSan Pro'
     }
   },
 }

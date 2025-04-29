@@ -6,8 +6,9 @@ export const usePatientInfo = () => {
   const viewCaseStore = useViewCaseStore()
 
   const patientInfo = computed(()=>{
+    if (!viewCaseStore.viewCase.patientInfo) {return null;}
     const obj : PatientInfoViewObj = {
-      id: viewCaseStore.viewCase.patientInfo.patientId.toUpperCase(),
+      id: viewCaseStore.viewCase.patientInfo.patientId?.toUpperCase(),
       name: viewCaseStore.viewCase.patientInfo.name,
       age: viewCaseStore.viewCase.patientInfo.age,
       gender: viewCaseStore.viewCase.patientInfo.gender,
@@ -16,7 +17,7 @@ export const usePatientInfo = () => {
           caseId: item.caseId,
           createDate: item.createDate,
           updateDate: item.updateDate,
-          diseaseTypes: item.diseaseType,
+          diseaseTypes: item.diseaseName as string[],
           diagStatus: item.diagStatus
         }
       })

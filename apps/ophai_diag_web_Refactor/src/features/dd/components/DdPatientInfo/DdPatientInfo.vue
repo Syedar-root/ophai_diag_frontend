@@ -5,12 +5,24 @@ import {usePatientInfo} from '@/features/dd/hooks/usePatientInfo.ts'
 
 const { patientInfo } = usePatientInfo()
 
+
+const emptyText = ref('加载失败，请稍后重试')
+const empty = ref(false)
+
+watch(
+  () => patientInfo.value,
+  (newVal) => {
+    if (newVal === null) {
+      empty.value = true
+    }
+  }
+)
 </script>
 
 <template>
   <div class="patient-info-area">
     <span class="patient-info-area__title">患者信息</span>
-    <div class="patient-info-area__content">
+    <div class="patient-info-area__content" v-if="!empty && patientInfo">
       <div class="patient-base-info">
         <el-row :gutter="24">
           <el-col :span="12">
@@ -36,7 +48,9 @@ const { patientInfo } = usePatientInfo()
           <el-col :span="12">
             <div class="patient-base-info__item">
               <label>性别</label>
-              <span>{{ patientInfo.gender || '性别不详' }}</span>
+              <span v-if="patientInfo.gender === 0 ">男</span>
+              <span v-else-if="patientInfo.gender === 1 ">女</span>
+              <span v-else>性别不详</span>
             </div>
           </el-col>
         </el-row>
@@ -53,7 +67,7 @@ const { patientInfo } = usePatientInfo()
             <div class="info">
               <span class="date">{{ formatDate(item.createDate) }}</span>
               <span class="description">
-                <el-tag type="primary" v-for="diseaseType in item.diseaseTypes ">{{diseaseType || '不详'}}</el-tag>
+                <el-tag type="primary" v-for="diseaseType in item.diseaseTypes ">{{ diseaseType }}</el-tag>
               </span>
             </div>
             <el-icon>
@@ -63,6 +77,7 @@ const { patientInfo } = usePatientInfo()
         </div>
       </div>
     </div>
+    <el-empty v-if="empty" :description="emptyText"></el-empty>
   </div>
 </template>
 

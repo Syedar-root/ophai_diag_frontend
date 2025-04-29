@@ -84,19 +84,20 @@
 
   .T1, .T2{
     position: absolute;
-    width: 70%;
-    height: 130%;
+    width: 40dvh;
+    height: 100%;
     background-color:#f5f4f166;
     backdrop-filter: blur(10px);
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: space-around;
     align-items: center;
     border-radius: 1rem;
     padding: 1.5rem;
     backface-visibility: hidden;
     transition: transform 1s;
+    overflow: hidden;
     &.T1{
       transform: rotateY(180deg);
       @include myGradientBackground();
@@ -105,12 +106,18 @@
       @include myGradientBackground();
     }
     h3{
-      font-size: 2rem;
-      margin-bottom: 0;
+      font-size: clamp(1.5rem, min(2vw, 2vh), 2rem);
+      margin: 0;
     }
     p{
       text-align: start;
-      font-size: 1.2rem;
+      font-size: clamp(1rem, min(1.2vw, 1.8vh), 1.5rem);  // 同时考虑宽高比
+      //line-height: clamp(1.25rem, min(1.5vw, 2vh), 2rem);
+      margin: 0;
+    }
+    img{
+      height: min(40%,20dvh);
+      aspect-ratio: 1/1;
     }
 
   }
@@ -124,14 +131,17 @@
   .T1, .T2{
     position: absolute;
     width: auto;
-    height: 100%;
+    height: 25vh;
     aspect-ratio: 1/1;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2rem;
+    font-size: clamp(2rem,2vw,3rem);
+    font-weight: bolder;
     line-height: 4rem;
+    text-wrap: balance;
+
     &.T1{
       @include myGradientBackground();
       ::before{

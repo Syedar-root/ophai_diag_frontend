@@ -11,6 +11,7 @@
   align-items: center;
   $padding: map.get(vars.$space, l);
   $gap: map.get(vars.$space, s);
+  background-color:#fff;
   padding: $padding;
   gap: $gap;
 }
@@ -19,11 +20,12 @@
 
 .cm-footer {
   position: relative;
+  align-items: flex-end;
   width: 100%;
-  flex-grow: 1;
+  height: 10%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-content: center;
 
   .el-pagination {
     width: 100%;

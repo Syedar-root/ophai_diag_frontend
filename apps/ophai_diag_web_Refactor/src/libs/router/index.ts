@@ -28,7 +28,11 @@ const preloadComponents = (to: any) => {
 
 const routes: RouteRecordRaw[] = [
   {
-    path: '/',
+    path:'/',
+    redirect: '/introduction'
+  },
+  {
+    path: '/index',
     component: () => import('@/shared/layout/index.vue'),
     redirect: childRoutes[0].path,
     children: [

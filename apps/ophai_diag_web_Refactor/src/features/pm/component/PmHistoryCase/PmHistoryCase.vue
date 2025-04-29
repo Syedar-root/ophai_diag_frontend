@@ -37,12 +37,12 @@ onMounted(() => {
   loading.value = true;
   getPatientHistoryCase({patientId:props.id}).then((res) => {
     loading.value = false;
-    console.log(res)
+    console.log( '历史病例',res)
     historyCase.value = res.data.items.map((item: any) => {
       return {
         caseId:item.caseId,
         time: formatDate(item.createDate),
-        diseaseNames: item.diseaseType
+        diseaseNames: item.diseaseName
       }
     })
   })
@@ -60,7 +60,7 @@ onMounted(() => {
         <div class="history-case-item" v-for="item in historyCase" @click="router.push(`/dd/${item.caseId}`)" >
           <div class="history-case-item__description">
             <label class="time">{{item.time}}</label>
-            <label class="disease">{{item.diseaseNames || "不详"}}</label>
+            <label class="disease"><el-tag v-for="disease in item.diseaseNames">{{disease || "不详"}}</el-tag></label>
           </div>
           <div class="history-case-item__icon">
             <el-icon>

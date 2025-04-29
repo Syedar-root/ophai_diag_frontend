@@ -15,7 +15,7 @@ const {handleSearch} = usePatientListSearch();
       v-model:current-page="searchPatientQueryStore.searchPatientQuery.pageNum"
       background
       layout="total,prev,pager,next"
-      :total="patientListStore.patientList.total"
+      :total="patientListStore.patientList?.total"
       @click="handleSearch(true)" />
 </div>
 </template>

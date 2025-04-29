@@ -11,6 +11,8 @@ export const useLineChart = ( data:any ) => {
 	  { label:'Sun', value:'302' },
   ]);
 
+  console.log(data);
+
   return  {
 	title: {
 	  text:'周新患者数',

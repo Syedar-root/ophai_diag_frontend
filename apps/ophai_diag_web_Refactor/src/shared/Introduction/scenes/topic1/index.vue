@@ -4,7 +4,7 @@ import 'animate.css';
 import Background from "@/shared/Introduction/scenes/background.vue";
 import {Back, Right} from "@element-plus/icons-vue";
 const cardShows = ref([false, false, false, false]);
-const cardRefs = ref<HTMLElement[]|null>([null, null, null, null]);
+const cardRefs = ref<HTMLElement[]|null[]>([]);
 const backgroundShow = ref(false);
 const contentRef = ref<HTMLElement|null>(null);
 let mousePos = {
@@ -13,14 +13,17 @@ let mousePos = {
 }
 const emits = defineEmits(['back', 'next']);
 const handleBack =  () => {
+  if (!contentRef.value)  return;
   outAnimation();
-  contentRef.value.addEventListener('animationend', (e) => {
+
+  contentRef.value.addEventListener('animationend', () => {
     emits('back');
   })
 }
 const handleNext = () => {
+  if (!contentRef.value)  return;
   outAnimation();
-  contentRef.value.addEventListener('animationend', (e) => {
+  contentRef.value.addEventListener('animationend', () => {
     console.log('end!')
     emits('next');
   })
@@ -45,8 +48,9 @@ const outAnimation = () => {
   backgroundShow.value = false;
 }
 
-const handleMouseMove = (e,el) => {
+const handleMouseMove = (e:MouseEvent,el:HTMLElement | null) => {
   e.preventDefault();
+  if (!el) return;
   const rect = el.getBoundingClientRect();
   const centerX = rect.left + rect.width / 2;
   const centerY = rect.top + rect.height / 2;
@@ -73,7 +77,8 @@ const handleMouseMove = (e,el) => {
     el.style.setProperty('--light-y', `${lightPosY}%`);
   });
 }
-const handleMouseLeave = (el) => {
+const handleMouseLeave = (el:HTMLElement | null) => {
+  if(!el) return;
   el.style.transform = `rotateX(0deg) rotateY(0deg)`;
 }
 </script>
@@ -107,14 +112,14 @@ const handleMouseLeave = (el) => {
           leave-active-class="animate__animated animate__fadeOutLeft">
          <div class="card c1"
               v-if="cardShows[0]"
-              :ref="el =>cardRefs[0] = el"
+              :ref="el =>cardRefs[0] = el as HTMLElement | null"
               @mousemove="handleMouseMove($event,cardRefs[0])"
               @mouseleave="handleMouseLeave(cardRefs[0])">
            <h2>创新型模型架构</h2>
            <div class="card-content">
-             <img src="@/shared/assets/testimg/PA_00321956133278_周云熙_left.jpg" alt="">
+             <img src="@/shared/assets/icons/artificial-intelligence-2-77.svg?url" alt="">
              <p>
-               融合SE模块与Xception主干网络，采用分阶式动态优化心量框架，通过通道注意力机制实现血管特征动态聚焦。相比传统模型，轻微病症检出率提高20%。
+               融合<strong>SE模块</strong>与<strong>Xception主干网络</strong>，采用分阶式动态优化心量框架，通过通道注意力机制实现血管特征动态聚焦。相比传统模型，轻微病症检出率<strong>提高20%</strong>。
              </p>
            </div>
          </div>
@@ -126,14 +131,14 @@ const handleMouseLeave = (el) => {
            leave-active-class="animate__animated animate__fadeOutLeft">
          <div class="card c2"
               v-if="cardShows[1]"
-              :ref="el =>cardRefs[1] = el"
+              :ref="el =>cardRefs[1] = el as HTMLElement | null"
               @mousemove="handleMouseMove($event,cardRefs[1])"
               @mouseleave="handleMouseLeave(cardRefs[1])">
            <h2>突破性识别精度</h2>
            <div class="card-content">
-             <img src="@/shared/assets/testimg/PA_00321956133278_周云熙_left.jpg" alt="">
+             <img src="@/shared/assets/icons/target-1-71.svg?url" alt="">
              <p>
-               在ODIR-5K/IDRiD等多个数据集*验证中，关键病症（青光眼/白内障等）AUC超0.99、血管分割Dice系数0.89，在多标签疾病识别上表现稳定。
+               在ODIR-5K/IDRiD等多个数据集*验证中，关键病症（青光眼/白内障等）<strong>AUC超0.99</strong>、血管分割<strong>Dice系数0.89</strong>，在多标签疾病识别上表现稳定。
              </p>
            </div>
          </div>
@@ -146,14 +151,14 @@ const handleMouseLeave = (el) => {
            leave-active-class="animate__animated animate__fadeOutRight">
          <div class="card c3"
               v-if="cardShows[2]"
-              :ref="el =>cardRefs[2] = el"
+              :ref="el =>cardRefs[2] = el as HTMLElement | null"
               @mousemove="handleMouseMove($event,cardRefs[2])"
               @mouseleave="handleMouseLeave(cardRefs[2])">
            <h2>极速推理引擎</h2>
            <div class="card-content">
-             <img src="@/shared/assets/testimg/PA_00321956133278_周云熙_left.jpg" alt="">
+             <img src="@/shared/assets/icons/marketing-campaign-90.svg?url" alt="">
              <p>
-               优化后的轻量化模型在在NVIDIA RTX 4060显卡上实现13FPS吞吐量，达到76ms全流程响应。
+               优化后的轻量化模型在在NVIDIA RTX 4060显卡上实现<strong>13FPS吞吐量</strong>，达到<strong>76ms</strong>全流程响应。
              </p>
            </div>
          </div>
@@ -165,16 +170,16 @@ const handleMouseLeave = (el) => {
            leave-active-class="animate__animated animate__fadeOutRight">
          <div class="card c4"
               v-if="cardShows[3]"
-              :ref="el =>cardRefs[3] = el"
+              :ref="el =>cardRefs[3] = el as HTMLElement | null"
               @mousemove="handleMouseMove($event,cardRefs[3])"
               @mouseleave="handleMouseLeave(cardRefs[3])">
            <h2>可解释性革命</h2>
            <div class="card-content">
-             <img src="@/shared/assets/testimg/PA_00321956133278_周云熙_left.jpg" alt="">
+             <img src="@/shared/assets/icons/consulting-48.svg?url" alt="">
              <p>
-               五层梯度融合的LayerCAM技术，辅助医生寻找病灶点，定位精度达像素级*，较传统方法提升50%。
+               五层梯度融合的<strong>LayerCAM技术</strong>，辅助医生寻找病灶点，定位精度达像素级*，较传统方法<strong>提升50%</strong>。
              </p>
-             <span>*像素级指误差<10px</span>
+             <span style="opacity: 0.8">*像素级指误差<10px</span>
            </div>
          </div>
        </transition>

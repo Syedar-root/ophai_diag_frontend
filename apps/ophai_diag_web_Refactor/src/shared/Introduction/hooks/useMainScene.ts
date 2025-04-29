@@ -30,22 +30,24 @@ export const useMainScene = () => {
 
   const handleMouseOver = (event: MouseEvent, el: HTMLDivElement | null) => {
 	if (!el) return;
-	const { clientX, clientY } = event;
-	const { left, top, width, height } = el.getBoundingClientRect();
-	const centerX = left + width / 2;
-	const centerY = top + height / 2;
-	const distanceX = clientX - centerX;
-	const distanceY = clientY - centerY;
-	const radius = width / 2;
-	const ballContainer = el.querySelector('.ball-container') as HTMLDivElement;
-	const mainBall = el.querySelector('.main-ball') as HTMLDivElement;
-	if (distanceX < radius && distanceY < radius && mainBall) {
-	  ballContainer.style.transition = "transform 0.1s";
-	  ballContainer.style.transform = `translate(${distanceX / 3}px, ${distanceY / 3}px)`;
-	  mainBall.style.setProperty(`--meltX`, `${distanceX/1.2 }px`);
-	  mainBall.style.setProperty(`--meltY`, `${distanceY/1.2 }px`);
-	  mainBall.style.setProperty(`--meltDuration`, `0.1s`);
-	}
+	requestAnimationFrame(()=>{
+	  const { clientX, clientY } = event;
+	  const { left, top, width, height } = el.getBoundingClientRect();
+	  const centerX = left + width / 2;
+	  const centerY = top + height / 2;
+	  const distanceX = clientX - centerX;
+	  const distanceY = clientY - centerY;
+	  const radius = width / 2;
+	  const ballContainer = el.querySelector('.ball-container') as HTMLDivElement;
+	  const mainBall = el.querySelector('.main-ball') as HTMLDivElement;
+	  if (distanceX < radius && distanceY < radius && mainBall) {
+		ballContainer.style.transition = "transform 0.1s";
+		ballContainer.style.transform = `translate(${distanceX / 3}px, ${distanceY / 3}px)`;
+		mainBall.style.setProperty(`--meltX`, `${distanceX/1.2 }px`);
+		mainBall.style.setProperty(`--meltY`, `${distanceY/1.2 }px`);
+		mainBall.style.setProperty(`--meltDuration`, `0.1s`);
+	  }
+	})
   }
 
   function handleMouseOut(el: HTMLDivElement | null) {

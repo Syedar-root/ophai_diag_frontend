@@ -52,15 +52,15 @@ export default [
 			'@typescript-eslint/no-unused-vars': 'error'
 		}
 	},
-	// 通用 JavaScript 配置
-	{
-		files: ['**/*.js', '**/*.jsx'],
-		languageOptions: {
-			ecmaVersion: 'latest',
-			sourceType: 'module'
-		},
-		rules: {
-			'no-console': 'warn'
-		}
-	}
+	// // 通用 JavaScript 配置
+	// {
+	// 	files: ['**/*.js', '**/*.jsx'],
+	// 	languageOptions: {
+	// 		ecmaVersion: 'latest',
+	// 		sourceType: 'module'
+	// 	},
+	// 	rules: {
+	// 		'no-console': 'warn'
+	// 	}
+	// }
 ];

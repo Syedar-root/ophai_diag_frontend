@@ -10,7 +10,7 @@ export interface PatientInfoViewObj {
   id: string
   name: string
   age: number
-  gender: string
+  gender: number
   historyCases: HistoryCase[]
 }
 export type Drug = {

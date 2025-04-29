@@ -18,7 +18,6 @@ export const useReportInfo = () => {
       diseaseTypes: viewCaseStore.viewCase.diseaseName,
       revisitTime: viewCaseStore.viewCase.aiCaseInfoJson.message.revisit_time,
     }
-
     return reportViewObj
   })
 

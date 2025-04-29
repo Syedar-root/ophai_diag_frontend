@@ -1,4 +1,4 @@
-@use "/src/shared/assets/styles/vars.scss" as vars;
+@use "@/shared/assets/styles/vars.scss" as vars;
 @use "sass:map";
 @use "../../styles/mixins" as mixins;
 
@@ -8,7 +8,7 @@
   @include mixins.block;
   position: relative;
   width: 90%;
-  height: auto;
+  height: 100%;
   min-height: 90%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -18,7 +18,7 @@
   margin-top: 1rem;
   justify-items: center;
   align-content: start;
-  overflow: auto;
+  overflow: scroll;
   &::-webkit-scrollbar {
     opacity: 0;
   }

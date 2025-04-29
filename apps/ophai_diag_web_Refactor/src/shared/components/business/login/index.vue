@@ -7,6 +7,7 @@
   import { validate, loginSchema, registerSchema } from '@/libs/utils/validate'
   import { useTokenStore } from '@/libs/store/token'
   import {useUserStore} from "@/libs/store/user";
+  import {ElMessage} from "element-plus";
 
   const tokenStore = useTokenStore()
   const userStore = useUserStore()
@@ -22,7 +23,6 @@
     email: '',
     gender: '', // 性别改为空字符串
     phone: '', // 手机号改为空字符串
-    realName: '',
     age: null, // 数值类型可以保持 null
     hospital: '',
     position: '',
@@ -32,17 +32,27 @@
   // 登录流程
   const handleLogin = async () => {
     try {
-      console.log(query.value)
+      // console.log(query.value)
       //   验证参数
       await validate(query.value, loginSchema)
     } catch (error) {
-      console.error(error)
+      // console.error(error)
       return
     }
     try {
       //   登录
       await loginService(query.value).then((res: any) => {
+        if (res.data.token === null) {
+          return;
+        }
+        console.log(res.data.token);
+        ElMessage({
+          message: res.data.message || "登录成功",
+          type: 'success',
+          duration: 2000
+        })
         tokenStore.setToken(res.data.token)
+        console.log(tokenStore.token)
         userStore.setUser({
           userId: res.data.userId,
           userName: res.data.userName,
@@ -52,9 +62,12 @@
         })
         loginShow.value = false
         handleClose()
+        setTimeout(() => {
+          window.location.reload()
+        }, 1000)
       })
     } catch (error) {
-      console.error(error)
+      // console.error(error)
       return
     }
   }

@@ -9,11 +9,13 @@ import topic1Scene from "./scenes/topic1/index.vue";
 import topic2Scene from "./scenes/topic2/index.vue";
 import topic3Scene from "./scenes/topic3/index.vue";
 import topic4Scene from "./scenes/topic4/index.vue";
+import {Document, Right} from "@element-plus/icons-vue";
 
 const eyeBallShow = ref(false)
 const eyeShow = ref(false)
 const lightShow = ref(false)
 const titleShow = ref(false)
+const routerShow = ref(false)
 
 const mainTitle = ref<HTMLElement | null>(null)
 const light = ref<HTMLElement | null>(null)
@@ -31,6 +33,9 @@ function showSomething() {
           if (topic1.value && topic2.value && topic3.value && topic4.value)
             initTopics([topic1.value, topic2.value, topic3.value, topic4.value]);
         }
+        setTimeout(() => {
+          routerShow.value = true;
+        },500)
       }, 500)
     },500)
   },500)
@@ -48,7 +53,8 @@ function titleAnimation() {
   // 生成唯一字符容器
   mainTitle.value.innerHTML = mainTitle.value.textContent?.split('').map((char, index) => {
     let br = index === 11? `<br/>` : '';
-    return `<span class="char" style="display: inline-block" data-index="${index}">${char}</span>` + br; // 改用 class 替代 id
+    let blank = index === 8?`&nbsp;` : '';
+    return `<span class="char" style="display: inline-block" data-index="${index}">${char}</span>` + br + blank; // 改用 class 替代 id
   }).join('') || '';
 
   // 先移除旧监听器避免重复
@@ -97,12 +103,13 @@ function handleTopic1Click() {
     lightShow.value = false;
     eyeShow.value = false;
     eyeBallShow.value = false;
+    routerShow.value = false;
     topicShows.value = [true,false,false,false]
     topic1.value!.removeEventListener('mousemove', mouseOverHandlers[0]);
     topic1.value!.style.pointerEvents = "none";
     topic1.value!.style.zIndex = '2';
     topic1.value!.style.transition = 'all 0.3s ease-out';
-    topic1.value!.style.transform = `translate(10%, -50%)`;
+    topic1.value!.style.transform = `translate(-5%, -60%)`;
     topic1.value!.style.fontSize = fontSize.value;
     topic1.value!.style.textWrap = 'nowrap';
     topic1.value!.querySelector('.main-ball')!.setAttribute('style', 'opacity: 0');
@@ -148,6 +155,7 @@ function handleTopic2Click() {
   lightShow.value = false;
   eyeShow.value = false;
   eyeBallShow.value = false;
+  routerShow.value = false;
   topicShows.value = [false,true,false,false];
   topic2.value!.removeEventListener('mousemove', mouseOverHandlers[1]);
   topic2.value!.style.pointerEvents = "none";
@@ -155,7 +163,7 @@ function handleTopic2Click() {
   topic2.value!.style.fontSize = fontSize.value;
   topic2.value!.style.textWrap = 'nowrap';
   topic2.value!.style.transition = 'all 0.3s ease-out';
-  topic2.value!.style.transform = `translate(5%, -40%)`;
+  topic2.value!.style.transform = `translate(3%, -45%)`;
   topic2.value!.querySelector('.main-ball')!.setAttribute('style', 'opacity: 0');
   topic2SceneShow.value = true;
 }
@@ -197,6 +205,7 @@ function handleTopic3Click() {
   lightShow.value = false;
   eyeShow.value = false;
   eyeBallShow.value = false;
+  routerShow.value = false;
   topicShows.value = [false,false,true,false];
   topic3.value!.removeEventListener('mousemove', mouseOverHandlers[2]);
   topic3.value!.style.pointerEvents = "none";
@@ -204,7 +213,7 @@ function handleTopic3Click() {
   topic3.value!.style.fontSize =  fontSize.value;
   topic3.value!.style.textWrap = 'nowrap';
   topic3.value!.style.transition = 'all 0.8s ease-out';
-  topic3.value!.style.transform = `translate(40%, 60%)`;
+  topic3.value!.style.transform = `translate(28%, 50%)`;
   topic3.value!.querySelector('.main-ball')!.setAttribute('style', 'opacity: 0');
   topic3SceneShow.value = true;
 }
@@ -246,6 +255,7 @@ function handleTopic4Click() {
   lightShow.value = false;
   eyeShow.value = false;
   eyeBallShow.value = false;
+  routerShow.value = false;
   topicShows.value = [false,false,false,true];
   topic4.value!.removeEventListener('mousemove', mouseOverHandlers[3]);
   topic4.value!.style.pointerEvents = "none";
@@ -253,7 +263,7 @@ function handleTopic4Click() {
   topic4.value!.style.fontSize =  fontSize.value;
   topic4.value!.style.textWrap = 'nowrap';
   topic4.value!.style.transition = 'all 0.8s ease-out';
-  topic4.value!.style.transform = `translate(-70%, 50%)`;
+  topic4.value!.style.transform = `translate(-70%, 60%)`;
   topic4.value!.querySelector('.main-ball')!.setAttribute('style', 'opacity: 0');
   topic4SceneShow.value = true;
 }
@@ -275,6 +285,19 @@ function handleTopic4Leave() {
 
 <template>
   <section class="main-scene">
+    <div class="header">
+      <transition
+        enter-active-class="animate__animated animate__fadeInLeft"
+        leave-active-class="animate__animated animate__fadeOurLeft">
+      <a class="toIndex" href="/dashboard" v-if="routerShow"><el-icon><Right></Right></el-icon>立即体验</a>
+    </transition>
+      <transition
+          enter-active-class="animate__animated animate__fadeInLeft"
+          leave-active-class="animate__animated animate__fadeOurLeft">
+        <a class="toDoc" href="/doc/" target="_blank" v-if="routerShow"><el-icon><Document></Document></el-icon>文档</a>
+      </transition>
+    </div>
+
 <!--    标题-->
     <transition
         enter-active-class="animate__animated animate__rotateInDownLeft"
@@ -408,6 +431,9 @@ function handleTopic4Leave() {
     <topic4-scene @back="handleTopic4Leave" v-if="after4Show"></topic4-scene>
   </section>
 
+  <footer id="footer">
+    <a href="https://beian.miit.gov.cn/" target="_blank">鲁ICP备2025156282号</a>
+  </footer>
 
   <svg style="display: none">
     <defs>
@@ -437,4 +463,18 @@ function handleTopic4Leave() {
 @use 'styles/topic2-scene';
 @use 'styles/topic3-scene';
 @use 'styles/topic4-scene';
+
+#footer{
+  position: fixed;
+  bottom: 0;
+  height: 70px;
+  width: 100%;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  a{
+    color: #fffefb;
+  }
+}
 </style>

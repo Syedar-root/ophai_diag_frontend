@@ -5,6 +5,7 @@ export { validate } from './validate.ts'
 export { loginSchema } from './schemas/login.ts'
 export { registerSchema } from './schemas/register.ts'
 export { imageSchema } from './schemas/image.ts'
+export { patientInfoSchema } from './schemas/patientInfo.ts'
 // 后续新增schema在此添加导出
 
 // // 类型导出（根据工程需要）

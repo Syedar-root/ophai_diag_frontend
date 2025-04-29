@@ -33,11 +33,10 @@
 <script setup lang="ts">
 	import {
 		onMounted,
-		ref
 	} from 'vue';
 
-	let cvs = 0;
-	let ctx = 0;
+	let cvs: HTMLCanvasElement | null;
+	let ctx: CanvasRenderingContext2D | null;
 
 
 
@@ -65,7 +64,7 @@
   });
 
   // 添加hex颜色转rgb函数
-  function hexToRgb(hex) {
+  function hexToRgb(hex :string) {
     // 移除#字符
     hex = hex.replace('#', '');
     // 解析为r, g, b值
@@ -77,20 +76,30 @@
 
 	function init_canvas() {
     const parent = document.querySelector('.wrap');
-		cvs.width = parent?.clientWidth;
-		cvs.height = parent?.clientHeight;
+    if (!cvs) return;
+		cvs.width = parent?.clientWidth || window.innerWidth;
+		cvs.height = parent?.clientHeight || window.innerHeight;
     console.log(props.bgColor);
+    if (!ctx) return;
     ctx.fillStyle = props.bgColor;
     ctx.fillRect(0, 0, cvs.width, cvs.height);
 	}
 
-	function getRandom(min, max) {
+	function getRandom(min :number, max:number) {
 		return Math.floor(Math.random() * (max + 1 - min) + min);
 	}
 
 
 	class Point {
+    r: number;
+    x: number;
+    y: number;
+    xSpeed: number;
+    ySpeed: number;
+    lastDrawTime: number | null;
+
 		constructor() {
+      if (!cvs) throw new Error('Canvas not initialized');
 			this.r = 4;
 			this.x = getRandom(0, cvs.width - this.r / 2);
 			this.y = getRandom(0, cvs.height - this.r / 2);
@@ -100,7 +109,7 @@
 		}
 
 		drawPoint() {
-
+      if (!cvs || !ctx) return;
 			//点移动
 			if (this.lastDrawTime) {
 				let t = (Date.now() - this.lastDrawTime) / 1000;
@@ -142,12 +151,17 @@
 	}
 
 	class Graph {
+    points: Array<Point>;
+    maxDis:number;
+
 		constructor(pointNum = 50, maxDis = 300) {
 			this.points = new Array(pointNum).fill(0).map(() => new Point());
 			this.maxDis = maxDis;
 		}
 
 		drawGraph() {
+      if (!cvs || !ctx) return;
+
 			//动画绘制
 			requestAnimationFrame(() => {
 				this.drawGraph();
@@ -189,13 +203,15 @@
 			}
 		}
 	}
-  function initWrap(){
-    const wrap = document.querySelector('.wrap');
-    wrap.style.backgroundColor = props.bgColor;
-  }
+  // function initWrap(){
+  //   const wrap = document.querySelector('.wrap');
+  //   wrap.style.backgroundColor = props.bgColor;
+  // }
 	onMounted(() => {
 		cvs = document.querySelector('#cvs');
+    if (!cvs) return;
 		ctx = cvs.getContext('2d');
+    if (!ctx) return;
     // window.addEventListener('mousemove', (event)=>{
     //   props.mousePos.x = event.offsetX;
     //   props.mousePos.y = event.offsetY;

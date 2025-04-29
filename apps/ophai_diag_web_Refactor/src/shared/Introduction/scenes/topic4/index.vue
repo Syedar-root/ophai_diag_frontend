@@ -5,11 +5,16 @@ import 'animate.css';
 import background from "@/shared/Introduction/scenes/background.vue";
 
 const emits = defineEmits(['back']);
-const handleBack = async () => {
-  await outEvent();
-  topic4ContainerRef.value?.addEventListener('animationend', async () => {
+const handleBack =  () => {
+  window.addEventListener('animationend', () => {
     emits('back');
   })
+  outEvent();
+  setTimeout(() => {
+    if(cardShows.value[0] === false){
+      emits('back');
+    }
+  },1000)
 }
 let mousePos = {
   x: 0,
@@ -17,7 +22,7 @@ let mousePos = {
 }
 const cardShows = ref<boolean[]>([false, false, false, false]);
 const topic4ContainerRef = ref<HTMLElement|null>(null);
-const outEvent = async () => {
+const outEvent =  () => {
   cardShows.value = [false, false, false, false];
 }
 onMounted(() => {
@@ -64,16 +69,16 @@ function handleMouseLeave(index: number) {
       </div>
     </div>
     <div class="topic4-scene-content">
-      <div class="desk-container">
-        <div class="desk">
-          <div class="title-container">
-            <transition name="title-fade" mode="out-in">
-              <h1 :key="hoverIndex">{{titles[hoverIndex]}}</h1>
-            </transition>
+      <div class="card-container">
+        <div class="desk-container">
+          <div class="desk">
+            <div class="title-container">
+              <transition name="title-fade" mode="out-in">
+                <h1 :key="hoverIndex">{{titles[hoverIndex]}}</h1>
+              </transition>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="card-container">
         <transition
           enter-active-class="animate__animated animate__fadeInTopRight"
           leave-active-class="animate__animated animate__fadeOutTopRight">
@@ -82,7 +87,8 @@ function handleMouseLeave(index: number) {
                @mouseleave="handleMouseLeave(1)">
             <div class="card-body">
               <p>
-                AI 驱动眼底病例智能分析系统，融合深度学习算法与多模态影像数据，通过人工与智能协同分析构建多维统计模型，为临床提供精准诊疗决策支持，显著提升诊断效率与准确性。
+                <span>AI 驱动眼底病例智能分析系统，融合<strong>深度学习</strong>算法与<strong>多模态</strong>影像数据，通过人工与智能<strong>协同分析</strong>构建多维统计模型，为临床提供精准诊疗决策支持，显著提升诊断效率与准确性。</span>
+                <img src="@/shared/assets/icons/team-presentation-2-32.svg?url" alt="">
               </p>
             </div>
           </div>
@@ -96,8 +102,10 @@ function handleMouseLeave(index: number) {
                @mouseleave="handleMouseLeave(2)">
             <div class="card-body">
               <p>
-                基于微服务架构与 OSS 云存储构建分布式诊疗协同平台，实现存储资源弹性扩展与数据全生命周期加密，保障诊疗流程高效安全。
+                <span>基于<strong>微服务架构</strong>与 OSS 云存储构建分布式诊疗协同平台，实现存储资源弹性扩展与数据<strong>全生命周期加密</strong>，保障诊疗流程高效安全。</span>
+                <img style="margin-top: 50px" src="@/shared/assets/icons/data-storage-3-37.svg?url" alt="">
               </p>
+
             </div>
           </div>
         </transition>
@@ -110,8 +118,10 @@ function handleMouseLeave(index: number) {
               @mouseleave="handleMouseLeave(3)">
             <div class="card-body">
               <p>
-                基于多重加密技术构建数据安全防护体，采用 JWT 令牌实现用户身份验证与权限管理，结合 Redis 内存加密存储敏感数据，实现诊疗数据全链路安全防护，保障患者信息在传输、存储、处理全流程中的机密性与完整性。
+                <span>基于<strong>多重加密技术</strong>构建数据安全防护体，采用 JWT 令牌实现用户身份验证与权限管理，结合 Redis 内存加密存储敏感数据，实现诊疗数据全链路安全防护，保障患者信息在传输、存储、处理全流程中的<strong>机密性与完整性</strong>。</span>
+                <img src="@/shared/assets/icons/authentication-65.svg?url" alt="">
               </p>
+
             </div>
           </div>
         </transition>
@@ -124,7 +134,8 @@ function handleMouseLeave(index: number) {
               @mouseleave="handleMouseLeave(4)">
             <div class="card-body">
               <p>
-                基于 RESTful API 的松耦合微服务架构，采用容器化部署，，通过异步消息队列RabbitMQ优化跨服务数据传输效率，保障系统弹性扩展能力与业务敏捷性。
+                <span>基于 RESTful API 的<strong>松耦合</strong>微服务架构，采用容器化部署，通过异步消息队列RabbitMQ优化跨服务数据传输效率，保障系统弹性扩展能力与业务敏捷性。</span>
+                <img style="margin-top: 40px" src="@/shared/assets/icons/construction-site-1-26.svg?url" alt="">
               </p>
             </div>
           </div>

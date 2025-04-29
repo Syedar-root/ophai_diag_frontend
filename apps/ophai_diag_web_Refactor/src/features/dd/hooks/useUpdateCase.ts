@@ -21,7 +21,9 @@ export const useUpdateCase = () => {
       return;
     }
     updateCaseService(updateCaseQuery.value).then((res) => {
-      console.log(res);
+      if (res.code === 200){
+        ElMessage.success(res.message);
+      }
     })
   }
 

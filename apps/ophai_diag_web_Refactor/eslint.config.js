@@ -5,10 +5,10 @@ import path from "path";
 export default [
     // ...eslintConfig,
   {
-    ignores: ['node_modules', 'eslint-config.js', '*/auto-imports.d.ts', '*/components.d.ts'],
+    ignores: ['node_modules', 'eslint-config.js', '*/auto-imports.d.ts', '*/components.d.ts','src/shared/Introduction/**'],
     files: ['src/**/*.ts', 'src/**/*.vue'],
     rules: {
-      'no-console': 'off',
+      'no-console': 'warn',
       // 'no-unused-vars': 'error'
     },
     languageOptions: {

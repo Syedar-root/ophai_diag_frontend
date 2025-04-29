@@ -29,13 +29,13 @@ const data = [
         </ul>
       </template>
     </el-table-column>
-    <el-table-column prop="highlight" label="技术亮点">
-      <template #default="{row}">
-        <ul>
-          <li v-for="item in row.highlight" :key="item">{{item}}</li>
-        </ul>
-      </template>
-    </el-table-column>
+<!--    <el-table-column prop="highlight" label="技术亮点">-->
+<!--      <template #default="{row}">-->
+<!--        <ul>-->
+<!--          <li v-for="item in row.highlight" :key="item">{{item}}</li>-->
+<!--        </ul>-->
+<!--      </template>-->
+<!--    </el-table-column>-->
   </el-table>
 </template>
 

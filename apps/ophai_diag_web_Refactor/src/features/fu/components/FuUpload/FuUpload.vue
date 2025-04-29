@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { UploadFilled } from '@element-plus/icons-vue'
 import { ref } from 'vue';
-import {type UploadUserFile} from 'element-plus'
+import {ElMessage, type UploadUserFile} from 'element-plus'
 import {type FuUploadEmits} from './types.ts'
 import {useFileStore} from '@/features/fu/store/FileStore.ts'
 import {useFileValidator} from '@/features/fu/hooks/useFileValidator.ts'
@@ -27,6 +27,20 @@ const handleFileRemove = (_: any, uploadFiles: UploadUserFile[]) => {
   fileStore.setFiles(uploadFiles);
 }
 
+const handleFileExceed = () => {
+  console.log(uploadLimit)
+  ElMessage.warning('文件数量超过限制');
+}
+
+watch(()=>fileStore.files,(newFiles)=>{
+  fileList.value = newFiles || [];
+  if(newFiles.length === 0){
+    userInfo.value.patientName = "";
+    userInfo.value.patientId = "";
+  }
+})
+
+
 const { bulkUpload,handleModeChange,uploadLimit } = useUploadMode(emits)
 </script>
 
@@ -46,6 +60,7 @@ const { bulkUpload,handleModeChange,uploadLimit } = useUploadMode(emits)
         :limit="uploadLimit"
         :on-remove="handleFileRemove"
         :on-change="handleFileChange"
+        :on-exceed="handleFileExceed"
         action="#"
         drag
         multiple

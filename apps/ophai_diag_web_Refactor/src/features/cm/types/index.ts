@@ -1,8 +1,14 @@
+/** 病例列表请求体*/
 export interface CaseListQuery {
+  /** 目标页码*/
   pageNum: number
+  /** 每页数据条数*/
   pageSize: number
+  /** 诊断状态*/
   diagStatus?: number
+  /** 疾病类型（包括多个 用，分割）*/
   diseaseName?: number | string
+  /** 患者唯一标识符*/
   patientInfoPatientId?: string
 }
 
@@ -37,12 +43,12 @@ export function getCaseListViewObj(res: CaseListResponse): CaseListViewObj {
   result.items = res.items.map((item: any) => {
     return {
       caseId: item.caseId,
-      diseaseType: item.diseaseType,
+      diseaseType: item.diseaseNameJ,
       diagStatus: item.diagStatus,
       patientId: item.patientInfo.patientId,
       patientName: item.patientInfo.name?item.patientInfo.name:"不详",
-      gender: item.patientInfo.gender?item.patientInfo.gender:"不详",
-      age: item.patientInfo.age?item.patientInfo.age:"不详",
+      gender: item.patientInfo.gender,
+      age: item.patientInfo.age,
       createDate: item.createDate,
       updateDate: item.updateDate,
       responsibleDoctor: item.responsibleDoctor?item.responsibleDoctor:"不详"
@@ -65,9 +71,9 @@ export const diseaseType = [
 
 export const diagStatus = [
   { label: '全部', value: -1 },
-  { label: '未诊断', value: 1 },
-  { label: '诊断中', value: 2 },
-  { label: '已诊断', value: 3 }
+  { label: '未诊断', value: 0 },
+  { label: '诊断中', value: 1 },
+  { label: '已诊断', value: 2 }
 ]
 
 export const gender = [

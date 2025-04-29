@@ -4,17 +4,27 @@ import background from "@/shared/Introduction/scenes/background.vue";
 import 'animate.css';
 
 const emits = defineEmits(['back', 'next']);
-const handleBack =  async () => {
-  await outEvent();
+const handleBack =   () => {
   topic2ContainerRef.value?.addEventListener('animationend', ()=>{
     emits('back');
   });
+  outEvent();
+  if (!cardShows.value[0]) {
+    setTimeout(() => {
+      emits('back');
+    },1000)
+  }
 }
 const handleNext = async() => {
-  await outEvent();
   topic2ContainerRef.value?.addEventListener('animationend', ()=>{
     emits('next');
   });
+  outEvent();
+  if (!cardShows.value[0]) {
+    setTimeout(() => {
+      emits('next');
+    },1000)
+  }
 }
 const topic2ContainerRef = ref<HTMLElement|null>(null);
 let mousePos = {
@@ -62,7 +72,7 @@ onMounted(() => {
     <div class="topic2-scene-content">
 
 <!--      2 ============================================================================================== -->
-      <div class="top-aside top2">
+      <div class="top-aside">
         <transition
             enter-active-class="animate__animated animate__slideInDown"
             leave-active-class="animate__animated animate__slideOutUp">
@@ -70,16 +80,12 @@ onMounted(() => {
                v-if="cardShows[1]">
             <h2>智慧医疗生态</h2>
             <p>
-              集成HMAC-MD5动态签名技术，支持离线扫码生成含13项指标*的可视化报告。
-              *包括D、G、C、A、H、M、O的患病概率，原始眼底图，血管分析，视盘分析，临床观察与建议，推荐药物方案。
+              集成<strong>HMAC-MD5</strong>动态签名技术，支持离线扫码生成含13项指标*的可视化报告。
             </p>
-            <img src="@/shared/assets/vue.svg?url" alt="">
+            <img src="@/shared/assets/icons/data-storage-3-80.svg?url" alt="">
+            <span>*包括D、G、C、A、H、M、O的患病概率，原始眼底图，血管分析，视盘分析，临床观察与建议，推荐药物方案。</span>
           </div>
         </transition>
-      </div>
-
-<!--      3 ============================================================================================================ -->
-      <div class="top-aside top3">
         <transition
             enter-active-class="animate__animated animate__slideInDown"
             leave-active-class="animate__animated animate__slideOutUp">
@@ -87,11 +93,17 @@ onMounted(() => {
                v-if="cardShows[2]">
             <h2>多模态处理管线</h2>
             <p>
-              集成Qwen2.5-VL-72B大模型，构建完整多模态处理管线，支持同时解析眼底图和概率化诊断指标，实现影像特征与病理指标的跨模态注意力融合。
+              集成Qwen2.5-VL-72B大模型，构建完整多模态处理管线，支持同时解析眼底图和概率化诊断指标，实现影像特征与病理指标的<strong>跨模态注意力融合</strong>。
             </p>
+            <img src="@/shared/assets/icons/production-line-98-f5ceb.svg?url" alt="">
           </div>
         </transition>
       </div>
+
+<!--      3 ============================================================================================================ -->
+<!--      <div class="top-aside top3">-->
+
+<!--      </div>-->
 
 <!--      1 ===================================================================================-->
       <div class="bottom-aside">
@@ -102,15 +114,11 @@ onMounted(() => {
                v-if="cardShows[0]">
             <h2>智能影像增强</h2>
             <p>
-              Unet++赋能的多尺度血管强化及视盘定位，使微血管检出率提升30%。支持自动黑边裁剪与视网膜区域智能锁定。
+              <strong>Unet++</strong>赋能的多尺度血管强化及视盘定位，使微血管检出率<strong>提升30%</strong>。支持自动黑边裁剪与视网膜区域智能锁定。
             </p>
-            <img src="@/shared/assets/vue.svg?url" alt="">
+            <img src="@/shared/assets/icons/augmented-reality-2-69.svg?url" alt="">
           </div>
         </transition>
-      </div>
-
-<!--      4 =============================================================================================-->
-      <div class="bottom-aside">
         <transition
             enter-active-class="animate__animated animate__slideInUp"
             leave-active-class="animate__animated animate__slideOutDown">
@@ -118,12 +126,17 @@ onMounted(() => {
                v-if="cardShows[3]">
             <h2>全周期病情追踪</h2>
             <p>
-              基于AI的自动病程分析系统，可生成个性化复诊计划，减轻医生诊疗压力。
+              基于AI的自动病程分析系统，可生成<strong>个性化</strong>复诊计划，减轻医生诊疗压力。
             </p>
-            <img src="@/shared/assets/vue.svg?url" alt="">
+            <img src="@/shared/assets/icons/calendar-55.svg?url" alt="">
           </div>
         </transition>
       </div>
+
+<!--      4 =============================================================================================-->
+<!--      <div class="bottom-aside">-->
+
+<!--      </div>-->
     </div>
   </div>
 </template>

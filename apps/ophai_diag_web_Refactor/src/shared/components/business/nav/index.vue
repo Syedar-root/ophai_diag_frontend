@@ -2,8 +2,8 @@
   // 新增路由导入
   import { useRoute, useRouter} from 'vue-router'
   import { Document } from '@element-plus/icons-vue'
-  import SvgIcon from '@/shared/components/common/svgIcon/index.vue'
-  import GithubIcon from '@/shared/assets/icons/github.svg'
+  // import SvgIcon from '@/shared/components/common/svgIcon/index.vue'
+  // import GithubIcon from '@/shared/assets/icons/github.svg'
   import {computed} from "vue";
   import {useUserStore} from "@/libs/store/user";
   import {useTokenStore} from "@/libs/store/token";
@@ -40,7 +40,7 @@
 <template>
   <div class="nav-container">
     <div class="nav__logo-area" @click="router.push('/introduction')">
-      <img class="nav-logo" src="../../../assets/logo/logo1.svg?url" alt="logo" />
+      <img class="nav-logo" src="../../../assets/logo/logo.svg?url" alt="logo" loading="lazy" />
     </div>
     <div class="nav__tab-area">
       <div
@@ -58,9 +58,9 @@
       <div class="icon-item" @click="toDocs">
         <el-icon><Document /></el-icon>
       </div>
-      <div class="icon-item">
-        <SvgIcon :icon="GithubIcon" />
-      </div>
+<!--      <div class="icon-item">-->
+<!--        <SvgIcon :icon="GithubIcon" />-->
+<!--      </div>-->
       <el-dropdown>
         <div class="user-item">
           <div class="user-item__info">

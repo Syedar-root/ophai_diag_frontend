@@ -2,10 +2,16 @@
 import PmSearch from "@/features/pm/component/PmSearch/PmSearch.vue";
 import PmTable from "@/features/pm/component/PmTable/PmTable.vue";
 import PmPagination from "./component/PmPagination/PmPagination.vue";
+import {usePatientListSearch} from "@/features/pm/hooks/usePatientListSearch.ts";
+
+const {loading,handleSearch} = usePatientListSearch()
+onMounted(()=>{
+  handleSearch()
+})
 </script>
 
 <template>
-<div class="pm-container">
+<div class="pm-container" v-loading="loading">
   <div class="pm-container__header">
     <PmSearch/>
   </div>
@@ -30,6 +36,7 @@ import PmPagination from "./component/PmPagination/PmPagination.vue";
   align-items: center;
   justify-content: start;
   padding: map.get(vars.$space, xxxxl);
+  background-color: #fff;
 
   &__header{
     position: relative;

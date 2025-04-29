@@ -5,7 +5,7 @@
   $colors: (
     'primary': (
       // 主色
-      'base': map.get(vars.$colors, primary)
+      'base': map.get(vars.$colors, primary),
     ),
     'success': (
       // 成功色

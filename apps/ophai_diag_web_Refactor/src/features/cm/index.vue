@@ -1,5 +1,5 @@
 <template>
-  <div class="cm-container">
+  <div class="cm-container" v-loading="loading">
     <CmSearch></CmSearch>
     <CmTable></CmTable>
     <div class="cm-footer">
@@ -7,7 +7,7 @@
         v-model:current-page="searchQueryStore.searchQuery.pageNum"
         background
         layout="total,prev,pager,next"
-        :total="total"
+        :total="caseListStore.caseList.total"
         @click="handleSearch(true)" />
     </div>
   </div>
@@ -21,9 +21,10 @@
   import { useSearchQueryStore} from '@/features/cm/store/searchQueryStore.ts'
   import { useCaseListSearch } from '@/features/cm/hooks/useCaseListSearch.ts'
 
-  const total = useCaseListStore().caseList.total
+  const caseListStore = useCaseListStore()
+
   const searchQueryStore = useSearchQueryStore()
-  const { handleSearch } = useCaseListSearch()
+  const { handleSearch,loading } = useCaseListSearch()
 
   onMounted(() => {
     handleSearch()

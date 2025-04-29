@@ -22,3 +22,7 @@
 
 ### 跨平台支持
 将系统扩展到更多的平台，如移动端、小程序等。结合现有的技术栈，使用跨平台开发框架如 Vue.js 和 Taro 等，实现一次开发，多平台部署，扩大系统的用户群体。
+
+
+<br/><br/>
+本系统详细完整前端代码可见：https://github.com/Syedar-root/ophai_diag_frontend.git

@@ -6,6 +6,14 @@ import {diseaseMap} from '@/features/dd/types';
 
 const { reportInfo } = useReportInfo()
 const {updateCaseQuery , handleUpdate} = useUpdateCase()
+onMounted(()=>{
+  updateCaseQuery.value.diseaseName = []
+  updateCaseQuery.value.diseaseName.push(...reportInfo.value.diseaseTypes || "")
+})
+watch(()=>reportInfo.value,()=>{
+  updateCaseQuery.value.diseaseName = []
+  updateCaseQuery.value.diseaseName.push(...reportInfo.value.diseaseTypes || "")
+})
 </script>
 
 <template>
@@ -58,7 +66,7 @@ const {updateCaseQuery , handleUpdate} = useUpdateCase()
           allow-create
           default-first-option
           :reserve-keyword="false"
-          placeholder="Choose tags for your article">
+          placeholder="请选择病症名称">
           <el-option v-for="item in diseaseMap" :key="item[0]" :label="item[1]" :value="item[1]" />
         </el-select>
       </div>

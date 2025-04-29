@@ -8,20 +8,30 @@ export const validate = async (values: any, schema: Joi.Schema) => {
       allowUnknown: true // 允许未定义的键
     })
   } catch (error) {
+    // if (error instanceof Joi.ValidationError) {
+    //   // 拼接错误信息
+    //   const errorMessages = error.details
+    //     .map(detail => {
+    //       // return `${detail.context?.label || '字段'}：${detail.message}`
+    //       return `${detail.message}`
+    //     })
+    //     .join('；\n')
+    //
+    //   ElMessage({
+    //     message: `验证失败：\n${errorMessages}`,
+    //     type: 'error',
+    //     duration: 3000,
+    //     grouping: true
+    //   })
+    // }
     if (error instanceof Joi.ValidationError) {
-      // 拼接错误信息
-      const errorMessages = error.details
-        .map(detail => {
-          // return `${detail.context?.label || '字段'}：${detail.message}`
-          return `${detail.message}`
+      error.details.forEach(detail => {
+        ElMessage({
+          message: `${detail.message}`,
+          type: 'error',
+          duration: 3000,
+          grouping: true
         })
-        .join('；\n')
-
-      ElMessage({
-        message: `验证失败：\n${errorMessages}`,
-        type: 'error',
-        duration: 3000,
-        grouping: true
       })
     }
     throw error
