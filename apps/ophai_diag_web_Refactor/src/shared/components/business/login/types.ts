@@ -10,4 +10,12 @@ export interface userDto {
   hospital?: string
   position?: string // 原定义是 number | null，但模板中使用的是字符串输入
   idNumber?: string // 身份证
+  invitationCode?: string
+}
+
+export  enum Permission {
+    ADMIN=4,
+    DOCTOR= 3,
+    SCIENTIST =2,
+    PATIENT =1
 }

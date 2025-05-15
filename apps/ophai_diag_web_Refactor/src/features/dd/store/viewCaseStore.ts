@@ -12,4 +12,4 @@ export const useViewCaseStore = defineStore('viewCase', ()=>{
     viewCase,
     setViewCase
   }
-})
+}, {persist: true});

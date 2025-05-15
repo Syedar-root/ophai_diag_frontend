@@ -95,6 +95,10 @@
       font-size: map.get(vars.$font-size, s);
       font-weight: map.get(vars.$font-weight, light);
       color: map.get(vars.$colors, neutral-9);
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      gap: map.get(vars.$space,xs);
     }
   }
   &__icon{

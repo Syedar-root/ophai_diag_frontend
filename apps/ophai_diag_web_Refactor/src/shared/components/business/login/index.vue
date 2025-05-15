@@ -26,40 +26,41 @@
     age: null, // 数值类型可以保持 null
     hospital: '',
     position: '',
-    idNumber: ''
+    idNumber: '',
+    invitationCode: '',
   })
 
   // 登录流程
   const handleLogin = async () => {
-    try {
-      // console.log(query.value)
-      //   验证参数
-      await validate(query.value, loginSchema)
-    } catch (error) {
-      // console.error(error)
-      return
-    }
+    // try {
+    //   // console.log(query.value)
+    //   //   验证参数
+    //   await validate(query.value, loginSchema)
+    // } catch (error) {
+    //   // console.error(error)
+    //   return
+    // }
     try {
       //   登录
       await loginService(query.value).then((res: any) => {
         if (res.data.token === null) {
           return;
         }
-        console.log(res.data.token);
         ElMessage({
           message: res.data.message || "登录成功",
           type: 'success',
           duration: 2000
         })
         tokenStore.setToken(res.data.token)
-        console.log(tokenStore.token)
         userStore.setUser({
           userId: res.data.userId,
           userName: res.data.userName,
           hospital: res.data.hospital,
           gender: res.data.gender,
           age: res.data.age,
+          permission: res.data.permission > 4 ? 4 : res.data.permission,
         })
+
         loginShow.value = false
         handleClose()
         setTimeout(() => {
@@ -136,7 +137,7 @@
             </el-form>
           </div>
           <div class="login-content__register">
-            <a href="#" @click="handleRegisterShow">去注册</a>
+            <a href="#" @click="handleRegisterShow">注册为管理员</a>
           </div>
         </section>
       </transition>
@@ -144,7 +145,7 @@
         <section class="register-section" v-if="registerShow">
           <!--     注册表单-->
           <div class="register-content__title">
-            <span>医生注册</span>
+            <span>管理员注册</span>
           </div>
           <div class="register-content__text">
             <span>加入我们的医疗团队，为您提供更好的医疗服务</span>
@@ -217,6 +218,16 @@
                   </el-form-item>
                 </el-col>
               </el-row>
+              <el-row>
+                <el-col>
+                  <el-form-item label="管理员认证码" label-position="top">
+                    <el-input
+                      placeholder="请输入管理员认证码"
+                      v-model="registerQuery.invitationCode"
+                    ></el-input>
+                  </el-form-item>
+                </el-col>
+              </el-row>
               <el-form-item>
                 <el-button type="primary" @click="handleRegister">注册</el-button>
               </el-form-item>
@@ -235,5 +246,5 @@
 </template>
 
 <style scoped lang="scss">
-  @import 'styles';
+  @use 'styles';
 </style>

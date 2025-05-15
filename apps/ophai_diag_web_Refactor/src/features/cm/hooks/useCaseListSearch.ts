@@ -46,8 +46,10 @@ export const useCaseListSearch = () => {
       }
       // 映射数据
       caseListStore.setCaseList(getCaseListViewObj(res.data));
+      console.log(caseListStore.caseList)
       loading.value = false;
-    }).catch(e=>{
+    }).catch(e => {
+      console.log(e)
       ElMessage.error(e)
     }).finally(()=>{
       loading.value = false;

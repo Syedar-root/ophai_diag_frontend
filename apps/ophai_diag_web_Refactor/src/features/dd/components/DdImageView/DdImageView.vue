@@ -1,10 +1,12 @@
 <script setup lang="ts">
   import { Picture } from '@element-plus/icons-vue'
   import { useImageInfo } from '@/features/dd/hooks/useImageInfo.ts'
+  import {useViewCaseStore} from "@/features/dd/store/viewCaseStore.ts";
   import { currentEye } from '@/features/dd/store/currentEye.ts'
   import { computed, onMounted, ref, onUnmounted } from 'vue'
-  import {diseaseMap} from "@/features/dd/types";
+  import {diseaseMap, type Mark} from "@/features/dd/types";
   import {isEdit,editType,editedUrls} from "@/features/dd/store/isEdit.ts";
+  import { useRouter} from "vue-router";
 
   const { imageInfo } = useImageInfo()
   const emptyText = ref('请前往病例管理页面选择病例查看')
@@ -77,6 +79,7 @@
     if(imageInfo.value === null){
       return null;
     }
+    console.log(imageInfo.value.originImages.get(currentEye.value))
     return imageInfo.value.originImages.get(currentEye.value)
   }
 
@@ -86,7 +89,6 @@
       return null;
     }
     if(currentType.value === 'vessel'){
-      console.log(editedUrls.value)
       if (editedUrls.value.has(`${currentEye.value}_vessels`)) {
         return editedUrls.value.get(`${currentEye.value}_vessels`)
       }
@@ -166,15 +168,55 @@
     }
   })
 
+  function whichImageType(){
+    let result = 3
+    if(currentType.value === 'vessel'){
+      result = 3
+    }else if(currentType.value === 'disk'){
+      result = 5
+    }
+    if (currentEye.value === 'right'){
+      result += 1
+    }
+    return result
+  }
+
+  function getMarkId(imageType:number){
+    const index = (viewCaseStore.viewCase.marks as Mark[])?.findIndex((m) => m.imageType === imageType);
+    if ( index < 0 ){
+      return ""
+    }else {
+      return (viewCaseStore.viewCase.marks as Mark[])[index].id
+    }
+  }
+
+  const viewCaseStore = useViewCaseStore()
+  const router = useRouter()
   function handleOriginEdit(){
     if (imageInfo.value === null) return;
     editType.value = "origin"
-    isEdit.value = true;
+    router.push({
+      path:"/imageMark",
+      query:{
+        imageUrl: handleShowOriginImage(),
+        imageType: currentEye.value ==='left' ? 1 : 2,
+        markId: getMarkId(currentEye.value ==='left' ? 1 : 2)
+      }
+    })
+    // isEdit.value = true;
   }
   function handleOtherEdit(){
     if (imageInfo.value === null) return;
     editType.value = currentType.value
-    isEdit.value = true;
+    router.push({
+      path:"/imageMark",
+      query:{
+        imageUrl: handleShowImage(),
+        imageType: whichImageType(),
+        markId: getMarkId(whichImageType())
+      }
+    })
+    // isEdit.value = true;
   }
 
   onMounted(() => {
@@ -272,7 +314,7 @@
     <div class="image-view__edit origin">
       <el-button type="primary" @click="handleOriginEdit">前往标注</el-button>
     </div>
-    <div class="image-view__edit other">
+    <div class="image-view__edit other" v-if="currentType !=='heatmap'">
       <el-button type="primary" @click="handleOtherEdit">前往标注</el-button>
     </div>
   </div>

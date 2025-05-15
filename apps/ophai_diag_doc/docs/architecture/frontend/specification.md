@@ -93,7 +93,7 @@ src/
       store/        // 状态管理
       types/        // 类型定义
       index.ts      // 模块入口
-      router.ts     // 路由配置
+      route.ts     // 路由配置
       ...           // 其他业务相关文件
 
 ```

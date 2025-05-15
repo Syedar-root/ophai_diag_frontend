@@ -91,11 +91,10 @@ $title-clr--text: map.get(vars.$colors, neutral-2);
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  .el-form {
-    width: 80%;
-    height: auto;
 
-    :deep {
+    :deep(.el-form ) {
+      width: 80%;
+      height: auto;
       .el-form-item {
         margin-top: 1rem;
         &.password-opt .el-form-item__content {
@@ -146,11 +145,11 @@ $title-clr--text: map.get(vars.$colors, neutral-2);
         }
       }
     }
-  }
+
 }
 
 .login-content__register {
-  margin-top: -1rem;
+  margin-top: -0.5rem;
   width: 100%;
   flex-grow: 1;
   a {

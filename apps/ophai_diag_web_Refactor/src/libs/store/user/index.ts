@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
+import { Permission } from "@/shared/components/business/login/types.ts";
 
 export const useUserStore = defineStore(
   'user',
@@ -10,6 +11,7 @@ export const useUserStore = defineStore(
       hospital:"",
       gender:null,
       age:null,
+      permission: Permission.ADMIN as Permission
     })
 
     // 测试
@@ -29,6 +31,7 @@ export const useUserStore = defineStore(
         hospital:"",
         gender:null,
         age:null,
+        permission: Permission.PATIENT as Permission
       }
     }
     return { user, setUser, getUser , removeUser}

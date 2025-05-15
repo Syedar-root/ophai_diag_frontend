@@ -2,3 +2,10 @@
 node_modules/
 dist
 apps/*/dist
+# 环境变量文件
+.env
+.env.*
+!.env.example
+apps/*/.env
+apps/*/.env.*
+!apps/*/.env.example

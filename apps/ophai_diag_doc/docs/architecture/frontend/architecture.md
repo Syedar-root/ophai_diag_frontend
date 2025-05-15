@@ -24,7 +24,7 @@ features
 │   ├── components  # 功能模块组件
 │   ├── hooks       # 模块内可复用hooks
 │   ├── index.vue   # 模块子视图
-│   ├── router.ts   # 模块路由管理
+│   ├── route.ts   # 模块路由管理
 │   ├── store       # 模块内状态管理（可用于组件间通信）
 │   ├── styles.scss
 │   └── types       # 模块内类型定义

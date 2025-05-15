@@ -10,6 +10,7 @@ import {computed, ref} from 'vue';
 import {Delete} from "@element-plus/icons-vue";
 import {useMapChartData} from "@/features/dashboard/hooks/useMapChartData.ts";
 
+
 const genderPieChartOptions = computed(()=>{
   return usePieChart(genderPieChartData.value.get(diseaseType1.value),`${diseaseType1.value}性别分布`);
 });
@@ -17,7 +18,6 @@ const agePieChartOptions = computed(()=>{
   return usePieChart(agePieChartData.value.get(diseaseType2.value),`${diseaseType2.value}年龄分布`);
 })
 let lineChartOptions = computed(()=>{
-  console.log(lineChartData.value)
   return useLineChart(lineChartData.value || null);
 });
 const dashboardChartOptions = computed(()=>{
@@ -53,14 +53,20 @@ onMounted(async ()=>{
 <template>
   <div class="board-container">
     <div class="board-container__left left-content" ref="leftContentRef">
-      <div class="left-content__header">
+      <div
+          class="left-content__header"
+      >
         <count :patients-per-day="totalPatientData" :undiagnosed="todayReadyPatientData" :diagnosed="todayFinishedPatientData"></count>
-        <div class="dashboard">
+        <div
+            class="dashboard"
+        >
           <v-chart :option="dashboardChartOptions" autoresize></v-chart>
         </div>
       </div>
       <div class="left-content__main">
-        <div class="1 left-content__main-left">
+        <div
+            class="1 left-content__main-left"
+        >
           <v-chart :option="lineChartOptions" autoresize></v-chart>
         </div>
         <div class="left-content__main-right">
@@ -92,7 +98,8 @@ onMounted(async ()=>{
         </div>
       </div>
     </div>
-    <div class="board-container__right right-content">
+    <div class="board-container__right right-content"
+    >
       <el-calendar class="calendar" />
       <div class="plan">
         <el-input placeholder="输入后回车可创建待办" v-model="input" @keyup.enter.native="handleAddList"/>

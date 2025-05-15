@@ -14,7 +14,7 @@
 .board-container{
   &__left{
     position: relative;
-    width: 70%;
+    flex: 1;
     height: 100%;
   }
   &__right{

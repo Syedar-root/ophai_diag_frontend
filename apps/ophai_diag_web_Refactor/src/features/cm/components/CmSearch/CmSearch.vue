@@ -4,9 +4,11 @@
   import {useSearchQueryStore} from '@/features/cm/store/searchQueryStore.ts'
   import {useRouter} from 'vue-router'
   import { diagStatus, diseaseType} from '@/features/cm/types'
+  import { debounce } from 'lodash-es'
 
   const searchQueryStore = useSearchQueryStore()
   const {diseaseNameList,handleSearch} = useCaseListSearch()
+  const deboundedHandleSearch = debounce(handleSearch, 300)
   const router = useRouter()
   function handleAddCase() {
     router.push('/fu');
@@ -41,19 +43,26 @@
                      :reserve-keyword="false"
                      placeholder="请选择要查询的内容"
                      clearable
-                     @blur="handleSearch">
+                     @change="deboundedHandleSearch"
+          >
             <el-option
               v-for="item in diseaseType"
               :key="item.value"
               :label="item.label"
-              :value="item.label"></el-option>
+              :value="item.label"
+            ></el-option>
           </el-select>
         </div>
       </el-col>
       <el-col :span="4">
         <div class="select-area">
           <label>诊断状态</label>
-          <el-select v-model="searchQueryStore.searchQuery.diagStatus" placeholder="请选择要查询的内容" clearable @blur="handleSearch">
+          <el-select
+              v-model="searchQueryStore.searchQuery.diagStatus"
+              placeholder="请选择要查询的内容"
+              clearable
+              @change="deboundedHandleSearch"
+          >
             <el-option
               v-for="item in diagStatus"
               :key="item.value"

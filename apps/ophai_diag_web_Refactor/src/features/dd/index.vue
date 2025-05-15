@@ -1,23 +1,28 @@
 <template>
+  <keep-alive>
     <div class="dd-container" v-loading="loading">
-        <div v-if="!isEmpty && !isEdit" class="dd-container__left">
-          <DdPatientInfo></DdPatientInfo>
-          <DdImageInfo></DdImageInfo>
-        </div>
-        <div v-if="!isEmpty && !isEdit" class="dd-container__center">
-          <DdImageView></DdImageView>
-          <DdAiDiagInfo></DdAiDiagInfo>
-        </div>
-        <div v-if="!isEmpty && !isEdit" class="dd-container__right">
-          <DdReportInfo></DdReportInfo>
-        </div>
+
+      <div v-if="!isEmpty && !isEdit" class="dd-container__left">
+        <DdPatientInfo :class="{
+          'blur': patientInfoShow === false,
+        }"></DdPatientInfo>
+        <DdImageInfo></DdImageInfo>
+      </div>
+      <div v-if="!isEmpty && !isEdit" class="dd-container__center">
+        <DdImageView></DdImageView>
+        <DdAiDiagInfo></DdAiDiagInfo>
+      </div>
+      <div v-if="!isEmpty && !isEdit" class="dd-container__right">
+        <DdReportInfo></DdReportInfo>
+      </div>
       <DdImageEditor v-if="!isEmpty && isEdit"></DdImageEditor>
       <el-empty v-if="isEmpty" class="empty-container" :description="emptyText" />
     </div>
+  </keep-alive>
 </template>
 
 <script setup lang="ts">
-  import { computed, ref, watch,onMounted } from 'vue'
+  import { computed, ref,onMounted } from 'vue'
   import { useRoute } from 'vue-router'
   import { getCaseService } from './api'
   import {useViewCaseStore} from "@/features/dd/store/viewCaseStore.ts";
@@ -29,7 +34,12 @@
   import DdReportInfo from '@/features/dd/components/DdReportInfo/DdReportInfo.vue'
   import DdImageEditor from "@/features/dd/components/DdImageEditor/DdImageEditor.vue";
   import {isEdit} from "@/features/dd/store/isEdit.ts";
+  import {useUserStore} from "@/libs/store/user";
 
+  const userStore = useUserStore();
+  const patientInfoShow = computed(() => {
+    return userStore.user.permission === 3;
+  })
   const loading = ref<boolean>(false);
   const emptyText = ref('请前往病例管理页面选择病例查看')
   const viewCaseStore = useViewCaseStore();
@@ -41,7 +51,6 @@
   onBeforeMount(() => {
     if (route.params.id !== ":id") {
       getCaseService(route.params.id).then(res => {
-        console.log(res.data)
         viewCaseStore.setViewCase(res.data)
         tempIdStore.setTempId(res.data.caseId)
       })
@@ -56,25 +65,26 @@
       })
     }
   })
-
-  watch(
-    () => route.params.id,
-    (newVal) => {
-      if (newVal) {
-        loading.value = true;
-        getCaseService(newVal).then(res => {
-          console.log(newVal)
-          console.log(res)
-          loading.value = false;
-          viewCaseStore.setViewCase(res.data)
-        })
-      }
-      console.log(viewCaseStore.viewCase)
-    }// 立即执行一次以处理初始路由
-  )
+  // //
+  // watch(
+  //   () => route.params.id,
+  //   (newVal) => {
+  //     if (newVal) {
+  //       loading.value = true;
+  //       getCaseService(newVal).then(res => {
+  //         loading.value = false;
+  //         viewCaseStore.setViewCase(res.data)
+  //       })
+  //     }
+  //   }
+  // )
 
 </script>
 
 <style scoped lang="scss">
   @use 'styles';
+  .blur{
+   filter: blur(10px);
+    pointer-events: none;
+  }
 </style>

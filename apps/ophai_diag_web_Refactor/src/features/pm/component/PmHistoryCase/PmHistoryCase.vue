@@ -6,23 +6,7 @@ import {formatDate} from "@/libs/utils/formatDate.ts";
 import {useRouter} from "vue-router";
 
 const router = useRouter();
-const historyCase = ref([
-  {
-    time: '2022-01-01',
-    diseaseNames: '糖尿病',
-    caseId: '123'
-  },
-  {
-    time: '2022-01-02',
-    diseaseNames: '高血压',
-    caseId: '123'
-  },
-  {
-    time: '2022-01-03',
-    diseaseNames: '糖尿病',
-    caseId: '123'
-  }
-])
+const historyCase = ref<{caseId: string, time: string, diseaseNames: string[]} []>([])
 
 const emit = defineEmits(['close'])
 const handleClose = () => {
@@ -37,12 +21,11 @@ onMounted(() => {
   loading.value = true;
   getPatientHistoryCase({patientId:props.id}).then((res) => {
     loading.value = false;
-    console.log( '历史病例',res)
     historyCase.value = res.data.items.map((item: any) => {
       return {
         caseId:item.caseId,
         time: formatDate(item.createDate),
-        diseaseNames: item.diseaseName
+        diseaseNames: item.diseaseName as string[]
       }
     })
   })
@@ -57,7 +40,7 @@ onMounted(() => {
         历史病例
       </label>
       <div class="pm-history-case__content history-case">
-        <div class="history-case-item" v-for="item in historyCase" @click="router.push(`/dd/${item.caseId}`)" >
+        <div class="history-case-item" v-if="historyCase.length !== 0" v-for="item in historyCase" @click="router.push(`/dd/${item.caseId}`)" >
           <div class="history-case-item__description">
             <label class="time">{{item.time}}</label>
             <label class="disease"><el-tag v-for="disease in item.diseaseNames">{{disease || "不详"}}</el-tag></label>
@@ -68,6 +51,7 @@ onMounted(() => {
             </el-icon>
           </div>
         </div>
+        <el-empty v-else :description=" '暂无历史病例' "></el-empty>
       </div>
     </section>
   </div>

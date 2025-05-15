@@ -13,6 +13,7 @@ import ElementPlus from "unplugin-element-plus/vite";
 const pathSrc = path.resolve(__dirname, 'src')
 
 export default mergeConfig(baseConfig,{
+  assetsInclude: ['**/*.onnx'], // 添加这一行
   resolve: {
     alias: {
       '@': pathSrc,
@@ -60,6 +61,7 @@ export default mergeConfig(baseConfig,{
     }),
     ElementPlus({
       useSource: true,
+      defaultLocale: 'zh-cn',
     }),
 
     Inspect(),

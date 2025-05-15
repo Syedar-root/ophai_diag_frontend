@@ -77,9 +77,9 @@ export const ddRoutes: RouteRecordRaw[] = [
 ```javascript
 // 主路由
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import {fuRoutes} from '@/features/fu/router.ts'
-import {cmRoutes} from '@/features/cm/router.ts'
-import {ddRoutes} from '@/features/dd/router.ts'
+import {fuRoutes} from '@/features/fu/route.ts'
+import {cmRoutes} from '@/features/cm/route.ts'
+import {ddRoutes} from '@/features/dd/route.ts'
 const routes: RouteRecordRaw[] = [
   {
     path: '/',

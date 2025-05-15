@@ -38,4 +38,4 @@ observer.observe({ type: 'paint', buffered: true });
 // 注册自定义指令
 setupDirectives(app)
 // app.directive('route',routeDirective);
-app.use(router).use(pinia).mount('#app')
+app.use(pinia).use(router).mount('#app')

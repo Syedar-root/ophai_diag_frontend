@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-
 onMounted(() => {
   performance.mark('vue-app-mounted');
   let app = document.getElementById('app')
@@ -13,11 +12,12 @@ onMounted(() => {
   app.style.marginRight = '0'
   app.style.overflow = 'hidden'
   app.style.position = 'absolute'
+
 })
 </script>
 
 <template>
-  <router-view></router-view>
+    <router-view></router-view>
 </template>
 
 <style scoped></style>

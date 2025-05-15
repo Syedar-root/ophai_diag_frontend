@@ -30,7 +30,7 @@ ophai_diag_web_Refactor
 │   │   │   ├── hooks
 │   │   │   │   └── useCaseListSearch.ts
 │   │   │   ├── index.vue
-│   │   │   ├── router.ts
+│   │   │   ├── route.ts
 │   │   │   ├── store
 │   │   │   │   ├── caseListStore.ts
 │   │   │   │   └── searchPatientQueryStore.ts
@@ -63,7 +63,7 @@ ophai_diag_web_Refactor
 │   │   │   │   ├── useReportInfo.ts
 │   │   │   │   └── useUpdateCase.ts
 │   │   │   ├── index.vue
-│   │   │   ├── router.ts
+│   │   │   ├── route.ts
 │   │   │   ├── store
 │   │   │   │   ├── currentEye.ts
 │   │   │   │   └── viewCaseStore.ts
@@ -97,7 +97,7 @@ ophai_diag_web_Refactor
 │   │       │   ├── useFileValidator.ts
 │   │       │   └── useUploadMode.ts
 │   │       ├── index.vue
-│   │       ├── router.ts
+│   │       ├── route.ts
 │   │       ├── store
 │   │       │   └── FileStore.ts
 │   │       ├── styles

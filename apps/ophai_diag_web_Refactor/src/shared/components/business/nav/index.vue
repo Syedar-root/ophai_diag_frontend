@@ -14,7 +14,7 @@
   const tokenStore = useTokenStore()
 
   const navRoutes = computed(() => {
-    return router.getRoutes().find(route=>route.path === '/')?.children.sort((a,b)=>{
+    return router.getRoutes().find(route=>route.path === '/index')?.children.filter(item=> item?.meta.navOrder != -1).sort((a,b)=>{
       let aOrder = a.meta?.navOrder as number;
       let bOrder = b?.meta?.navOrder as number;
       return aOrder > bOrder ? 1 : -1;
@@ -23,6 +23,7 @@
 
   onMounted(() => {
     console.log(route.path)
+    console.log(navRoutes.value)
   })
 
   function handleLoginOut() {
@@ -82,5 +83,5 @@
 </template>
 
 <style scoped lang="scss">
-  @import 'styles';
+  @use 'styles';
 </style>

@@ -7,8 +7,8 @@ export const uploadCaseService = (query: any):Promise<ResponseData> => {
     method: 'post',
     data: query,
     // noToken: true,
-    // headers: {
-    //   'Content-Type': 'multipart/form-data',
-    // }
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    }
   } as CustomAxiosRequestConfig)
 }

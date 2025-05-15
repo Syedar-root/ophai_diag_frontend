@@ -5,6 +5,7 @@ import path from "path";
 // 基础配置（通用插件、别名、代理等）
 export default defineConfig({
   plugins: [Vue()],
+  assetsInclude: ['**/*.onnx'], // 添加这一行
   resolve: {
 	alias: {
 	  "@": path.resolve(__dirname,"src"), // 通用别名

@@ -24,7 +24,8 @@ const request: AxiosInstance = axios.create({
 // 修改类型定义
 export interface CustomAxiosRequestConfig extends AxiosRequestConfig {
   noToken?: boolean
-  headers?: AxiosHeaders | Record<string, string | number | boolean>
+  headers?: AxiosHeaders | Record<string, string | number | boolean>,
+  timeout?: number,
 }
 // 请求拦截器
 request.interceptors.request.use(
@@ -55,6 +56,13 @@ request.interceptors.request.use(
 // 响应拦截器
 request.interceptors.response.use(
   (response: AxiosResponse<any>) => {
+    console.log(response.headers)
+    if (response.headers['content-type'].includes('application/zip')) {
+      // 处理二进制文件响应
+      const blob = new Blob([response.data], { type: 'application/zip' })
+      const url = window.URL.createObjectURL(blob)
+      return Promise.resolve(url)
+    }
     // 在这里可以对响应数据进行处理
     if (response.data.code !== 200) {
       ElMessage({
@@ -65,7 +73,6 @@ request.interceptors.response.use(
       return Promise.reject(response.data)
     }
     return response.data
-
   },
   (error: AxiosError<ResponseData>) => {
     if (error.response) {

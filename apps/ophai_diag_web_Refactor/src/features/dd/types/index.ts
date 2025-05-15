@@ -63,10 +63,16 @@ export type NormalDiag = {
   doctorName: string | null,
   docSuggestions: string,
 }
+export interface Mark{
+  id?:string,
+  data:string,
+  imageType:number
+}
 export interface UpdateCaseQuery {
   caseId: string,
   normalDiag: NormalDiag,
   diseaseName: string[],
+  marks: Mark[],
 }
 
 // export function getViewObj(res: any): any {

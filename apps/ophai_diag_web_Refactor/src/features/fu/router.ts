@@ -1,4 +1,5 @@
 import {type RouteRecordRaw} from 'vue-router'
+import {Permission} from "@/shared/components/business/login/types.ts";
 
 export default [
   // {
@@ -12,7 +13,8 @@ export default [
     component: () => import('./index.vue'),
     meta: {
       title: '快速上传',
-      navOrder: 1
+      navOrder: 1,
+      permission: [ Permission.DOCTOR, Permission.ADMIN] as Permission[]
     }
   },
 ] as RouteRecordRaw[]

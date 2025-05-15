@@ -75,5 +75,9 @@ export const registerSchema = Joi.object({
       'string.pattern.base': '请输入有效的身份证号',
       'string.empty': '身份证号不能为空',
       'any.required': '必须填写身份证号'
-    })
+    }),
+
+  invitationCode: Joi.string()
+      .trim()
+      .required()
 })

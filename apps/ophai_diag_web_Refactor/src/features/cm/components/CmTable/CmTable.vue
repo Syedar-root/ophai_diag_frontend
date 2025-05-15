@@ -56,12 +56,12 @@ import { Download, Printer, View} from '@element-plus/icons-vue'
       <el-table-column prop="responsibleDoctor" label="责任医师" width="auto"></el-table-column>
       <el-table-column prop="createDate" label="创建时间" width="auto">
         <template #default="scope">
-          {{ formatDate(caseListStore.caseList.items[scope.$index].createDate, true) }}
+          {{ new Date(scope.row.createDate).toLocaleDateString() }}
         </template>
       </el-table-column>
       <el-table-column prop="updateDate" label="更新时间" width="auto">
         <template #default="scope">
-          {{ formatDate(caseListStore.caseList.items[scope.$index].updateDate, true) }}
+          {{ new Date(scope.row.updateDate).toLocaleDateString() }}
         </template>
       </el-table-column>
       <el-table-column label="操作" width="auto">
