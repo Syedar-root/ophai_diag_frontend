@@ -4,7 +4,7 @@
   import logo from '@/shared/assets/logo/logo.svg?url'
   import type { userDto } from '@/shared/components/business/login/types.ts'
   import { loginService, registerService } from '@/libs/api/login'
-  import { validate, loginSchema, registerSchema } from '@/libs/utils/validate'
+  import { validate, registerSchema } from '@/libs/utils/validate'
   import { useTokenStore } from '@/libs/store/token'
   import {useUserStore} from "@/libs/store/user";
   import {ElMessage} from "element-plus";
@@ -82,8 +82,8 @@
       await registerService(registerQuery.value).then((res) => {
         registerShow.value = false
         loginShow.value = true
-        query.value.userId = res.data.userId;
-        alert('注册成功,请记住您的账号：' + res.data.userId);
+        query.value.userId = res.data.idNumber;
+        alert('注册成功,请使用身份证号登录');
       })
     } catch (error) {
       console.error(error)

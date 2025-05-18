@@ -9,7 +9,7 @@ export default[
 	meta: {
 	  title: '患者管理',
 	  navOrder: 3,
-	  permission: [Permission.SCIENTIST, Permission.DOCTOR, Permission.ADMIN] as Permission[]
+	  permission: [ Permission.DOCTOR, Permission.ADMIN] as Permission[]
 	}
   },
 ] as RouteRecordRaw[]

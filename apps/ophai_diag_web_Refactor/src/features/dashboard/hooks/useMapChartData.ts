@@ -75,11 +75,12 @@ export const useMapChartData = () => {
  async function initMapChartData() {
 	return getChartDataService().then((res) => {
 	  if (res.code === 200) {
+		console.log(res)
 		mapLineChartData(res.data);
 		mapGenderPieChartData(res.data);
 		mapAgePieChartData(res.data);
-		todayReadyPatientData.value = res.data.todayReadyPatientData + Math.round(Math.random() * 20);
-		todayFinishedPatientData.value = res.data.todayFinishedPatientData + Math.round(Math.random() * 20);
+		todayReadyPatientData.value = res.data.todayReadyPatientData;
+		todayFinishedPatientData.value = res.data.todayFinishedPatientData;
 		totalPatientData.value = res.data.totalPatientData;
 	  }
 	  return res.data;

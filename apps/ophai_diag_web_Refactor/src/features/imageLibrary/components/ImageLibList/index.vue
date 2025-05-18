@@ -5,20 +5,38 @@
   const imageLibraryStore = useImageLibraryStore();
   const router = useRouter();
   const handleImageClick = (caseId:string) => {
+    let aiInfo = imageLibraryStore.imageLibrary.items.find(item => item.caseId === caseId)?.aiCaseInfo;
+    if (!aiInfo) {
+      ElMessage.warning("AI正在诊断中，请耐心等待")
+      return;
+    }
     router.push({
       path: '/dd/' + caseId,
     })
   }
-  onMounted(()=>{
 
+  const imageItems = computed(()=>{
+    return imageLibraryStore.imageLibrary.items;
+  })
+
+  const columns = ref(6)
+  onMounted(()=>{
+    window.addEventListener('resize',()=>{
+      columns.value = Math.floor(window.innerWidth / 250);
+    })
   })
 </script>
 
 
 <template>
-  <div class="imageLib-list-container"  v-if="imageLibraryStore.imageLibrary.items.length > 0">
+  <div class="imageLib-list-container"
+       v-if="imageItems.length > 0"
+       :style="{
+         '--columns': columns
+       }"
+  >
     <el-card
-        v-for="item in imageLibraryStore.imageLibrary.items"
+        v-for="item in imageItems"
         shadow="hover"
         @click="handleImageClick(item.caseId)"
     >
@@ -26,8 +44,8 @@
         <label>{{item.caseId}}</label>
       </template>
       <div class="image">
-        <img :src="item.originImageData.leftImage" />
-        <img :src="item.originImageData.rightImage" />
+        <img  :src="item.originImageData?.leftImage" />
+        <img  :src="item.originImageData?.rightImage" />
       </div>
     </el-card>
   </div>
@@ -39,9 +57,9 @@
 @use '@/shared/assets/styles/vars' as vars;
 .imageLib-list-container{
   width: 100%;
-  height: 100%;
+  height: auto;
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(var(--columns), 1fr);
   grid-template-rows: auto 1fr;
   gap: map.get(vars.$space,'l');
   label{

@@ -7,6 +7,8 @@
   import {computed} from "vue";
   import {useUserStore} from "@/libs/store/user";
   import {useTokenStore} from "@/libs/store/token";
+  import {useGetUserPermission} from "@/libs/hooks/useGetUserPermission.ts";
+  import { Permission } from "@/shared/components/business/login/types.ts";
 
   const route = useRoute()
   const router = useRouter()
@@ -14,24 +16,34 @@
   const tokenStore = useTokenStore()
 
   const navRoutes = computed(() => {
-    return router.getRoutes().find(route=>route.path === '/index')?.children.filter(item=> item?.meta.navOrder != -1).sort((a,b)=>{
+    return router.getRoutes().find(route=>route.path === '/index')?.children.filter(item=> item.meta?.navOrder != -1).sort((a,b)=>{
       let aOrder = a.meta?.navOrder as number;
       let bOrder = b?.meta?.navOrder as number;
       return aOrder > bOrder ? 1 : -1;
-    })
+    }).filter(item => (item.meta?.permission as Permission[]).includes( useGetUserPermission() as Permission))
   })
 
   onMounted(() => {
-    console.log(route.path)
-    console.log(navRoutes.value)
+    // console.log(route.path)
+    // console.log(navRoutes.value)
   })
 
   function handleLoginOut() {
     tokenStore.removeToken()
     userStore.removeUser()
-    console.log(tokenStore.token)
+    // console.log(tokenStore.token)
   }
 
+  function getPosition(){
+    let permission = useGetUserPermission() as Permission;
+    if(permission === Permission.DOCTOR){
+      return "主任医师"
+    }else if(permission === Permission.SCIENTIST){
+      return "数据研究员"
+    }else if(permission === Permission.ADMIN){
+      return "管理员"
+    }
+  }
 
   const toDocs = () => {
     window.open(import.meta.env.VITE_DOCS_URL, '_blank')
@@ -65,7 +77,7 @@
       <el-dropdown>
         <div class="user-item">
           <div class="user-item__info">
-            <div class="user-item__info__name">{{userStore.user.userName || "王德民"}} 主任医师</div>
+            <div class="user-item__info__name">{{userStore.user.userName || "王德民"}} {{getPosition()}}</div>
             <div class="user-item__info__department">{{userStore.user.hospital || "眼科中心"}}</div>
           </div>
         </div>

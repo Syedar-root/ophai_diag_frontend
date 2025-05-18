@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ArrowRight } from '@element-plus/icons-vue'
-import {formatDate} from '@/libs/utils/formatDate.ts';
 import {usePatientInfo} from '@/features/dd/hooks/usePatientInfo.ts'
 
 const { patientInfo } = usePatientInfo()
@@ -8,6 +7,11 @@ const { patientInfo } = usePatientInfo()
 
 const emptyText = ref('加载失败，请稍后重试')
 const empty = ref(false)
+
+function formatDate(date: string) {
+  const d = new Date(date)
+  return d.toLocaleDateString().split('/').join('-')
+}
 
 watch(
   () => patientInfo.value,

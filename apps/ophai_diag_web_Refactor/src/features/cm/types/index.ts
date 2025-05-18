@@ -47,11 +47,11 @@ export function getCaseListViewObj(res: CaseListResponse): CaseListViewObj {
       diagStatus: item.diagStatus,
       patientId: item.patientInfo?.patientId || "不详",
       patientName: item.patientInfo?.name ? item.patientInfo.name : "不详",
-      gender: item.patientInfo?.gender || "不详",
+      gender: item.patientInfo?.gender,
       age: item.patientInfo?.age || "不详",
       createDate: item.createDate,
       updateDate: item.updateDate,
-      responsibleDoctor: item.responsibleDoctor?item.responsibleDoctor:"不详"
+      responsibleDoctor: item.responsibleDoctor? item.responsibleDoctor:"不详"
     }
   })
 

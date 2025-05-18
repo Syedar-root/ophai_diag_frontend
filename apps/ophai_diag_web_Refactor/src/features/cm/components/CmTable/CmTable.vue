@@ -2,7 +2,7 @@
 import { Download, Printer, View} from '@element-plus/icons-vue'
   import {useCaseListStore} from '@/features/cm/store/caseListStore.ts'
   import {diagStatus,gender} from '@/features/cm/types'
-  import {formatDate} from '@/libs/utils/formatDate.ts'
+  // import {formatDate} from '@/libs/utils/formatDate.ts'
   import {useRouter} from 'vue-router'
 
   const caseListStore = useCaseListStore()
@@ -24,7 +24,7 @@ import { Download, Printer, View} from '@element-plus/icons-vue'
   }
 
   onMounted(() => {
-    console.log(caseListStore.caseList.items)
+    // console.log(caseListStore.caseList.items)
   })
 
 </script>

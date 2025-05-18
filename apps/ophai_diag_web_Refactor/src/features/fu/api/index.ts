@@ -9,6 +9,7 @@ export const uploadCaseService = (query: any):Promise<ResponseData> => {
     // noToken: true,
     headers: {
       'Content-Type': 'multipart/form-data',
-    }
+    },
+    timeout: Infinity,
   } as CustomAxiosRequestConfig)
 }

@@ -155,7 +155,6 @@ $title-clr--text: map.get(vars.$colors, neutral-2);
   a {
     font-size: map.get(vars.$font-size, s);
     color: map.get(vars.$colors, neutral-5);
-    underline: none;
   }
 }
 
@@ -229,7 +228,6 @@ $title-clr--text: map.get(vars.$colors, neutral-2);
   a {
     font-size: map.get(vars.$font-size, s);
     color: $title-clr--text;
-    underline: none;
 
     span {
       color: map.get(vars.$colors, primary);

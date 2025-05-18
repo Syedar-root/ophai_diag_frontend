@@ -9,7 +9,7 @@ export default [
     meta: {
       title: '病例库',
       navOrder: 4,
-      permission: [Permission.SCIENTIST, Permission.DOCTOR, Permission.ADMIN] as Permission[]
+      permission: [ Permission.DOCTOR, Permission.ADMIN] as Permission[]
     }
   },
 ] as RouteRecordRaw[]

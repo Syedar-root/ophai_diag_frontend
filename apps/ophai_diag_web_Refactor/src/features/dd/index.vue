@@ -35,13 +35,14 @@
   import DdImageEditor from "@/features/dd/components/DdImageEditor/DdImageEditor.vue";
   import {isEdit} from "@/features/dd/store/isEdit.ts";
   import {useUserStore} from "@/libs/store/user";
+  import {Permission} from "@/shared/components/business/login/types.ts";
 
   const userStore = useUserStore();
   const patientInfoShow = computed(() => {
-    return userStore.user.permission === 3;
+    return userStore.user.permission === Permission.DOCTOR || userStore.user.permission === Permission.ADMIN;
   })
   const loading = ref<boolean>(false);
-  const emptyText = ref('请前往病例管理页面选择病例查看')
+  const emptyText = ref('请前往病例管理或影像库选择病例查看')
   const viewCaseStore = useViewCaseStore();
   const tempIdStore = useTempIdStore();
   const route = useRoute()
@@ -50,18 +51,36 @@
   })
   onBeforeMount(() => {
     if (route.params.id !== ":id") {
+      loading.value = true;
       getCaseService(route.params.id).then(res => {
+        console.log(res)
+        if (res.code === 403){
+          emptyText.value = '您没有权限查看该病例'
+          viewCaseStore.setViewCase({});
+          return
+        }
         viewCaseStore.setViewCase(res.data)
         tempIdStore.setTempId(res.data.caseId)
+      }).finally(() => {
+        loading.value = false;
       })
     }
   })
 
   onMounted(() => {
     if(route.params.id === ":id" && tempIdStore.tempId !== "") {
+      loading.value = true;
       getCaseService(tempIdStore.tempId).then(res => {
+        console.log(res)
+        if (res.code === 403){
+          emptyText.value = '您没有权限查看该病例'
+          viewCaseStore.setViewCase({});
+          return
+        }
         viewCaseStore.setViewCase(res.data)
         tempIdStore.setTempId(res.data.caseId)
+      }).finally(() => {
+        loading.value = false;
       })
     }
   })

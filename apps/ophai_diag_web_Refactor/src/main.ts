@@ -1,13 +1,15 @@
 import { createApp } from 'vue'
 import './style.css'
-import '@/shared/assets/styles/index.css'
-import router from '@/libs/router/index.ts'
+
 import { setupDirectives } from '@/libs/utils/custom_directive'
 import 'element-plus/dist/index.css'
+import '@/shared/assets/styles/index.css'
+import 'element-plus/es/hooks/use-locale/index';
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import App from './App.vue'
 import { initPerformanceMonitor } from '@/libs/utils/performance'
+
 
 const pinia = createPinia()
 pinia.use(piniaPluginPersistedstate)
@@ -38,4 +40,7 @@ observer.observe({ type: 'paint', buffered: true });
 // 注册自定义指令
 setupDirectives(app)
 // app.directive('route',routeDirective);
-app.use(pinia).use(router).mount('#app')
+app.use(pinia)
+import router from '@/libs/router/index.ts'
+app.use(router)
+app.mount('#app')

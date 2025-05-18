@@ -9,7 +9,7 @@
   import { Icon } from '@iconify/vue'
   import Tag from './components/Tag/Tag.vue'
   import { deepCloneShape, deepCloneShapes } from './hooks/deepcloneShape'
-  import { useRoute } from 'vue-router'
+  import { useRoute, useRouter } from 'vue-router'
   import { useUpdateCase } from '@/features/dd/hooks/useUpdateCase.ts'
   import { getCaseService } from "@/features/dd/api";
   import type { Mark } from '@/features/dd/types'
@@ -23,14 +23,14 @@
   let base: CtxInstance
   let draw: CtxInstance
   let temp: CtxInstance
-  let CURRENT_SHAPE = ref<ShapeType>('pen')
+  let CURRENT_SHAPE = ref<ShapeType>('rectangle')
   let CURRENT_OPT = ref<string>('draw')
   let COLOR = ref<string>('#000000')
   let LINE_WIDTH = ref<number>(2)
   let shapeList = ref<Shape[]>([])
   let historyList = ref<Shape[][]>([])
   let historyIndex = ref<number>(-1)
-  let prevTagList = ref<string[]>(['测试1', '测试2', '测试3', '测试4'])
+  let prevTagList = ref<string[]>(['病灶1', '病灶2', '病灶3', '病灶4'])
   let tempTag = ref<string>(prevTagList.value[0])
   let chooseTagVisible = ref<boolean>(false)
 
@@ -510,6 +510,7 @@
   import {useViewCaseStore} from "@/features/dd/store/viewCaseStore.ts";
   import {useTempIdStore} from "@/features/dd/store/tempId.ts";
   import {deserializationShapes} from "./hooks/deepcloneShape";
+  import {Back} from "@element-plus/icons-vue";
 
   const viewCaseStore = useViewCaseStore()
   const tempIdStore = useTempIdStore()
@@ -525,10 +526,15 @@
         viewCaseStore.setViewCase(res.data)
         tempIdStore.setTempId(res.data.caseId)
         markId.value = (res.data.marks as Mark[]).find(item => item.imageType === imageType.value)?.id || ''
-        console.log(res)
-        console.log(markId.value)
+        // console.log(res)
+        // console.log(markId.value)
       })
     }))
+  }
+
+  const router = useRouter()
+  function handleBack(){
+    router.back();
   }
 
   const route = useRoute()
@@ -539,9 +545,9 @@
     imageType.value = parseInt(route.query.imageType as string)
     markId.value = route.query.markId as string
     if (markId.value) {
-      console.log(viewCaseStore.viewCase.marks)
-      shapeList.value = deserializationShapes(JSON.parse(viewCaseStore.viewCase.marks.find(item => item.id === markId.value)?.data || '[]'));
-      console.log(shapeList.value)
+      // console.log(viewCaseStore.viewCase.marks)
+      shapeList.value = deserializationShapes(JSON.parse((viewCaseStore.viewCase.marks as Mark[]).find(item => item.id === markId.value)?.data || '[]'));
+      // console.log(shapeList.value)
     }
   })
 
@@ -564,6 +570,9 @@
 <template>
   <div class="image-mark-container">
     <aside class="image-mark-toolbar">
+      <el-icon @click="handleBack" class="back-icon" size="30">
+        <Back></Back>
+      </el-icon>
       <section class="toolbar">
         <header>工具栏</header>
         <el-form class="form">

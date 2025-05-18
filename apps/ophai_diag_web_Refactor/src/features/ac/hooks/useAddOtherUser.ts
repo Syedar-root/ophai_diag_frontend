@@ -15,10 +15,10 @@ export const useAddOtherUser = () => {
 	position: "",
 	userName: "",
   });
-  function handleAddOtherUser() {
-	if (!addOtherUserQuery.value) return;
-	console.log(addOtherUserQuery.value);
-	addOther(addOtherUserQuery.value).then(()=>{
+
+  async function handleAddOtherUser() {
+	if (!addOtherUserQuery.value) return  Promise.reject("请输入用户信息");
+	return addOther(addOtherUserQuery.value).then(()=>{
 	  const { handleSearchNonAdminList } = useSearchNonAdminList()
 	  handleSearchNonAdminList();
 	  ElMessage.success("添加成功")

@@ -5,11 +5,11 @@
   import { useExportImage, useExportImageExcel,loading} from "@/features/imageLibrary/hooks/useExportImage.ts";
 
   const downloadImageText = ref('下载当页图片')
-  const dateRange = ref<[string, string]>(["",""])
+  const dateRange = ref<string[] | null[]>([null, null]);
   const ageRange = ref<[number, number]>([0, 100])
   const handleSearch = () => {
-    searchImageLibQuery.value.startDate = dateRange.value[0]
-    searchImageLibQuery.value.endDate = dateRange.value[1]
+    searchImageLibQuery.value.startDate = dateRange.value ? dateRange.value[0] : null;
+    searchImageLibQuery.value.endDate = dateRange.value ? dateRange.value[1] : null;
     if (ageRange.value[0] > ageRange.value[1]) {
       ElMessage.error('年龄范围错误')
       return
@@ -21,6 +21,7 @@
   const debounceSearch = debounce(handleSearch, 500)
   const handleReset = () => {
     searchImageLibQuery.value = {
+      ...searchImageLibQuery.value,
       diagStatus: -1,
       diseaseName: '全部',
       gender: -1,
@@ -29,7 +30,6 @@
       StartAge: 0,
       EndAge: 100,
       pageNum: 1,
-      pageSize: 100
     }
   }
   const handleDownloadImages = () => {
@@ -83,6 +83,7 @@
               start-placeholder="开始日期"
               end-placeholder="结束日期"
               format="YYYY-MM-DD"
+              value-format="YYYY-MM-DDTHH:mm:ss"
           />
         </el-form-item></el-col>
       </el-row>

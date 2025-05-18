@@ -19,9 +19,27 @@ const openUpdateForm = (rowItem: Item) => {
   updateFormVisibility.value = true;
 }
 const handleAddOtherUserSubmit = () => {
-  handleAddOtherUser();
-  addOtherFormVisibility.value = false;
+  handleAddOtherUser().then(()=>{
+   handleAddOtherUserReset()
+  }).finally(()=>{
+    addOtherFormVisibility.value = false;
+  });
 }
+
+const handleAddOtherUserReset = () => {
+  addOtherUserQuery.value = {
+    age: 0,
+    email: "",
+    gender: -1,
+    idNumber: "",
+    passwordHash: "",
+    permission: 3,
+    phone: "",
+    position: "",
+    userName: "",
+  }
+}
+
 const handleUpdatePermissionSubmit = () => {
   handleUpdatePermission();
   updateFormVisibility.value = false;
@@ -46,22 +64,22 @@ const permissionMap = new Map([
 
 
 onMounted(()=>{
-  nonAdminListStore.setNonAdminList({
-    total: 1,
-    items: [
-      {
-        userId: "1",
-        userName: "张三",
-        doctorNumber: null,
-        email: "zhangsan@example.com",
-        phone: "1234567890",
-        gender: 0,
-        age: 30,
-        permission: 2,
-        idNumber: '1234567890',
-      }
-    ]
-  })
+  // nonAdminListStore.setNonAdminList({
+  //   total: 1,
+  //   items: [
+  //     {
+  //       userId: "1",
+  //       userName: "张三",
+  //       doctorNumber: null,
+  //       email: "zhangsan@example.com",
+  //       phone: "1234567890",
+  //       gender: 0,
+  //       age: 30,
+  //       permission: 2,
+  //       idNumber: '1234567890',
+  //     }
+  //   ]
+  // })
 })
 </script>
 

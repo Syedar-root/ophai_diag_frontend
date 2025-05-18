@@ -27,5 +27,6 @@ onMounted(()=>{
     align-items: center;
     padding: map.get(vars.$space, 'xxl');
     gap: map.get(vars.$space, 'm');
+    background-color: map.get(vars.$colors, _white);
   }
 </style>

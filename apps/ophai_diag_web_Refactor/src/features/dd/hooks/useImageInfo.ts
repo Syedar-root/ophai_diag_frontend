@@ -10,7 +10,6 @@ export const useImageInfo = () => {
       return null;
     }
     let images = viewCaseStore.viewCase.aiCaseInfoJson.message.images;
-    console.log(images);
     const obj : ImageInfoViewObj = {
       originImages: new Map([
         ['left',images.original.left],

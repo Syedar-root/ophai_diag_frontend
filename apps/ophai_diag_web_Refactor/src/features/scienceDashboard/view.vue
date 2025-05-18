@@ -3,7 +3,7 @@ import VChart from "vue-echarts";
 import "echarts";
 import { usePieChart } from "./hooks/usePieChart.ts";
 import { useMoveBarChart } from "@/features/dashboard/hooks/useMoveBarChart.ts";
-import {computed, ref} from 'vue';
+import {computed} from 'vue';
 import {useMapChartData} from "@/features/dashboard/hooks/useMapChartData.ts";
 
 let diseaseTypes = ['AMD', '糖尿病', '高血压', '青光眼', '近视','白内障','其他疾病'];

@@ -5,7 +5,7 @@ import {useImageLibraryStore} from "@/features/imageLibrary/stores/imageLib.ts";
 
 export const searchImageLibQuery = ref<ImageLibraryQuery>({
   pageNum: 1,
-  pageSize: 100,
+  pageSize: 30,
   diseaseName: "全部",
   gender: -1,
   StartAge: undefined,
@@ -18,6 +18,7 @@ const imageLibStore = useImageLibraryStore();
 export const handleSearchImage = () => {
 	if(!searchImageLibQuery.value) return;
 	getImageLibrary(searchImageLibQuery.value).then((res) => {
+	  console.log(res.data);
 	  imageLibStore.setImageLibrary(res.data);
 	  ElMessage.success('查询成功');
 	}).catch((err) => {

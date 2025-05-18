@@ -18,7 +18,7 @@ export interface ResponseData<T = any> {
 
 const request: AxiosInstance = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL,
-  timeout: 5000
+  timeout: 10000
 })
 
 // 修改类型定义
@@ -45,6 +45,7 @@ request.interceptors.request.use(
     } else if (config.method === 'post' || config.method === 'put' || config.method === 'delete') {
       config.data = config.data || {}
     }
+    console.log('请求配置：', config)
     return config as InternalAxiosRequestConfig
   },
   (error: AxiosError) => {
@@ -70,6 +71,12 @@ request.interceptors.response.use(
         type: 'error',
         duration: 2000
       })
+      if (response.data.code === 401) {
+        // 处理未登录或登录过期的情况
+        const tokenStore = useTokenStore();
+        tokenStore.removeToken()
+        tokenStore.toggleLogin(true)
+      }
       return Promise.reject(response.data)
     }
     return response.data

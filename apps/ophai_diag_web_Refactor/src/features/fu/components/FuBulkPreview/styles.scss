@@ -39,6 +39,7 @@
       justify-content: center;
       align-items: start;
       line-height: 1.25;
+      color: map.get(vars.$colors, neutral-7);
       label {
         font-weight: map.get(vars.$font-weight, bold);
       }

@@ -1,4 +1,4 @@
-@use '/src/shared/assets/styles/vars.scss' as vars;
+@use '@/shared/assets/styles/vars.scss' as vars;
 @use 'sass:map';
 @use "styles/mixins" as mixins;
 
@@ -37,6 +37,7 @@
     align-items: start;
     justify-content: center;
     gap: 1rem;
+    color: map.get(vars.$colors, _black);
   }
 }
 

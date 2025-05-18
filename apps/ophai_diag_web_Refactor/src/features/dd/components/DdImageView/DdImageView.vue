@@ -5,7 +5,7 @@
   import { currentEye } from '@/features/dd/store/currentEye.ts'
   import { computed, onMounted, ref, onUnmounted } from 'vue'
   import {diseaseMap, type Mark} from "@/features/dd/types";
-  import {isEdit,editType,editedUrls} from "@/features/dd/store/isEdit.ts";
+  import {editType,editedUrls} from "@/features/dd/store/isEdit.ts";
   import { useRouter} from "vue-router";
 
   const { imageInfo } = useImageInfo()
@@ -79,7 +79,7 @@
     if(imageInfo.value === null){
       return null;
     }
-    console.log(imageInfo.value.originImages.get(currentEye.value))
+    // console.log(imageInfo.value.originImages.get(currentEye.value))
     return imageInfo.value.originImages.get(currentEye.value)
   }
 
@@ -119,13 +119,17 @@
       ) {
         imgOpt.style.opacity = '1'
         imgOpt.style.visibility = 'visible'
-        otherEdit.style.opacity = '1'
-        otherEdit.style.visibility = 'visible'
+        if (currentType.value !== 'heatmap'){
+          otherEdit.style.opacity = '1'
+          otherEdit.style.visibility = 'visible'
+        }
       } else {
         imgOpt.style.opacity = '0'
         imgOpt.style.visibility = 'hidden'
-        otherEdit.style.opacity = '0'
-        otherEdit.style.visibility = 'hidden'
+        if (currentType.value !== 'heatmap'){
+          otherEdit.style.opacity = '0'
+          otherEdit.style.visibility = 'hidden'
+        }
       }
     }
     if (originImg){
@@ -220,6 +224,7 @@
   }
 
   onMounted(() => {
+    currentDisease.value = imageInfo.value?.diseaseCategories[0] || ''
     window.addEventListener('mousemove', handleOptShow)
   })
   onUnmounted(() => {
@@ -290,13 +295,14 @@
         </div>
       </div>
       <el-dropdown :disabled="currentType !== 'heatmap'"  trigger="click">
-      <el-badge :value="12" :offset="[-5,5]">
+      <el-badge :value="heatmapOptions.length *6" :offset="[-5,5]">
         <div
             class="opt-item"
             :ref="el => tabRefs[2] = el as HTMLElement"
             :class="{ active: currentType === 'heatmap' }"
             @click="
           () => {
+            console.log('heatmap')
             currentType = 'heatmap'
             activeIndex = 2
           }

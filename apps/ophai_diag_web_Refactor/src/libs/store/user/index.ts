@@ -31,7 +31,7 @@ export const useUserStore = defineStore(
         hospital:"",
         gender:null,
         age:null,
-        permission: Permission.PATIENT as Permission
+        permission: Permission.DOCTOR as Permission
       }
     }
     return { user, setUser, getUser , removeUser}

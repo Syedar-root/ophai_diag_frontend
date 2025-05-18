@@ -3,15 +3,24 @@ export const useMoveBarChart = () => {
 
   const data = computed(() => {
 	return [
-	  Math.floor(Math.random() * 100 + 50),
-	  Math.floor(Math.random() * 100 + 50),
-	  Math.floor(Math.random() * 100 + 50),
-	  Math.floor(Math.random() * 100 + 50),
-	  Math.floor(Math.random() * 100 + 50),
-	  Math.floor(Math.random() * 100 + 50),
-	  Math.floor(Math.random() * 100 + 50),
-
+	  20,
+	  97,
+	  39,
+	  24,
+	  26,
+	  18,
+	  61
 	]
+	// return [
+	//   Math.floor(Math.random() * 100 + 50),
+	//   Math.floor(Math.random() * 100 + 50),
+	//   Math.floor(Math.random() * 100 + 50),
+	//   Math.floor(Math.random() * 100 + 50),
+	//   Math.floor(Math.random() * 100 + 50),
+	//   Math.floor(Math.random() * 100 + 50),
+	//   Math.floor(Math.random() * 100 + 50),
+	//
+	// ]
   })
 
 

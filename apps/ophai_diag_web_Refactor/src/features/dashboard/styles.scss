@@ -101,6 +101,7 @@
     min-height: 450px;
     max-height: 450px;
     overflow-y: auto;
+    color: map.get(vars.$colors,neutral-7);
     &::-webkit-scrollbar {
       display: none;
     }
@@ -115,6 +116,7 @@
     gap: map.get(vars.$space,m);
     padding: 0 20px;
     .plan-item{
+      color: map.get(vars.$colors,neutral-7);
       text-align: start;
       display: flex;
       justify-content: space-between;

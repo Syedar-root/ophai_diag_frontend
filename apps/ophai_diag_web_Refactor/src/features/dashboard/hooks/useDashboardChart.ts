@@ -3,7 +3,7 @@ import {ref} from 'vue';
 export const useDashboardChart = () => {
   const dashboardChartData = ref([
 	{
-	  value:(Math.random() * 100).toFixed(1),
+	  value:(Math.random() * 30 + 20).toFixed(2),
 	  name: '服务器压力',
 	  title: {
 		offsetCenter: ['0%', '0%']
@@ -14,6 +14,27 @@ export const useDashboardChart = () => {
 	  }
 	}
   ])
+
+  function handleBeatifulChart( initialValue: number ) {
+  	let delta = (Math.random() * 10 - 5);
+	let  result = initialValue + delta;
+	if(result > 70) {
+	  return "70.67";
+	}else if(result < 10) {
+	  return "10.29";
+	}
+	return (initialValue + delta).toFixed(2);
+  }
+
+  // 模拟数据更新
+  let timer = setInterval(() => {
+	let tmp = dashboardChartData.value[0].value;
+  	dashboardChartData.value[0].value = handleBeatifulChart(parseInt(tmp));
+  }, 2000);
+
+  onUnmounted(() => {
+  	clearInterval(timer);
+  })
 
   return {
 	// title: {

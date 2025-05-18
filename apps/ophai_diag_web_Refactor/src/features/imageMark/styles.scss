@@ -44,6 +44,11 @@
     opacity: 0;
     overflow: hidden;
   }
+  .back-icon{
+    position: relative;
+    align-self: flex-start;
+    margin: 0.5rem 0 0 0.5rem;
+  }
 }
 
 .toolbar {

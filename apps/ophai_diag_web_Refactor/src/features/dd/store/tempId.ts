@@ -10,4 +10,4 @@ export const useTempIdStore = defineStore("tempId", ()=>{
 	tempId,
 	setTempId,
   }
-},{persist: true});
+});

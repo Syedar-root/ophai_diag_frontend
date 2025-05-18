@@ -81,7 +81,12 @@ router.beforeEach((to, _, next) => {
     let permission = useGetUserPermission()
     if ((to.meta.permission as Permission[]).includes(permission)) {
       next();
-    } else {
+    }else if (to.path === '/dashboard' && permission === Permission.SCIENTIST) {
+      next({
+        path:'/scienceDashboard'
+      })
+    }
+    else {
       alert('无权访问此页面')
       next({ path: '/introduction' })
     }

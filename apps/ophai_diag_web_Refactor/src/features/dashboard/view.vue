@@ -37,7 +37,7 @@ function handleRemoveList(index: number){
   list.value.splice(index,1);
 }
 const diseaseType1 = ref("糖尿病");
-const diseaseType2 = ref("近视");
+const diseaseType2 = ref("糖尿病");
 
 
 

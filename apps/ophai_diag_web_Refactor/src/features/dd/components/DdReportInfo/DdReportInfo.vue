@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {formatDate} from '@/libs/utils/formatDate.ts'
+// import {formatDate} from '@/libs/utils/formatDate.ts'
 import {useReportInfo} from '@/features/dd/hooks/useReportInfo.ts'
 import {useUpdateCase} from '@/features/dd/hooks/useUpdateCase.ts'
 import {diseaseMap} from '@/features/dd/types';
@@ -7,6 +7,7 @@ import {diseaseMap} from '@/features/dd/types';
 const { reportInfo } = useReportInfo()
 const {updateCaseQuery , handleUpdate} = useUpdateCase()
 onMounted(()=>{
+  console.log(updateCaseQuery)
   updateCaseQuery.value.diseaseName = []
   updateCaseQuery.value.diseaseName.push(...reportInfo.value.diseaseTypes || "")
 })
@@ -14,6 +15,12 @@ watch(()=>reportInfo.value,()=>{
   updateCaseQuery.value.diseaseName = []
   updateCaseQuery.value.diseaseName.push(...reportInfo.value.diseaseTypes || "")
 })
+
+function formatDate(date: string) {
+  const dateObj = new Date(date)
+  return dateObj.toLocaleDateString().split('/').join('-')
+}
+
 </script>
 
 <template>

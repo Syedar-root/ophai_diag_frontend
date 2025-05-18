@@ -14,6 +14,10 @@ export const useExportImage = ( downLoadText:Ref<string> ) => {
 	link.click();
 	downLoadText.value = "正在下载..."
 	window.URL.revokeObjectURL(res.data);
+	ElMessage.success("图片数据下载成功！");
+  }).catch(err=>{
+	console.error(err);
+	ElMessage.error("下载失败："+err.message);
   }).finally(()=>{
 	loading.value = false;
 	downLoadText.value = "下载当页图片";

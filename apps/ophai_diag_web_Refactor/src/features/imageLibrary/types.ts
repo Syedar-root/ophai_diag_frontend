@@ -24,8 +24,8 @@ export interface ImageLibraryQuery {
    * 默认值
    * 病例日期
    */
-  startDate?: string;
-  endDate?: string;
+  startDate?: string | null;
+  endDate?: string | null;
   /**
    * 默认值
    * 页码
@@ -56,11 +56,11 @@ export interface OriginImageData {
   /**
    * 左眼URL或路径
    */
-  leftImage?: string;
+  leftImage: string;
   /**
    * 右眼URL或路径
    */
-  rightImage?: string;
+  rightImage: string;
   /**
    * 更新时间
    */

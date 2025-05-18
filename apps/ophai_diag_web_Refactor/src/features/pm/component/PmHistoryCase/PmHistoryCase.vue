@@ -28,6 +28,8 @@ onMounted(() => {
         diseaseNames: item.diseaseName as string[]
       }
     })
+  }).finally(() => {
+    loading.value = false;
   })
 })
 
